@@ -2,11 +2,13 @@
 const translations = {
   fr: {
     "nav.main": "Navigation principale",
+    "nav.home": "Accueil",
     "nav.about": "À propos",
     "nav.patronnes": "Patronnes",
     "nav.press": "Presse",
     "nav.contact": "Contact",
     "menu.open": "Ouvrir le menu",
+    "menu.close": "Fermer le menu",
     search: "Rechercher",
     "hero.title": "Les Patronnes",
     "hero.subtitle": "Un projet imaginé par la cheffe étoilée Georgiana Viou, qui célèbre les femmes qui font vivre les marchés béninois",
@@ -32,6 +34,15 @@ const translations = {
     "story.market.chapter2.eyebrow": "Chapitre II",
     "story.market.chapter2.title": "Rendre la lumière",
     "story.market.chapter2.text": "Les Patronnes est né d’une volonté simple : reconnaître ces femmes comme des actrices majeures de la vie béninoise, raconter leurs histoires et inscrire leurs visages dans une mémoire qui se transmet.",
+    "story.market.chapter3.eyebrow": "Chapitre III",
+    "story.market.chapter3.title": "Un marché en mouvement",
+    "story.market.chapter3.text": "À PK3, le textile, les rencontres et les mémoires composent un paysage vivant. Le temps d’une journée, le marché devient l’espace d’une célébration collective.",
+    "story.market.chapter4.eyebrow": "Chapitre IV",
+    "story.market.chapter4.title": "Le marché devient scène",
+    "story.market.chapter4.text": "Galerie à ciel ouvert, défilé, prise de parole et exposition : chaque geste élargit le regard porté sur celles qui tiennent le marché et inventent son avenir.",
+    "story.market.chapter5.eyebrow": "Chapitre V",
+    "story.market.chapter5.title": "La table comme langage",
+    "story.market.chapter5.text": "Le banquet rassemble les voix, les saveurs et les gestes. Il donne une forme concrète à l’ambition des Patronnes : faire de la reconnaissance un moment partagé.",
     "story.end.title": "Les Patronnes",
     "story.end.text": "Une histoire vivante, à suivre.",
     "theme.system": "Système",
@@ -45,11 +56,13 @@ const translations = {
   },
   en: {
     "nav.main": "Main navigation",
+    "nav.home": "Home",
     "nav.about": "About",
     "nav.patronnes": "Patronnes",
     "nav.press": "Press",
     "nav.contact": "Contact",
     "menu.open": "Open menu",
+    "menu.close": "Close menu",
     search: "Search",
     "hero.title": "Les Patronnes",
     "hero.subtitle": "A project created by Michelin-starred chef Georgiana Viou, celebrating the women who bring Benin's markets to life",
@@ -75,6 +88,15 @@ const translations = {
     "story.market.chapter2.eyebrow": "Chapter II",
     "story.market.chapter2.title": "Bringing them into the light",
     "story.market.chapter2.text": "Les Patronnes was born from a simple intention: to recognise these women as major figures in Beninese life, tell their stories and preserve their faces in a memory that can be passed on.",
+    "story.market.chapter3.eyebrow": "Chapter III",
+    "story.market.chapter3.title": "A market in motion",
+    "story.market.chapter3.text": "At PK3, textiles, encounters and memories make up a living landscape. For one day, the market becomes a place of collective celebration.",
+    "story.market.chapter4.eyebrow": "Chapter IV",
+    "story.market.chapter4.title": "The market becomes a stage",
+    "story.market.chapter4.text": "An open-air gallery, a runway, conversations and an exhibition: each gesture expands the way we see the women who sustain the market and shape its future.",
+    "story.market.chapter5.eyebrow": "Chapter V",
+    "story.market.chapter5.title": "The table as a language",
+    "story.market.chapter5.text": "The banquet brings together voices, flavours and gestures. It gives tangible form to Les Patronnes’ ambition: turning recognition into a moment shared by all.",
     "story.end.title": "Les Patronnes",
     "story.end.text": "A living story, to be continued.",
     "theme.system": "System",
@@ -232,6 +254,65 @@ themeButtons.forEach((button) => {
 
 applyTheme(activeTheme, false);
 applyLanguage(activeLanguage, false);
+
+// Menu plein écran pour la navigation mobile, partagé par toutes les pages.
+document.querySelectorAll(".site-nav").forEach((nav) => {
+  const burger = nav.querySelector(".site-nav__burger");
+  const logo = nav.querySelector(".site-nav__logo");
+  const links = Array.from(nav.querySelectorAll(".site-nav__links a"));
+  if (!burger || !logo || !links.length) return;
+
+  const menu = document.createElement("div");
+  menu.className = "site-mobile-menu";
+  menu.hidden = true;
+  menu.setAttribute("data-mobile-menu", "");
+  menu.setAttribute("aria-label", translate("nav.main"));
+
+  const menuLinks = document.createElement("div");
+  menuLinks.className = "site-mobile-menu__links";
+  const homeLink = document.createElement("a");
+  homeLink.href = logo.getAttribute("href");
+  homeLink.textContent = translate("nav.home");
+  menuLinks.appendChild(homeLink);
+  links.forEach((link) => {
+    const mobileLink = link.cloneNode(true);
+    if (mobileLink.dataset.i18n) mobileLink.textContent = translate(mobileLink.dataset.i18n);
+    menuLinks.appendChild(mobileLink);
+  });
+  const contactLink = nav.querySelector(".site-nav__contact");
+  if (contactLink) {
+    const mobileContactLink = contactLink.cloneNode(true);
+    if (mobileContactLink.dataset.i18n) {
+      mobileContactLink.textContent = translate(mobileContactLink.dataset.i18n);
+    }
+    menuLinks.appendChild(mobileContactLink);
+  }
+  menu.appendChild(menuLinks);
+  nav.closest(".site-header")?.appendChild(menu);
+
+  const closeMenu = () => {
+    menu.hidden = true;
+    document.body.classList.remove("mobile-menu-open");
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", translate("menu.open"));
+  };
+
+  burger.setAttribute("aria-expanded", "false");
+  burger.setAttribute("aria-controls", "mobile-menu");
+  menu.id = "mobile-menu";
+  burger.addEventListener("click", () => {
+    const opening = menu.hidden;
+    menu.hidden = !opening;
+    document.body.classList.toggle("mobile-menu-open", opening);
+    burger.setAttribute("aria-expanded", String(opening));
+    burger.setAttribute("aria-label", translate(opening ? "menu.close" : "menu.open"));
+  });
+  menuLinks.addEventListener("click", closeMenu);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !menu.hidden) closeMenu();
+  });
+});
+syncPreferenceLinks();
 
 const header = document.querySelector("[data-header]");
 

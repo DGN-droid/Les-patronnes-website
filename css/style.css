@@ -291,10 +291,33 @@ html[data-theme="dark"] .theme-toggle__icons [data-theme-icon="dark"] {
   }
 
   .site-nav__logo {
-    font-size: 1.5rem;
+    width: 7rem;
+    font-size: 1.3rem;
+    line-height: 0.9;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .site-nav__search {
+    order: 2;
+  }
+
+  .site-nav__preferences {
+    order: 1;
   }
 
   .theme-toggle__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .language-toggle [data-language-label] {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -997,3 +1020,48 @@ body.story-open {
     font-size: clamp(3.1rem, 15vw, 5rem);
   }
 }
+
+/* Les Patronnes */
+.patronnes-page { overflow: hidden; }
+.patronnes-section { width: min(100%, 1440px); margin-inline: auto; padding: var(--space-xxl) clamp(var(--space-lg), 7vw, var(--space-xxl)); }
+.patronnes-hero { position: relative; display: grid; min-height: 100svh; overflow: hidden; color: var(--color-text-light); place-items: end start; }
+.patronnes-hero__image, .patronnes-hero__overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.patronnes-hero__image { object-fit: cover; }
+.patronnes-hero__overlay { background: linear-gradient(90deg, rgb(0 0 0 / 65%), rgb(0 0 0 / 12%)); }
+.patronnes-hero__content { position: relative; z-index: 1; max-width: 760px; padding: calc(80px + var(--space-xl)) clamp(var(--space-lg), 7vw, var(--space-xxl)) var(--space-xxl); }
+.patronnes-eyebrow, .patronnes-stop__number { font-size: .75rem; font-weight: 700; letter-spacing: .16em; color: var(--color-accent); text-transform: uppercase; }
+.patronnes-hero h1, .patronnes-section h2, .patronnes-cta h2, .patronnes-stop h3 { font-family: var(--font-heading); font-weight: 400; letter-spacing: .05em; line-height: .88; text-transform: uppercase; }
+.patronnes-hero h1 { margin-top: var(--space-sm); font-size: var(--font-size-hero); }
+.patronnes-hero__content > p:not(.patronnes-eyebrow) { max-width: 600px; margin-top: var(--space-lg); font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.75; }
+.patronnes-hero__link, .patronnes-cta__links a { display: inline-flex; margin-top: var(--space-lg); padding: .875rem var(--space-lg); border-radius: 999px; align-items: center; gap: var(--space-sm); font-size: var(--font-size-small); font-weight: 700; letter-spacing: .09em; color: var(--color-text-light); background: var(--color-accent); text-transform: uppercase; transition: transform var(--transition-default), background-color var(--transition-default); }
+.patronnes-hero__link:hover, .patronnes-cta__links a:hover { background: #873924; transform: scale(1.04); }
+.patronnes-section__heading { max-width: 660px; }
+.patronnes-section__heading--center { margin-inline: auto; text-align: center; }
+.patronnes-section h2 { margin-top: var(--space-sm); font-size: var(--font-size-h2); }
+.patronnes-concept { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); align-items: start; gap: clamp(var(--space-xl), 8vw, var(--space-xxl)); }
+.patronnes-concept__text { font-size: clamp(1rem, 1.25vw, 1.125rem); line-height: 1.85; }
+.patronnes-concept__text p + p { margin-top: var(--space-md); color: color-mix(in srgb, var(--color-text-primary) 75%, transparent); }
+.patronnes-stops { border-top: 1px solid var(--color-border); }
+.patronnes-stop { display: grid; margin-top: var(--space-xl); grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); align-items: center; gap: clamp(var(--space-xl), 7vw, var(--space-xxl)); }
+.patronnes-stop--reverse .patronnes-stop__media { order: 2; }
+.patronnes-stop__media { min-height: 480px; overflow: hidden; background: var(--color-bg-dark); }
+.patronnes-stop__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.patronnes-stop:hover img { transform: scale(1.04); }
+.patronnes-stop h3 { margin-top: var(--space-sm); font-size: var(--font-size-h2); }
+.patronnes-stop__meta { margin-top: var(--space-sm); font-size: var(--font-size-small); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.patronnes-stop__content > p:not(.patronnes-stop__number):not(.patronnes-stop__meta) { margin-top: var(--space-lg); line-height: 1.8; }
+.patronnes-stop__highlights { display: grid; margin-top: var(--space-lg); border-top: 1px solid var(--color-border); grid-template-columns: repeat(2, 1fr); }
+.patronnes-stop__highlights li { padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); font-size: var(--font-size-small); font-weight: 700; }
+.patronnes-gallery { background: color-mix(in srgb, var(--color-bg-dark) 4%, var(--color-bg-primary)); }
+.patronnes-gallery__grid { display: grid; margin-top: var(--space-xl); grid-auto-rows: 260px; grid-template-columns: repeat(4, 1fr); gap: var(--space-sm); }
+.patronnes-gallery__item { overflow: hidden; }
+.patronnes-gallery__item--tall { grid-row: span 2; }.patronnes-gallery__item--wide { grid-column: span 2; }
+.patronnes-gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.22,1,.36,1); }.patronnes-gallery__item:hover img { transform: scale(1.07); }
+.patronnes-figures__grid { display: grid; margin-top: var(--space-xl); grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+.patronnes-figure { overflow: hidden; background: var(--color-bg-dark); color: var(--color-text-light); }.patronnes-figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }.patronnes-figure div { padding: var(--space-md); }.patronnes-figure h3 { font-family: var(--font-heading); font-size: var(--font-size-h3); font-weight: 400; letter-spacing: .04em; text-transform: uppercase; }.patronnes-figure p { margin-top: var(--space-xs); font-size: var(--font-size-small); line-height: 1.6; color: rgb(249 245 237 / 75%); }
+.patronnes-cta { display: grid; min-height: 75svh; padding: var(--space-xxl) var(--space-lg); color: var(--color-text-light); background: var(--color-bg-dark); place-items: center; text-align: center; }.patronnes-cta > div { max-width: 760px; }.patronnes-cta h2 { margin-top: var(--space-sm); font-size: clamp(4rem, 8vw, 7rem); }.patronnes-cta p:not(.patronnes-eyebrow) { margin-top: var(--space-lg); line-height: 1.8; color: rgb(249 245 237 / 76%); }.patronnes-cta__links { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-sm); }.patronnes-cta__links a + a { background: transparent; border: 1px solid rgb(249 245 237 / 45%); }.patronnes-cta__back { display: inline-block; margin-top: var(--space-lg); font-size: var(--font-size-small); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Navigation mobile */
+.site-mobile-menu { display: none; }
+@media (max-width: 800px) { .patronnes-concept, .patronnes-stop { grid-template-columns: 1fr; }.patronnes-stop--reverse .patronnes-stop__media { order: 0; }.patronnes-stop__media { min-height: 390px; }.patronnes-gallery__grid { grid-template-columns: repeat(2, 1fr); }.patronnes-gallery__item--tall { grid-row: span 1; }.patronnes-figures__grid { grid-template-columns: 1fr; }.site-mobile-menu { position: fixed; z-index: 900; top: 72px; right: 0; bottom: 0; left: 0; display: grid; padding: var(--space-xl) var(--space-sm); background: var(--color-bg-primary); place-items: center; }.site-mobile-menu__links { display: flex; width: min(100%, 420px); flex-direction: column; align-items: center; gap: var(--space-md); font-family: var(--font-heading); font-size: clamp(2.5rem, 13vw, 4.5rem); letter-spacing: .05em; line-height: .9; text-transform: uppercase; }.site-mobile-menu__links a:first-child { color: var(--color-accent); }.site-mobile-menu[hidden] { display: none; } body.mobile-menu-open { overflow: hidden; } }
+@media (max-width: 600px) { .patronnes-section { padding: var(--space-xl) var(--space-sm); }.patronnes-hero__content { padding: calc(72px + var(--space-lg)) var(--space-sm) var(--space-xl); }.patronnes-hero h1 { font-size: clamp(5rem, 24vw, 8rem); }.patronnes-stop__media { min-height: 340px; }.patronnes-gallery__grid { grid-auto-rows: 180px; }.patronnes-gallery__item--wide { grid-column: span 2; }.patronnes-stop__highlights { grid-template-columns: 1fr; } }

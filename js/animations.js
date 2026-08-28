@@ -319,6 +319,56 @@ if (storyView && storyTriggers.length && window.gsap) {
         src: "assets/images/img17.jpeg",
         alt: "Femmes des marchés réunies autour du projet Les Patronnes"
       },
+      {
+        type: "chapter",
+        eyebrow: "story.market.chapter3.eyebrow",
+        title: "story.market.chapter3.title",
+        text: "story.market.chapter3.text",
+        fallback: {
+          eyebrow: "Chapitre III",
+          title: "Un marché en mouvement",
+          text: "À PK3, le textile, les rencontres et les mémoires composent un paysage vivant. Le temps d’une journée, le marché devient l’espace d’une célébration collective."
+        }
+      },
+      { type: "image", src: "assets/images/img18.jpeg", alt: "Participantes des Patronnes arrivant au marché PK3" },
+      { type: "image", src: "assets/images/img19.jpeg", alt: "Danse et célébration lors des Patronnes à PK3" },
+      { type: "image", src: "assets/images/img20.jpeg", alt: "Remerciements aux partenaires de l’édition Les Patronnes à PK3" },
+      { type: "image", src: "assets/images/img21.jpeg", alt: "Collectif des Patronnes devant leur véhicule au marché PK3" },
+      { type: "image", src: "assets/images/img22.jpeg", alt: "Portrait de trois Patronnes au marché PK3" },
+      {
+        type: "chapter",
+        eyebrow: "story.market.chapter4.eyebrow",
+        title: "story.market.chapter4.title",
+        text: "story.market.chapter4.text",
+        fallback: {
+          eyebrow: "Chapitre IV",
+          title: "Le marché devient scène",
+          text: "Galerie à ciel ouvert, défilé, prise de parole et exposition : chaque geste élargit le regard porté sur celles qui tiennent le marché et inventent son avenir."
+        }
+      },
+      { type: "image", src: "assets/images/img23.jpeg", alt: "Présentation du marché PK3 de Cotonou et de ses inspirations" },
+      { type: "image", src: "assets/images/img24.jpeg", alt: "Récit du marché PK3 et hommage aux Nana Benz" },
+      { type: "image", src: "assets/images/img25.jpeg", alt: "Affiche de l’édition Les Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img26.jpeg", alt: "Texte et portraits des invitées de l’édition Les Patronnes" },
+      { type: "image", src: "assets/images/img27.jpeg", alt: "Citation d’Audre Lorde sur le partage et la joie" },
+      { type: "image", src: "assets/images/img28.jpeg", alt: "Manifeste des Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img29.jpeg", alt: "Prise de parole pendant l’événement Les Patronnes" },
+      { type: "image", src: "assets/images/img30.jpeg", alt: "Exposition photographique consacrée aux femmes des marchés" },
+      {
+        type: "chapter",
+        eyebrow: "story.market.chapter5.eyebrow",
+        title: "story.market.chapter5.title",
+        text: "story.market.chapter5.text",
+        fallback: {
+          eyebrow: "Chapitre V",
+          title: "La table comme langage",
+          text: "Le banquet rassemble les voix, les saveurs et les gestes. Il donne une forme concrète à l’ambition des Patronnes : faire de la reconnaissance un moment partagé."
+        }
+      },
+      { type: "image", src: "assets/images/img31.jpeg", alt: "Portrait d’une participante dans le véhicule des Patronnes" },
+      { type: "image", src: "assets/images/img32.jpeg", alt: "Portrait collectif des Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img33.jpeg", alt: "Grand banquet populaire imaginé par Georgiana Viou" },
+      { type: "image", src: "assets/images/img34.jpeg", alt: "Hommage au regard photographique porté sur les femmes des marchés" },
       { type: "end" }
     ]
   };
