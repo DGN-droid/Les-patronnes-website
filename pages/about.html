@@ -34,11 +34,111 @@
     </nav>
   </header>
 
-  <main></main>
+  <main class="about-page">
+    <section class="about-hero about-reveal" aria-labelledby="about-title">
+      <div class="about-hero__media">
+        <img src="../assets/images/img6.jpeg" alt="Portrait collectif des femmes réunies pour Les Patronnes" loading="eager" decoding="async">
+      </div>
+
+      <div class="about-hero__content">
+        <p class="about-eyebrow">Une cuisine de mémoire et d’élan</p>
+        <h1 class="about-hero__title" id="about-title">Georgiana Viou</h1>
+        <p class="about-hero__subtitle">Cheffe étoilée Michelin</p>
+        <p class="about-hero__lead">Née à Cotonou, Georgiana Viou grandit entre les saveurs du Bénin et les marchés de son enfance, avant de poser ses valises en France où elle construit, pas à pas, une cuisine à son image : sincère, généreuse et profondément métissée. En 2023, elle devient la première femme noire à décrocher une étoile Michelin en France pour son restaurant Rouge, à Nîmes — une reconnaissance pour une cuisine qui refuse les frontières entre gastronomie française et héritage ouest-africain.</p>
+        <p>Dans ses assiettes, les souvenirs ne sont jamais de simples références. Ils deviennent des matières vivantes : une acidité franche, le parfum d’une feuille, la chaleur d’une épice, le rythme d’un marché. Chaque plat compose un langage intime, nourri par les territoires qu’elle traverse et les personnes qui les font vivre.</p>
+      </div>
+    </section>
+
+    <section class="about-timeline about-reveal" aria-labelledby="journey-title">
+      <div class="about-section-heading">
+        <p class="about-eyebrow">Itinéraire</p>
+        <h2 id="journey-title">Un parcours singulier</h2>
+        <p>De Cotonou à Nîmes, Georgiana Viou a fait de son histoire un geste de création. Son parcours ne se résume pas à une succession d’adresses ou de distinctions : il raconte une fidélité à ses origines, une exigence patiemment acquise et le désir de faire dialoguer les cultures avec justesse.</p>
+      </div>
+
+      <div class="about-accordion" data-about-accordion>
+        <details class="about-accordion__item" open>
+          <summary>Une identité culinaire affirmée <span aria-hidden="true">+</span></summary>
+          <div class="about-accordion__content">
+            <p>Formée aux exigences de la haute gastronomie française, Georgiana Viou n'a jamais renoncé à l'âme de sa cuisine d'origine : l'épice, le partage, la générosité des tablées béninoises.</p>
+            <p>Elle y ajoute la précision du geste, le respect des saisons et une attention constante portée au produit. Cette double appartenance ne cherche pas l’effet ; elle donne à sa cuisine sa profondeur, sa liberté et sa voix propre.</p>
+          </div>
+        </details>
+
+        <details class="about-accordion__item">
+          <summary>Une voix qui compte <span aria-hidden="true">+</span></summary>
+          <div class="about-accordion__content">
+            <p>Jurée reconnue de MasterChef France, elle porte sur les écrans une vision exigeante et sensible de la cuisine, loin des clichés et des raccourcis.</p>
+            <p>Son regard privilégie la sincérité d’une intention, la maîtrise d’un savoir-faire et la capacité d’un plat à raconter quelque chose de celui ou celle qui l’a imaginé. Une parole de cheffe, mais aussi de passeuse.</p>
+          </div>
+        </details>
+
+        <details class="about-accordion__item">
+          <summary>Écrire pour transmettre <span aria-hidden="true">+</span></summary>
+          <div class="about-accordion__content">
+            <p>Autrice de deux ouvrages, « OUI Cheffe » et « Le Goût de Cotonou », elle y raconte sans détour son parcours de femme, de cheffe et de fille du Bénin.</p>
+            <p>Ses livres prolongent le travail de la table : ils donnent une place aux récits, aux gestes appris dans l’enfance, aux produits familiers et à celles et ceux qui ont transmis l’envie de cuisiner.</p>
+          </div>
+        </details>
+
+        <details class="about-accordion__item">
+          <summary>Revenir à Cotonou <span aria-hidden="true">+</span></summary>
+          <div class="about-accordion__content">
+            <p>Elle signe également la carte du restaurant L'Ami, au Sofitel Cotonou Marina Hotel &amp; Spa, où elle revient régulièrement retrouver les produits et les visages qui ont façonné sa cuisine.</p>
+            <p>Ces retours ne sont pas une parenthèse. Ils entretiennent un lien essentiel avec le Bénin, sa lumière, son hospitalité et l’inépuisable inventivité de ses marchés.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="about-quote about-reveal" aria-label="Citation de Georgiana Viou">
+      <blockquote>
+        <p>« Je ne cuisine pas deux pays. Je cuisine une seule histoire, la mienne, et elle a le goût du Bénin. »</p>
+        <footer>— Georgiana Viou</footer>
+      </blockquote>
+    </section>
+
+    <section class="about-cta about-reveal" aria-labelledby="patronnes-title">
+      <div class="about-cta__content">
+        <p class="about-eyebrow">Un engagement</p>
+        <h2 id="patronnes-title">Les Patronnes, une mémoire à partager</h2>
+        <p>Aujourd'hui, Georgiana Viou met sa notoriété au service de celles qui, chaque jour, font vivre les marchés de Cotonou. C'est tout le sens du projet Les Patronnes : redonner voix et visage aux femmes qui nourrissent une ville, un pays, une culture.</p>
+        <p>À travers des portraits, des conversations et des gestes de reconnaissance, le projet dessine une archive sensible. Il célèbre des trajectoires souvent discrètes, mais essentielles à la vie économique, sociale et affective de toute une communauté.</p>
+        <a class="about-cta__link" href="patronnes.html">Découvrir Les Patronnes <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
 
   <footer></footer>
 
   <script src="../js/main.js"></script>
   <script src="../js/animations.js"></script>
+  <script>
+    (() => {
+      const sections = document.querySelectorAll(".about-reveal");
+      if (!sections.length || !window.gsap) return;
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.gsap.set(sections, { autoAlpha: 1, y: 0 });
+        return;
+      }
+
+      window.gsap.set(sections, { autoAlpha: 0, y: 28 });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          window.gsap.to(entry.target, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power2.out"
+          });
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+
+      sections.forEach((section) => observer.observe(section));
+    })();
+  </script>
 </body>
 </html>

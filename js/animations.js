@@ -235,12 +235,13 @@ if (carousel && window.gsap) {
 }
 
 const storyView = document.querySelector("[data-story-view]");
-const storyTrigger = document.querySelector("[data-story-trigger]");
+const storyTriggers = Array.from(document.querySelectorAll("[data-story-trigger]"));
 
-if (storyView && storyTrigger && window.gsap) {
+if (storyView && storyTriggers.length && window.gsap) {
   const storyScroller = storyView.querySelector("[data-story-scroller]");
   const storyClose = storyView.querySelector("[data-story-close]");
-  const storySequence = [
+  const stories = {
+    main: [
     {
       type: "image",
       src: "assets/images/img1.jpeg",
@@ -278,79 +279,133 @@ if (storyView && storyTrigger && window.gsap) {
     { type: "image", src: "assets/images/img14.jpeg", alt: "Le récit des Patronnes au Sofitel Cotonou Marina" },
     { type: "image", src: "assets/images/img15.jpeg", alt: "Le public des Patronnes" },
     { type: "end" }
-  ];
+    ],
+    markets: [
+      {
+        type: "image",
+        src: "assets/images/img3.jpeg",
+        alt: "Les Patronnes au marché PK3",
+        intro: true
+      },
+      {
+        type: "chapter",
+        eyebrow: "story.market.chapter1.eyebrow",
+        title: "story.market.chapter1.title",
+        text: "story.market.chapter1.text",
+        fallback: {
+          eyebrow: "Chapitre I",
+          title: "Celles qui font le marché",
+          text: "Au marché, les gestes se répètent sans jamais être les mêmes. Ils organisent les journées, relient les familles et font circuler les savoir-faire d’une génération à l’autre."
+        }
+      },
+      {
+        type: "image",
+        src: "assets/images/img16.jpeg",
+        alt: "Manifeste de Georgiana Viou pour les femmes des marchés béninois"
+      },
+      {
+        type: "chapter",
+        eyebrow: "story.market.chapter2.eyebrow",
+        title: "story.market.chapter2.title",
+        text: "story.market.chapter2.text",
+        fallback: {
+          eyebrow: "Chapitre II",
+          title: "Rendre la lumière",
+          text: "Les Patronnes est né d’une volonté simple : reconnaître ces femmes comme des actrices majeures de la vie béninoise, raconter leurs histoires et inscrire leurs visages dans une mémoire qui se transmet."
+        }
+      },
+      {
+        type: "image",
+        src: "assets/images/img17.jpeg",
+        alt: "Femmes des marchés réunies autour du projet Les Patronnes"
+      },
+      { type: "end" }
+    ]
+  };
 
-  storySequence.forEach((item) => {
-    const section = document.createElement("section");
-    section.className = "story-item";
+  let revealObserver;
+  let introImage;
+  let scrollHint;
+  let activeTrigger;
 
-    if (item.type === "image") {
-      section.classList.add("story-item--image");
-      if (item.intro) section.classList.add("story-item--intro");
+  const getStoryText = (key, fallback = "") => window.siteTranslate?.(key) || fallback;
 
-      const image = document.createElement("img");
-      image.src = item.src;
-      image.alt = item.alt;
-      image.loading = item.intro ? "eager" : "lazy";
-      image.decoding = "async";
-      image.addEventListener("error", () => section.remove());
-      section.appendChild(image);
+  const createStory = (sequence) => {
+    revealObserver?.disconnect();
+    storyScroller.replaceChildren();
 
-      if (item.intro) {
-        const hint = document.createElement("span");
-        hint.className = "story-scroll-hint";
-        hint.dataset.i18n = "story.scroll";
-        hint.textContent = "Faire défiler";
-        section.appendChild(hint);
+    sequence.forEach((item) => {
+      const section = document.createElement("section");
+      section.className = "story-item";
+
+      if (item.type === "image") {
+        section.classList.add("story-item--image");
+        if (item.intro) section.classList.add("story-item--intro");
+
+        const image = document.createElement("img");
+        image.src = item.src;
+        image.alt = item.alt;
+        image.loading = item.intro ? "eager" : "lazy";
+        image.decoding = "async";
+        image.addEventListener("error", () => section.remove());
+        section.appendChild(image);
+
+        if (item.intro) {
+          const hint = document.createElement("span");
+          hint.className = "story-scroll-hint";
+          hint.dataset.i18n = "story.scroll";
+          hint.textContent = "Faire défiler";
+          section.appendChild(hint);
+        }
       }
-    }
 
-    if (item.type === "chapter") {
-      section.classList.add("story-item--chapter");
-      section.innerHTML = `
-        <div class="story-chapter">
-          <p class="story-chapter__eyebrow" data-i18n="${item.eyebrow}"></p>
-          <h2 class="story-chapter__title" data-i18n="${item.title}"></h2>
-          <p class="story-chapter__text" data-i18n="${item.text}"></p>
-        </div>
-      `;
-    }
+      if (item.type === "chapter") {
+        section.classList.add("story-item--chapter");
+        section.innerHTML = `
+          <div class="story-chapter">
+            <p class="story-chapter__eyebrow" data-i18n="${item.eyebrow}">${getStoryText(item.eyebrow, item.fallback?.eyebrow)}</p>
+            <h2 class="story-chapter__title" data-i18n="${item.title}">${getStoryText(item.title, item.fallback?.title)}</h2>
+            <p class="story-chapter__text" data-i18n="${item.text}">${getStoryText(item.text, item.fallback?.text)}</p>
+          </div>
+        `;
+      }
 
-    if (item.type === "end") {
-      section.classList.add("story-end");
-      section.innerHTML = `
-        <div>
-          <h2 class="story-end__title" data-i18n="story.end.title">Les Patronnes</h2>
-          <p class="story-end__text" data-i18n="story.end.text">Une histoire vivante, à suivre.</p>
-        </div>
-      `;
-    }
+      if (item.type === "end") {
+        section.classList.add("story-end");
+        section.innerHTML = `
+          <div>
+            <h2 class="story-end__title" data-i18n="story.end.title">${getStoryText("story.end.title", "Les Patronnes")}</h2>
+            <p class="story-end__text" data-i18n="story.end.text">${getStoryText("story.end.text", "Une histoire vivante, à suivre.")}</p>
+          </div>
+        `;
+      }
 
-    storyScroller.appendChild(section);
-  });
-
-  const revealItems = storyScroller.querySelectorAll(
-    ".story-item:not(.story-item--intro)"
-  );
-  const introImage = storyScroller.querySelector(".story-item--intro img");
-  const scrollHint = storyScroller.querySelector(".story-scroll-hint");
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      gsap.to(entry.target, {
-        opacity: 1,
-        y: 0,
-        duration: 1.1,
-        ease: "power2.out"
-      });
-      revealObserver.unobserve(entry.target);
+      storyScroller.appendChild(section);
     });
-  }, {
-    root: storyScroller,
-    threshold: 0.18
-  });
 
-  revealItems.forEach((item) => revealObserver.observe(item));
+    const revealItems = storyScroller.querySelectorAll(
+      ".story-item:not(.story-item--intro)"
+    );
+    introImage = storyScroller.querySelector(".story-item--intro img");
+    scrollHint = storyScroller.querySelector(".story-scroll-hint");
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        gsap.to(entry.target, {
+          opacity: 1,
+          y: 0,
+          duration: 1.1,
+          ease: "power2.out"
+        });
+        revealObserver.unobserve(entry.target);
+      });
+    }, {
+      root: storyScroller,
+      threshold: 0.18
+    });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+  };
 
   let storyOpen = false;
   let scrollTicking = false;
@@ -380,8 +435,10 @@ if (storyView && storyTrigger && window.gsap) {
     }
   }, { passive: true });
 
-  const openStory = () => {
+  const openStory = (trigger) => {
     if (storyOpen) return;
+    activeTrigger = trigger;
+    createStory(stories[trigger.dataset.storyTrigger] || stories.main);
     storyOpen = true;
     storyScroller.scrollTop = 0;
     document.body.classList.add("story-open");
@@ -426,22 +483,24 @@ if (storyView && storyTrigger && window.gsap) {
         storyView.setAttribute("aria-hidden", "true");
         document.body.classList.remove("story-open");
         window.heroCarousel?.resumeAuto();
-        storyTrigger.focus();
+        activeTrigger?.focus();
       }
     });
   };
 
-  storyTrigger.addEventListener("click", openStory);
-  storyTrigger.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openStory();
-    }
+  storyTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => openStory(trigger));
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openStory(trigger);
+      }
+    });
   });
   storyClose.addEventListener("click", closeStory);
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && storyOpen) closeStory();
   });
 
-  window.storyExperience = { open: openStory, close: closeStory };
+  window.storyExperience = { open: () => openStory(storyTriggers[0]), close: closeStory };
 }

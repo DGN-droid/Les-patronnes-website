@@ -13,6 +13,7 @@ const translations = {
     "hero.cta": "Voir",
     "story.open": "Découvrir le récit",
     "story.openLabel": "Découvrir le récit Les Patronnes",
+    "story.market.openLabel": "Découvrir le récit des marchés",
     "story.close": "Fermer",
     "story.closeLabel": "Fermer le récit",
     "story.scroll": "Faire défiler",
@@ -25,6 +26,12 @@ const translations = {
     "story.chapter3.eyebrow": "Chapitre III",
     "story.chapter3.title": "Transmettre",
     "story.chapter3.text": "La conversation devient une trace. Chaque portrait, chaque parole et chaque regard prolongent une histoire appelée à voyager.",
+    "story.market.chapter1.eyebrow": "Chapitre I",
+    "story.market.chapter1.title": "Celles qui font le marché",
+    "story.market.chapter1.text": "Au marché, les gestes se répètent sans jamais être les mêmes. Ils organisent les journées, relient les familles et font circuler les savoir-faire d’une génération à l’autre.",
+    "story.market.chapter2.eyebrow": "Chapitre II",
+    "story.market.chapter2.title": "Rendre la lumière",
+    "story.market.chapter2.text": "Les Patronnes est né d’une volonté simple : reconnaître ces femmes comme des actrices majeures de la vie béninoise, raconter leurs histoires et inscrire leurs visages dans une mémoire qui se transmet.",
     "story.end.title": "Les Patronnes",
     "story.end.text": "Une histoire vivante, à suivre.",
     "theme.system": "Système",
@@ -49,6 +56,7 @@ const translations = {
     "hero.cta": "Discover",
     "story.open": "Discover the story",
     "story.openLabel": "Discover the Les Patronnes story",
+    "story.market.openLabel": "Discover the markets story",
     "story.close": "Close",
     "story.closeLabel": "Close the story",
     "story.scroll": "Scroll to explore",
@@ -61,6 +69,12 @@ const translations = {
     "story.chapter3.eyebrow": "Chapter III",
     "story.chapter3.title": "Passing it on",
     "story.chapter3.text": "The conversation becomes a record. Every portrait, every word and every gaze carries forward a story made to travel.",
+    "story.market.chapter1.eyebrow": "Chapter I",
+    "story.market.chapter1.title": "The women who make the market",
+    "story.market.chapter1.text": "At the market, gestures are repeated but never identical. They shape the day, connect families and pass knowledge from one generation to the next.",
+    "story.market.chapter2.eyebrow": "Chapter II",
+    "story.market.chapter2.title": "Bringing them into the light",
+    "story.market.chapter2.text": "Les Patronnes was born from a simple intention: to recognise these women as major figures in Beninese life, tell their stories and preserve their faces in a memory that can be passed on.",
     "story.end.title": "Les Patronnes",
     "story.end.text": "A living story, to be continued.",
     "theme.system": "System",
@@ -129,6 +143,7 @@ if (!translations[activeLanguage]) activeLanguage = "fr";
 if (!themeOrder.includes(activeTheme)) activeTheme = "system";
 
 const translate = (key) => translations[activeLanguage][key] || key;
+window.siteTranslate = translate;
 
 const syncPreferenceLinks = () => {
   document.querySelectorAll('a[href*=".html"]').forEach((link) => {
