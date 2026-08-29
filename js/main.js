@@ -4,6 +4,8 @@ const translations = {
     "nav.main": "Navigation principale",
     "nav.home": "Accueil",
     "nav.about": "À propos",
+    "nav.stop1": "Stop 1",
+    "nav.stop2": "Stop 2",
     "nav.patronnes": "Patronnes",
     "nav.press": "Presse",
     "nav.contact": "Contact",
@@ -58,6 +60,8 @@ const translations = {
     "nav.main": "Main navigation",
     "nav.home": "Home",
     "nav.about": "About",
+    "nav.stop1": "Stop 1",
+    "nav.stop2": "Stop 2",
     "nav.patronnes": "Patronnes",
     "nav.press": "Press",
     "nav.contact": "Contact",
@@ -270,10 +274,6 @@ document.querySelectorAll(".site-nav").forEach((nav) => {
 
   const menuLinks = document.createElement("div");
   menuLinks.className = "site-mobile-menu__links";
-  const homeLink = document.createElement("a");
-  homeLink.href = logo.getAttribute("href");
-  homeLink.textContent = translate("nav.home");
-  menuLinks.appendChild(homeLink);
   links.forEach((link) => {
     const mobileLink = link.cloneNode(true);
     if (mobileLink.dataset.i18n) mobileLink.textContent = translate(mobileLink.dataset.i18n);

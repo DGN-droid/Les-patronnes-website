@@ -1065,3 +1065,9 @@ body.story-open {
 .site-mobile-menu { display: none; }
 @media (max-width: 800px) { .patronnes-concept, .patronnes-stop { grid-template-columns: 1fr; }.patronnes-stop--reverse .patronnes-stop__media { order: 0; }.patronnes-stop__media { min-height: 390px; }.patronnes-gallery__grid { grid-template-columns: repeat(2, 1fr); }.patronnes-gallery__item--tall { grid-row: span 1; }.patronnes-figures__grid { grid-template-columns: 1fr; }.site-mobile-menu { position: fixed; z-index: 900; top: 72px; right: 0; bottom: 0; left: 0; display: grid; padding: var(--space-xl) var(--space-sm); background: var(--color-bg-primary); place-items: center; }.site-mobile-menu__links { display: flex; width: min(100%, 420px); flex-direction: column; align-items: center; gap: var(--space-md); font-family: var(--font-heading); font-size: clamp(2.5rem, 13vw, 4.5rem); letter-spacing: .05em; line-height: .9; text-transform: uppercase; }.site-mobile-menu__links a:first-child { color: var(--color-accent); }.site-mobile-menu[hidden] { display: none; } body.mobile-menu-open { overflow: hidden; } }
 @media (max-width: 600px) { .patronnes-section { padding: var(--space-xl) var(--space-sm); }.patronnes-hero__content { padding: calc(72px + var(--space-lg)) var(--space-sm) var(--space-xl); }.patronnes-hero h1 { font-size: clamp(5rem, 24vw, 8rem); }.patronnes-stop__media { min-height: 340px; }.patronnes-gallery__grid { grid-auto-rows: 180px; }.patronnes-gallery__item--wide { grid-column: span 2; }.patronnes-stop__highlights { grid-template-columns: 1fr; } }
+
+@media (max-width: 800px) {
+  .site-mobile-menu .site-nav__contact {
+    display: inline;
+  }
+}
