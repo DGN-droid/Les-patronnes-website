@@ -36,11 +36,67 @@
     </nav>
   </header>
 
-  <main></main>
+  <main class="contact-page">
+    <section class="contact-hero" data-contact-reveal aria-labelledby="contact-title">
+      <p class="contact-eyebrow">Restons en lien</p>
+      <h1 id="contact-title">Contact</h1>
+      <p>Pour une demande presse, une proposition de partenariat ou une conversation autour des Patronnes, écrivez-nous. Chaque message est lu avec attention.</p>
+    </section>
+
+    <section class="contact-content" data-contact-reveal aria-label="Informations et formulaire de contact">
+      <aside class="contact-details">
+        <p class="contact-eyebrow">Nous écrire</p>
+        <h2>Une histoire à construire ensemble</h2>
+        <p>Les Patronnes réunit des voix, des savoir-faire et des regards. Vous souhaitez accompagner le projet, en parler ou imaginer une collaboration ? La conversation commence ici.</p>
+        <div class="contact-details__links">
+          <a href="mailto:contact@lespatronnes.com"><span>Courriel</span> contact@lespatronnes.com <b aria-hidden="true">↗</b></a>
+          <a href="#"><span>Instagram</span> @lespatronnes <b aria-hidden="true">↗</b></a>
+        </div>
+        <p class="contact-details__note">Pour les demandes presse, indiquez l’objet de votre demande et votre échéance souhaitée.</p>
+      </aside>
+
+      <form class="contact-form" action="#" method="post">
+        <div class="contact-form__row">
+          <label>Prénom et nom<input type="text" name="name" autocomplete="name" required></label>
+          <label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label>Vous nous contactez pour
+          <select name="subject" required>
+            <option value="" selected disabled>Sélectionnez un sujet</option>
+            <option value="press">Demande presse</option>
+            <option value="partnership">Partenariat</option>
+            <option value="project">Les Patronnes</option>
+            <option value="other">Autre demande</option>
+          </select>
+        </label>
+        <label>Votre message<textarea name="message" rows="6" required></textarea></label>
+        <button type="submit">Envoyer votre message <span aria-hidden="true">→</span></button>
+        <p class="contact-form__notice">Ce formulaire est une maquette : le bouton d’envoi sera relié à votre adresse de réception lors de la mise en ligne.</p>
+      </form>
+    </section>
+
+    <section class="contact-closing" data-contact-reveal>
+      <p>Les marchés vivent de gestes répétés, de rencontres et de confiance. Merci de faire partie de cette histoire.</p>
+      <a href="../index.html">← Retour à l’accueil</a>
+    </section>
+  </main>
 
   <footer></footer>
 
   <script src="../js/main.js"></script>
   <script src="../js/animations.js"></script>
+  <script>
+    (() => {
+      const items = document.querySelectorAll("[data-contact-reveal]");
+      if (!items.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      window.gsap.set(items, { autoAlpha: 0, y: 28 });
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        window.gsap.to(entry.target, { autoAlpha: 1, y: 0, duration: 0.85, ease: "power2.out" });
+        observer.unobserve(entry.target);
+      }), { threshold: 0.12 });
+      items.forEach((item) => observer.observe(item));
+    })();
+  </script>
 </body>
 </html>
