@@ -1080,3 +1080,22 @@ body.story-open {
 .contact-closing { max-width: 920px; margin: var(--space-xxl) auto 0; padding-top: var(--space-xl); border-top: 1px solid var(--color-border); text-align: center; }.contact-closing p { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 400; letter-spacing: .04em; line-height: .94; text-transform: uppercase; }.contact-closing a { display: inline-block; margin-top: var(--space-lg); font-size: var(--font-size-small); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 @media (max-width: 800px) { .contact-content { grid-template-columns: 1fr; }.contact-form { max-width: 680px; }.contact-page { padding-top: calc(72px + var(--space-xl)); } }
 @media (max-width: 600px) { .contact-page { padding-inline: var(--space-sm); padding-bottom: var(--space-xl); }.contact-content { margin-top: var(--space-xl); padding-top: var(--space-xl); }.contact-form__row { grid-template-columns: 1fr; }.contact-closing { margin-top: var(--space-xl); }.contact-closing p { font-size: clamp(2.5rem, 13vw, 4rem); } }
+
+/* Accueil — manifeste Les Patronnes */
+.home-hero { position: relative; display: flex; min-height: 100svh; overflow: hidden; align-items: center; justify-content: center; color: var(--color-text-light); background: var(--color-bg-dark); }
+.home-hero__image, .home-hero__overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.home-hero__image { object-fit: cover; object-position: center; }
+.home-hero__overlay { background: linear-gradient(90deg, rgb(0 0 0 / 66%) 0%, rgb(0 0 0 / 26%) 55%, rgb(0 0 0 / 8%) 100%); }
+.home-hero__content { position: relative; z-index: 1; width: min(100%, 1100px); padding: calc(80px + var(--space-xl)) clamp(var(--space-lg), 5vw, 5rem) var(--space-xl); text-align: center; }
+.home-hero__eyebrow { font-size: clamp(.75rem, 1.1vw, .95rem); font-weight: 700; letter-spacing: .13em; color: var(--color-text-light); text-transform: uppercase; }
+.home-hero h1 { margin-top: var(--space-sm); font-family: var(--font-heading); font-size: clamp(6rem, 14vw, 13rem); font-weight: 400; letter-spacing: .035em; line-height: .76; text-transform: uppercase; }
+.home-hero__subtitle { max-width: 700px; margin: clamp(var(--space-lg), 3vw, var(--space-xl)) auto 0; font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.65; }
+.home-manifesto { display: flex; min-height: min(78svh, 760px); padding: var(--space-xxl) clamp(var(--space-lg), 7vw, 9rem); align-items: center; justify-content: center; flex-direction: column; color: var(--color-text-light); background: var(--color-bg-dark); text-align: center; }
+.home-manifesto__eyebrow { margin-bottom: var(--space-md); font-size: clamp(.75rem, 1.1vw, .95rem); font-weight: 700; letter-spacing: .16em; color: var(--color-accent); text-transform: uppercase; }
+.home-manifesto > p:not(.home-manifesto__eyebrow) { max-width: 1100px; font-family: var(--font-heading); font-size: clamp(4rem, 8.2vw, 8rem); font-weight: 400; letter-spacing: .045em; line-height: .9; text-transform: uppercase; }
+.home-manifesto__eyebrow + p { margin: 0; }
+body[data-page="home"] .site-header,
+body[data-page="patronnes"] .site-header { color: var(--color-text-light); background: linear-gradient(180deg, rgb(0 0 0 / 42%), transparent); }
+body[data-page="home"] .site-header.scrolled,
+body[data-page="patronnes"] .site-header.scrolled { color: var(--color-text-primary); background: var(--color-bg-primary); }
+@media (max-width: 600px) { .home-hero__image { object-position: 56% center; }.home-hero__overlay { background: linear-gradient(180deg, rgb(0 0 0 / 55%) 0%, rgb(0 0 0 / 24%) 42%, rgb(0 0 0 / 70%) 100%); }.home-hero__content { padding: calc(72px + var(--space-xl)) var(--space-sm) var(--space-xl); }.home-hero h1 { font-size: clamp(5.5rem, 24vw, 8.5rem); }.home-hero__subtitle { margin-top: var(--space-lg); font-size: .95rem; }.home-manifesto { min-height: 58svh; padding: var(--space-xl) var(--space-sm); }.home-manifesto > p:not(.home-manifesto__eyebrow) { font-size: clamp(3.3rem, 15vw, 5.2rem); } }

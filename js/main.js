@@ -141,10 +141,6 @@ document.querySelectorAll("[data-nav-preferences]").forEach((container) => {
     </button>
     <button class="site-nav__preference theme-toggle" type="button" data-theme-toggle>
       <span class="theme-toggle__icons" aria-hidden="true">
-        <svg viewBox="0 0 24 24" data-theme-icon="system">
-          <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-          <path d="M8 21h8M12 17v4"></path>
-        </svg>
         <svg viewBox="0 0 24 24" data-theme-icon="light" hidden>
           <circle cx="12" cy="12" r="4"></circle>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
@@ -160,13 +156,13 @@ document.querySelectorAll("[data-nav-preferences]").forEach((container) => {
 
 const languageButtons = document.querySelectorAll("[data-language-toggle]");
 const themeButtons = document.querySelectorAll("[data-theme-toggle]");
-const themeOrder = ["system", "light", "dark"];
+const themeOrder = ["light", "dark"];
 const pageParameters = new URLSearchParams(window.location.search);
 let activeLanguage = pageParameters.get("lang") || readPreference("site-language", "fr");
-let activeTheme = pageParameters.get("theme") || readPreference("site-theme", "system");
+let activeTheme = pageParameters.get("theme") || readPreference("site-theme", "light");
 
 if (!translations[activeLanguage]) activeLanguage = "fr";
-if (!themeOrder.includes(activeTheme)) activeTheme = "system";
+if (!themeOrder.includes(activeTheme)) activeTheme = "light";
 
 const translate = (key) => translations[activeLanguage][key] || key;
 window.siteTranslate = translate;
