@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Cheffe étoilée Michelin</title>
+  <title>Contact | Les Patronnes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,87 +14,46 @@
   <header class="site-header" data-header>
     <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
       <div class="site-nav__left">
-        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg>
-        </button>
-        <div class="site-nav__links">
-          <a href="about.html" data-i18n="nav.about">À propos</a>
-          <a href="events.html" data-i18n="nav.events">Événements</a>
-          <a href="press.html" data-i18n="nav.press">Presse</a>
-        </div>
+        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button>
+        <div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a><a href="actualites.html" data-i18n="nav.news">Actualités</a></div>
       </div>
       <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
-      <div class="site-nav__right">
-        <button class="site-nav__search" type="button" aria-label="Rechercher" data-i18n-aria-label="search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg>
-        </button>
-        <div class="site-nav__preferences" data-nav-preferences></div>
-        <a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a>
-      </div>
+      <div class="site-nav__right"><button class="site-nav__search" type="button" aria-label="Rechercher" data-i18n-aria-label="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></button><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
     </nav>
   </header>
 
   <main class="contact-page">
     <section class="contact-hero" data-contact-reveal aria-labelledby="contact-title">
-      <p class="contact-eyebrow">Restons en lien</p>
-      <h1 id="contact-title">Contact</h1>
-      <p>Pour une demande presse, une proposition de partenariat ou une conversation autour des Patronnes, écrivez-nous. Chaque message est lu avec attention.</p>
+      <p class="contact-eyebrow">Partenariats, mécénat & contact</p>
+      <h1 id="contact-title">Construisons<br>la suite</h1>
+      <p>Les Patronnes réunit des femmes de marché, des créatrices, des entreprises et des institutions autour d’un même récit. Que vous souhaitiez soutenir le projet, en parler ou simplement nous écrire, la conversation commence ici.</p>
     </section>
-
-    <section class="contact-content" data-contact-reveal aria-label="Informations et formulaire de contact">
+    <section class="contact-content" data-contact-reveal aria-label="Partenariats et formulaire de contact">
       <aside class="contact-details">
-        <p class="contact-eyebrow">Nous écrire</p>
-        <h2>Une histoire à construire ensemble</h2>
-        <p>Les Patronnes réunit des voix, des savoir-faire et des regards. Vous souhaitez accompagner le projet, en parler ou imaginer une collaboration ? La conversation commence ici.</p>
-        <div class="contact-details__links">
-          <a href="mailto:contact@lespatronnes.com"><span>Courriel</span> contact@lespatronnes.com <b aria-hidden="true">↗</b></a>
-          <a href="#"><span>Instagram</span> @lespatronnes <b aria-hidden="true">↗</b></a>
-        </div>
-        <p class="contact-details__note">Pour les demandes presse, indiquez l’objet de votre demande et votre échéance souhaitée.</p>
+        <p class="contact-eyebrow">Partenariats & mécénat</p>
+        <h2>Faire grandir<br>le mouvement</h2>
+        <p>Les Patronnes est un projet culturel, social et patrimonial. Il rend visible le rôle essentiel des femmes qui font vivre les marchés béninois et inscrit leurs histoires dans une mémoire contemporaine, vivante et partagée.</p>
+        <p>Différents niveaux de partenariat peuvent être étudiés selon les objectifs de chaque partenaire : mécénat, accompagnement opérationnel, visibilité, production ou transmission de savoir-faire.</p>
+        <a class="contact-details__cta" href="#contact-form">Devenir partenaire <span aria-hidden="true">↘</span></a>
+        <div class="contact-partners" aria-label="Partenaires des Patronnes"><p>Ils accompagnent déjà le projet</p><div class="contact-partners__list"><span>Sofitel<br>Cotonou Marina</span><span>BYD by CFAO<br>Mobility Bénin</span><span>Papier<br>Plus</span></div></div>
+        <p class="contact-details__note">Relations médias & partenariats : Néré Consultants et Karl Lawson.</p>
       </aside>
-
-      <form class="contact-form" action="#" method="post">
-        <div class="contact-form__row">
-          <label>Prénom et nom<input type="text" name="name" autocomplete="name" required></label>
-          <label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label>
-        </div>
-        <label>Vous nous contactez pour
-          <select name="subject" required>
-            <option value="" selected disabled>Sélectionnez un sujet</option>
-            <option value="press">Demande presse</option>
-            <option value="partnership">Partenariat</option>
-            <option value="project">Les Patronnes</option>
-            <option value="other">Autre demande</option>
-          </select>
-        </label>
-        <label>Votre message<textarea name="message" rows="6" required></textarea></label>
-        <button type="submit">Envoyer votre message <span aria-hidden="true">→</span></button>
-        <p class="contact-form__notice">Ce formulaire est une maquette : le bouton d’envoi sera relié à votre adresse de réception lors de la mise en ligne.</p>
-      </form>
+      <div class="contact-form-wrap">
+        <div class="contact-form-wrap__heading"><p class="contact-eyebrow">Nous écrire</p><h2>Votre demande</h2><p>Décrivez votre besoin ; nous vous répondrons avec toute l’attention que mérite votre message.</p></div>
+        <form class="contact-form" id="contact-form" action="#" method="post">
+          <div class="contact-form__row"><label>Prénom et nom<input type="text" name="name" autocomplete="name" required></label><label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label></div>
+          <label>Vous nous contactez pour<select name="subject" required><option value="" selected disabled>Sélectionnez un sujet</option><option value="partnership">Partenariat ou mécénat</option><option value="press">Demande média ou presse</option><option value="market">Participation au projet</option><option value="other">Autre demande</option></select></label>
+          <label>Votre message<textarea name="message" rows="6" required></textarea></label>
+          <button type="submit">Envoyer votre demande <span aria-hidden="true">→</span></button>
+          <p class="contact-form__notice">Le formulaire sera relié à la messagerie du projet lors de la mise en ligne. En attendant, vous pouvez nous écrire directement.</p>
+        </form>
+        <div class="contact-general"><p class="contact-eyebrow">Contact général</p><a href="mailto:lespatronnes229@gmail.com">lespatronnes229@gmail.com <span aria-hidden="true">↗</span></a><p>Pour les demandes presse, les échanges avec les marchés ou toute autre question.</p></div>
+      </div>
     </section>
-
-    <section class="contact-closing" data-contact-reveal>
-      <p>Les marchés vivent de gestes répétés, de rencontres et de confiance. Merci de faire partie de cette histoire.</p>
-      <a href="../index.html">← Retour à l’accueil</a>
-    </section>
+    <section class="contact-closing" data-contact-reveal><p>Un partenariat, c’est une manière de faire exister durablement les histoires qui comptent.</p><a href="../index.html">← Retour à l’accueil</a></section>
   </main>
-
   <footer></footer>
-
-  <script src="../js/main.js"></script>
-  <script src="../js/animations.js"></script>
-  <script>
-    (() => {
-      const items = document.querySelectorAll("[data-contact-reveal]");
-      if (!items.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      window.gsap.set(items, { autoAlpha: 0, y: 28 });
-      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        window.gsap.to(entry.target, { autoAlpha: 1, y: 0, duration: 0.85, ease: "power2.out" });
-        observer.unobserve(entry.target);
-      }), { threshold: 0.12 });
-      items.forEach((item) => observer.observe(item));
-    })();
-  </script>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script>
+  <script>(() => { const items = document.querySelectorAll("[data-contact-reveal]"); if (!items.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; window.gsap.set(items, { autoAlpha: 0, y: 28 }); const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (!entry.isIntersecting) return; window.gsap.to(entry.target, { autoAlpha: 1, y: 0, duration: 0.85, ease: "power2.out" }); observer.unobserve(entry.target); }), { threshold: 0.12 }); items.forEach((item) => observer.observe(item)); })();</script>
 </body>
 </html>
