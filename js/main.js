@@ -4,6 +4,9 @@ const translations = {
     "nav.main": "Navigation principale",
     "nav.home": "Accueil",
     "nav.about": "À propos",
+    "nav.events": "Événements",
+    "nav.shop": "Boutique",
+    "nav.news": "Actualités",
     "nav.stop1": "Stop 1",
     "nav.stop2": "Stop 2",
     "nav.patronnes": "Patronnes",
@@ -55,11 +58,18 @@ const translations = {
     "title.patronnes": "Les Patronnes | Cheffe étoilée Michelin",
     "title.press": "Presse et médias | Cheffe étoilée Michelin",
     "title.contact": "Contact | Cheffe étoilée Michelin"
+    ,"title.events": "Événements | Les Patronnes"
+    ,"title.event-detail": "Événement | Les Patronnes"
+    ,"title.shop": "Boutique | Les Patronnes"
+    ,"title.news": "Actualités | Les Patronnes"
   },
   en: {
     "nav.main": "Main navigation",
     "nav.home": "Home",
     "nav.about": "About",
+    "nav.events": "Events",
+    "nav.shop": "Shop",
+    "nav.news": "News",
     "nav.stop1": "Stop 1",
     "nav.stop2": "Stop 2",
     "nav.patronnes": "Patronnes",
@@ -111,8 +121,33 @@ const translations = {
     "title.patronnes": "Les Patronnes | Michelin-starred chef",
     "title.press": "Press and media | Michelin-starred chef",
     "title.contact": "Contact | Michelin-starred chef"
+    ,"title.events": "Events | Les Patronnes"
+    ,"title.event-detail": "Event | Les Patronnes"
+    ,"title.shop": "Shop | Les Patronnes"
+    ,"title.news": "News | Les Patronnes"
   }
 };
+
+// Navigation commune : Presse quitte le menu au profit de la boutique et des actualités.
+document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
+  const aboutLink = linksContainer.querySelector('[data-i18n="nav.about"]');
+  const eventsLink = linksContainer.querySelector('[data-i18n="nav.events"]');
+  const eventHref = eventsLink?.getAttribute("href") || "pages/events.html";
+  const pagePrefix = eventHref.includes("/") ? eventHref.slice(0, eventHref.lastIndexOf("/") + 1) : "";
+
+  linksContainer.replaceChildren(...[aboutLink, eventsLink].filter(Boolean));
+
+  [
+    ["boutique.html", "nav.shop", "Boutique"],
+    ["actualites.html", "nav.news", "Actualités"]
+  ].forEach(([fileName, translationKey, label]) => {
+    const link = document.createElement("a");
+    link.href = `${pagePrefix}${fileName}`;
+    link.dataset.i18n = translationKey;
+    link.textContent = label;
+    linksContainer.appendChild(link);
+  });
+});
 
 const readPreference = (key, fallback) => {
   try {

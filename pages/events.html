@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Événements | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body data-page="events">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left"><button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button><div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a></div></div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><button class="site-nav__search" type="button" aria-label="Rechercher" data-i18n-aria-label="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></button><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main class="events-page">
+    <section class="events-intro" data-events-reveal aria-labelledby="events-title">
+      <p class="events-eyebrow">Les Patronnes en mouvement</p>
+      <h1 id="events-title">Événements</h1>
+      <p>Chaque rendez-vous déploie une nouvelle manière de regarder les marchés : un temps pour écouter, célébrer et inscrire les femmes qui les font vivre au cœur de la conversation.</p>
+    </section>
+
+    <section class="events-list" aria-label="Liste des événements Les Patronnes">
+      <a class="event-row" href="event-stop-1.html" data-events-reveal>
+        <span class="event-row__number">01</span><span class="event-row__name">Les Patronnes<br>Stop 1</span><span class="event-row__place">Marché Ganhi<br><b>7 mars 2026</b></span><span class="event-row__arrow" aria-hidden="true">↗</span><img src="../assets/images/img2.jpeg" alt="Marché Ganhi">
+      </a>
+      <a class="event-row" href="event-table-ronde.html" data-events-reveal>
+        <span class="event-row__number">02</span><span class="event-row__name">Table ronde<br>Les Patronnes</span><span class="event-row__place">Sofitel Cotonou Marina<br><b>9 juillet 2026</b></span><span class="event-row__arrow" aria-hidden="true">↗</span><img src="../assets/images/img7.jpeg" alt="Table ronde Les Patronnes au Sofitel Cotonou Marina">
+      </a>
+      <a class="event-row" href="event-stop-2.html" data-events-reveal>
+        <span class="event-row__number">03</span><span class="event-row__name">Les Patronnes<br>Stop 2</span><span class="event-row__place">Marché PK3<br><b>11 juillet 2026</b></span><span class="event-row__arrow" aria-hidden="true">↗</span><img src="../assets/images/img25.jpeg" alt="Les Patronnes au marché PK3">
+      </a>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script><script src="../js/page-reveal.js"></script>
+</body>
+</html>

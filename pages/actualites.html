@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualités | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body data-page="news">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left"><button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button><div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a><a href="actualites.html" data-i18n="nav.news">Actualités</a></div></div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><button class="site-nav__search" type="button" aria-label="Rechercher" data-i18n-aria-label="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 5 5"></path></svg></button><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main class="news-page">
+    <section class="news-intro" data-news-reveal aria-labelledby="news-title">
+      <p class="news-eyebrow">Le journal du projet</p>
+      <h1 id="news-title">Actualités</h1>
+      <p>Une chronologie pour suivre les prises de parole, rendez-vous et échos médiatiques autour des Patronnes.</p>
+    </section>
+
+    <section class="news-feed" aria-label="Chronologie des actualités Les Patronnes">
+      <article class="news-entry" data-news-reveal><time datetime="2026-03-07">07.03.2026</time><div><p class="news-entry__type">Événement</p><h2>Les Patronnes — Stop 1</h2><p>Au Marché Ganhi, le projet ouvre son premier chapitre : une rencontre pour rendre visibles les femmes qui font vivre le marché au quotidien.</p><a href="event-stop-1.html">Découvrir le Stop 1 <span aria-hidden="true">↗</span></a></div></article>
+      <article class="news-entry" data-news-reveal><time datetime="2026-07-09">09.07.2026</time><div><p class="news-entry__type">Conversation</p><h2>Table ronde Les Patronnes</h2><p>Au Sofitel Cotonou Marina, des voix se réunissent autour de la créativité, de l’entrepreneuriat et du pouvoir de faire collectif.</p><a href="event-table-ronde.html">Lire le rendez-vous <span aria-hidden="true">↗</span></a></div></article>
+      <article class="news-entry" data-news-reveal><time datetime="2026-07-11">11.07.2026</time><div><p class="news-entry__type">Événement</p><h2>Les Patronnes — Stop 2</h2><p>Le Marché PK3 devient le temps d’une journée une exposition, un défilé, une masterclass et un grand banquet populaire.</p><a href="event-stop-2.html">Découvrir le Stop 2 <span aria-hidden="true">↗</span></a></div></article>
+    </section>
+
+    <section class="news-note" data-news-reveal><p class="news-eyebrow">À suivre</p><h2>Les échos médiatiques arrivent ici.</h2><p>Les articles, émissions et rencontres presse liés aux Patronnes seront ajoutés à cette chronologie au fil de leurs parutions.</p></section>
+  </main>
+  <footer></footer>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script><script src="../js/page-reveal.js"></script>
+</body>
+</html>
