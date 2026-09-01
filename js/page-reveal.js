@@ -84,14 +84,14 @@ const eventGalleries = {
     eyebrow: "Marché PK3",
     title: "La ville en mouvement",
     images: [
-      ["../assets/images/img18.jpeg", "Les Patronnes en route vers le marché PK3", "En mouvement"],
-      ["../assets/images/img19.jpeg", "Danse et célébration pendant Les Patronnes", "La célébration"],
-      ["../assets/images/img21.jpeg", "Le collectif des Patronnes au marché PK3", "Le collectif"],
-      ["../assets/images/img22.jpeg", "Trois Patronnes au marché PK3", "Les silhouettes"],
-      ["../assets/images/img29.jpeg", "Prise de parole pendant l’événement", "Les voix"],
-      ["../assets/images/img30.jpeg", "Exposition photographique au marché PK3", "L’exposition"],
-      ["../assets/images/img31.jpeg", "Portrait d’une participante des Patronnes", "Le regard"],
-      ["../assets/images/img32.jpeg", "Portrait collectif des Patronnes", "La communauté"]
+      ["../assets/images/img29.jpg", "Les Patronnes au Marché PK3", "Le mouvement"],
+      ["../assets/images/img16.jpg", "Un moment de la journée Les Patronnes", "Les rencontres"],
+      ["../assets/images/img17.jpg", "Les femmes réunies pour Les Patronnes", "Le collectif"],
+      ["../assets/images/img11.jpg", "Un portrait lors de l’événement PK3", "Les visages"],
+      ["../assets/images/img21.jpg", "La communauté des Patronnes au marché PK3", "La communauté"],
+      ["../assets/images/img26.jpg", "Les invités des Patronnes", "Les voix"],
+      ["../assets/images/img28.jpg", "Un instant de célébration au Marché PK3", "La célébration"],
+      ["../assets/images/img24.jpg", "Les Patronnes au Marché PK3", "La mémoire"]
     ]
   }
 };
