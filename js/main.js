@@ -6,7 +6,6 @@ const translations = {
     "nav.about": "À propos",
     "nav.events": "Événements",
     "nav.shop": "Boutique",
-    "nav.news": "Actualités",
     "nav.stop1": "Stop 1",
     "nav.stop2": "Stop 2",
     "nav.patronnes": "Patronnes",
@@ -61,7 +60,6 @@ const translations = {
     ,"title.events": "Événements | Les Patronnes"
     ,"title.event-detail": "Événement | Les Patronnes"
     ,"title.shop": "Boutique | Les Patronnes"
-    ,"title.news": "Actualités | Les Patronnes"
   },
   en: {
     "nav.main": "Main navigation",
@@ -69,7 +67,6 @@ const translations = {
     "nav.about": "About",
     "nav.events": "Events",
     "nav.shop": "Shop",
-    "nav.news": "News",
     "nav.stop1": "Stop 1",
     "nav.stop2": "Stop 2",
     "nav.patronnes": "Patronnes",
@@ -124,11 +121,10 @@ const translations = {
     ,"title.events": "Events | Les Patronnes"
     ,"title.event-detail": "Event | Les Patronnes"
     ,"title.shop": "Shop | Les Patronnes"
-    ,"title.news": "News | Les Patronnes"
   }
 };
 
-// Navigation commune : Presse quitte le menu au profit de la boutique et des actualités.
+// Navigation commune : Presse quitte le menu au profit de la boutique.
 document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
   const aboutLink = linksContainer.querySelector('[data-i18n="nav.about"]');
   const eventsLink = linksContainer.querySelector('[data-i18n="nav.events"]');
@@ -137,16 +133,11 @@ document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
 
   linksContainer.replaceChildren(...[aboutLink, eventsLink].filter(Boolean));
 
-  [
-    ["boutique.html", "nav.shop", "Boutique"],
-    ["actualites.html", "nav.news", "Actualités"]
-  ].forEach(([fileName, translationKey, label]) => {
-    const link = document.createElement("a");
-    link.href = `${pagePrefix}${fileName}`;
-    link.dataset.i18n = translationKey;
-    link.textContent = label;
-    linksContainer.appendChild(link);
-  });
+  const shopLink = document.createElement("a");
+  shopLink.href = `${pagePrefix}boutique.html`;
+  shopLink.dataset.i18n = "nav.shop";
+  shopLink.textContent = "Boutique";
+  linksContainer.appendChild(shopLink);
 });
 
 const readPreference = (key, fallback) => {

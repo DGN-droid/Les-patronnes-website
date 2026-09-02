@@ -73,11 +73,11 @@ const eventGalleries = {
     eyebrow: "Sofitel Cotonou Marina",
     title: "Des voix réunies",
     images: [
-      ["../assets/images/img12.jpeg", "Les intervenantes de la table ronde Les Patronnes", "La scène"],
-      ["../assets/images/img13.jpeg", "Deux participantes de la table ronde", "Les rencontres"],
-      ["../assets/images/img15.jpeg", "Le public de la table ronde Les Patronnes", "L’écoute"],
-      ["../assets/images/img11.jpeg", "Une participante de la table ronde Les Patronnes", "La présence"],
-      ["../assets/images/img14.jpeg", "Le récit de la table ronde au Sofitel Cotonou Marina", "La trace"]
+      ["../assets/images/img50.jpg", "La table ronde Les Patronnes au Sofitel Cotonou Marina", "La scène"],
+      ["../assets/images/img55.jpg", "Les intervenantes de la table ronde Les Patronnes", "Les voix"],
+      ["../assets/images/img57.jpg", "Un moment de partage lors de la table ronde", "Les rencontres"],
+      ["../assets/images/img58.jpg", "Le public de la table ronde Les Patronnes", "L’écoute"],
+      ["../assets/images/img43.jpg", "Les Patronnes au Sofitel Cotonou Marina", "La trace"]
     ]
   },
   "event-stop-2.html": {

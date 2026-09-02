@@ -19,7 +19,6 @@
           <a href="about.html" data-i18n="nav.about">À propos</a>
           <a href="events.html" data-i18n="nav.events">Événements</a>
           <a href="boutique.html" data-i18n="nav.shop">Boutique</a>
-          <a href="actualites.html" data-i18n="nav.news">Actualités</a>
         </div>
       </div>
       <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
@@ -35,21 +34,44 @@
     </section>
 
     <article class="shop-product" data-shop-reveal aria-labelledby="shirt-title">
-      <div class="shop-product__visual" aria-label="T-shirt Les Patronnes disponible en vert, jaune et rouge">
-        <div class="shop-shirt shop-shirt--green"><span>Les<br>Patronnes</span></div>
-        <div class="shop-shirt shop-shirt--yellow"><span>Les<br>Patronnes</span></div>
-        <div class="shop-shirt shop-shirt--red"><span>Les<br>Patronnes</span></div>
+      <div class="shop-product__visual" data-shirt-stage aria-label="Aperçu du t-shirt Les Patronnes, coloris rouge">
+        <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
+        <div class="shop-shirt shop-shirt--red" data-shirt-preview aria-hidden="true">
+          <span class="shop-shirt__mark">Les<br>Patronnes</span>
+          <span class="shop-shirt__seal">LP<br>229</span>
+        </div>
+        <p class="shop-product__caption" data-shirt-caption>Rouge marché</p>
+        <div class="shop-product__dots" aria-hidden="true"><span></span><span></span><span></span></div>
       </div>
       <div class="shop-product__content">
         <p class="shop-eyebrow">Premier drop</p>
         <h2 id="shirt-title">Le t-shirt<br>Les Patronnes</h2>
-        <p>Un essentiel pensé pour accompagner le mouvement. Disponible en vert, jaune et rouge, du XS au 3XL.</p>
+        <p>Une pièce manifeste, dessinée pour les jours de marché comme pour la ville. Une coupe ample, un marquage assumé et trois couleurs inspirées des matières, des épices et de l’énergie de Cotonou.</p>
+        <div class="shop-product__option" role="group" aria-labelledby="shirt-colour-label">
+          <p id="shirt-colour-label">Choisir un coloris <span data-selected-colour>Rouge marché</span></p>
+          <div class="shop-product__swatches">
+            <button class="shop-swatch is-selected" type="button" data-colour="red" data-colour-name="Rouge marché" aria-label="Choisir Rouge marché" aria-pressed="true"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="white" data-colour-name="Blanc coton" aria-label="Choisir Blanc coton" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button>
+          </div>
+        </div>
+        <div class="shop-product__option" role="group" aria-labelledby="shirt-size-label">
+          <p id="shirt-size-label">Choisir une taille <span data-selected-size>XS</span></p>
+          <div class="shop-product__sizes">
+            <button class="is-selected" type="button" aria-pressed="true">XS</button><button type="button" aria-pressed="false">S</button><button type="button" aria-pressed="false">M</button><button type="button" aria-pressed="false">L</button><button type="button" aria-pressed="false">XL</button><button type="button" aria-pressed="false">2XL</button><button type="button" aria-pressed="false">3XL</button>
+          </div>
+        </div>
         <dl class="shop-product__details">
-          <div><dt>Coloris</dt><dd>Vert · Jaune · Rouge</dd></div>
+          <div><dt>Coupe</dt><dd>Unisexe · légèrement oversize</dd></div>
+          <div><dt>Matière</dt><dd>Jersey de coton, 240 g/m²</dd></div>
+          <div><dt>Finition</dt><dd>Impression poitrine et label tissé</dd></div>
           <div><dt>Tailles</dt><dd>XS à 3XL</dd></div>
-          <div><dt>Disponibilité</dt><dd>Prochainement</dd></div>
         </dl>
-        <a class="shop-product__cta" href="contact.html">Être informé·e du lancement <span aria-hidden="true">↗</span></a>
+        <div class="shop-product__purchase">
+          <div><span>Disponibilité</span><strong>Précommande bientôt</strong></div>
+          <a class="shop-product__cta" href="contact.html">Être informé·e du lancement <span aria-hidden="true"></span></a>
+        </div>
+        <p class="shop-product__delivery">Retrait à Cotonou et livraison à venir. Les bénéfices participent au rayonnement du projet Les Patronnes.</p>
       </div>
     </article>
 
@@ -59,6 +81,27 @@
   </main>
   <footer></footer>
   <script src="../js/main.js"></script><script src="../js/animations.js"></script>
+  <script>
+    (() => {
+      const preview = document.querySelector('[data-shirt-preview]');
+      const stage = document.querySelector('[data-shirt-stage]');
+      const caption = document.querySelector('[data-shirt-caption]');
+      const selectedColour = document.querySelector('[data-selected-colour]');
+      const selectedSize = document.querySelector('[data-selected-size]');
+      document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
+        document.querySelectorAll('.shop-swatch').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
+        button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true');
+        preview.className = `shop-shirt shop-shirt--${button.dataset.colour}`;
+        const label = button.dataset.colourName;
+        caption.textContent = label; selectedColour.textContent = label;
+        stage.setAttribute('aria-label', `Aperçu du t-shirt Les Patronnes, coloris ${label}`);
+      }));
+      document.querySelectorAll('.shop-product__sizes button').forEach((button) => button.addEventListener('click', () => {
+        document.querySelectorAll('.shop-product__sizes button').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
+        button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true'); selectedSize.textContent = button.textContent;
+      }));
+    })();
+  </script>
   <script>document.querySelectorAll('[data-shop-reveal]').forEach((item) => { if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; window.gsap.fromTo(item, { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: .85, ease: 'power2.out', scrollTrigger: undefined }); });</script>
 </body>
 </html>
