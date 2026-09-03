@@ -1,7 +1,7 @@
 const eventNarratives = {
   "event-stop-1.html": {
     eyebrow: "Le récit",
-    title: "Un seuil, pas une parenthèse",
+    title: "Un seuil, pas&nbsp;une parenthèse",
     paragraphs: [
       "Au Marché Ganhi, Les Patronnes prend le temps de nommer ce qui est déjà là : une économie quotidienne, des solidarités minutieuses et des femmes dont les gestes organisent la ville. Le premier Stop ne cherche pas à transformer le marché en décor. Il l’écoute, le regarde et le reconnaît comme un lieu de savoir.",
       "La photographie y devient une manière de faire archive. Les portraits donnent à voir des visages, mais aussi des trajectoires, des métiers et une présence qui ne doit plus rester hors-champ. La mode et la gastronomie prolongent ce geste : elles créent un espace de célébration, sans jamais séparer la fête de celles qui la rendent possible.",
@@ -10,7 +10,7 @@ const eventNarratives = {
   },
   "event-table-ronde.html": {
     eyebrow: "Le récit",
-    title: "La parole comme infrastructure",
+    title: "La parole comme levier",
     paragraphs: [
       "Le 9 juillet, le Sofitel Cotonou Marina accueille une table ronde qui fait de l’écoute un acte concret. Autour de la cheffe Georgiana Viou, des entrepreneuses, créatrices, penseuses et femmes engagées croisent leurs expériences pour interroger ce qui change lorsque des voix, des réseaux et des savoir-faire se mettent au service des autres.",
       "Il ne s’agit pas seulement de raconter les femmes des marchés, mais de leur accorder la place qu’elles méritent dans les récits économiques, culturels et politiques. L’hospitalité devient alors une méthode : accueillir des paroles, relier des parcours et donner le temps nécessaire à une conversation exigeante.",
@@ -20,6 +20,7 @@ const eventNarratives = {
   "event-stop-2.html": {
     eyebrow: "Le récit",
     title: "PK3, une mémoire qui se porte",
+    image: "../assets/images/img95.jpeg",
     paragraphs: [
       "Au Marché PK3, le textile est une archive en mouvement. Les pagnes, les étoffes, les gestes de vente et les silhouettes racontent une histoire de commerce, d’invention et de transmission. En choisissant ce lieu, Les Patronnes rend hommage aux femmes qui font du marché un espace de travail, de style et de souveraineté.",
       "Le temps d’une journée, PK3 devient une galerie à ciel ouvert, un podium, une salle de transmission et une longue table. L’exposition documentaire Yè djè invite à regarder les visages de celles qui nourrissent et habillent la ville ; le défilé et la masterclass mettent les savoir-faire locaux au premier plan.",
@@ -29,24 +30,6 @@ const eventNarratives = {
 };
 
 const eventProgrammes = {
-  "event-stop-1.html": {
-    eyebrow: "Trois temps pour se rencontrer",
-    title: "Le programme",
-    items: [
-      ["Exposition photo", "Des portraits consacrés aux femmes du marché, pour faire entrer leurs visages dans l’histoire visuelle contemporaine."],
-      ["Défilé de savoir-faire", "Des créations, des tissus locaux et l’upcycling pour célébrer les gestes qui habillent la ville."],
-      ["Banquet à ciel ouvert", "Un grand déjeuner populaire imaginé comme un moment de transmission et de partage."]
-    ]
-  },
-  "event-table-ronde.html": {
-    eyebrow: "Le cercle de parole",
-    title: "Une conversation située",
-    items: [
-      ["Regarder", "Donner de l’espace aux expériences, aux histoires et aux visages qui font les marchés."],
-      ["Écouter", "Faire circuler une parole de femmes, libre, exigeante et attentive aux réalités de terrain."],
-      ["Relier", "Créer des alliances entre initiatives culturelles, entrepreneuriat et transmission."]
-    ]
-  },
   "event-stop-2.html": {
     eyebrow: "Une journée entière",
     title: "Les temps forts",
@@ -54,31 +37,21 @@ const eventProgrammes = {
       ["Yè djè, l’exposition", "Une exposition documentaire à ciel ouvert, consacrée à celles qui habillent et nourrissent la ville."],
       ["Défilé & masterclass", "La mode et la transmission se rencontrent pour mettre en lumière les matières et les savoir-faire."],
       ["Grand banquet", "Une table populaire pensée avec les cuisinières du marché, où la gastronomie devient langage commun."]
-    ]
+    ],
+    video: "../assets/images/PK3.mp4"
   }
 };
 
 const eventGalleries = {
-  "event-stop-1.html": {
-    eyebrow: "Regards sur le premier Stop",
-    title: "Une présence à raconter",
-    images: [
-      ["../assets/images/img53.jpg", "Les participantes du Stop 1 au Marché Ganhi", "Le rassemblement"],
-      ["../assets/images/img17.jpg", "Les Patronnes réunies à Cotonou", "Les visages"],
-      ["../assets/images/img1.jpg", "Le collectif Les Patronnes réuni", "Le collectif"],
-      ["../assets/images/img16.jpg", "Le manifeste du projet Les Patronnes", "Le manifeste"],
-      ["../assets/images/img91.JPG", "Les participantes du Stop 1 au Marché Ganhi", "La mémoire"]
-    ]
-  },
   "event-table-ronde.html": {
     eyebrow: "Sofitel Cotonou Marina",
     title: "Des voix réunies",
     images: [
-      ["../assets/images/img50.jpg", "La table ronde Les Patronnes au Sofitel Cotonou Marina", "La scène"],
+      ["../assets/images/img44.jpg", "La table ronde Les Patronnes au Sofitel Cotonou Marina", "La scène"],
       ["../assets/images/img55.jpg", "Les intervenantes de la table ronde Les Patronnes", "Les voix"],
-      ["../assets/images/img57.jpg", "Un moment de partage lors de la table ronde", "Les rencontres"],
+      ["../assets/images/img92.jpeg", "Un moment de partage lors de la table ronde", "Les rencontres"],
       ["../assets/images/img58.jpg", "Le public de la table ronde Les Patronnes", "L’écoute"],
-      ["../assets/images/img43.jpg", "Les Patronnes au Sofitel Cotonou Marina", "La trace"]
+      ["../assets/images/img42.jpg", "Les Patronnes au Sofitel Cotonou Marina", "La trace"]
     ]
   },
   "event-stop-2.html": {
@@ -91,9 +64,16 @@ const eventGalleries = {
       ["../assets/images/img11.jpg", "Un portrait lors de l’événement PK3", "Les visages"],
       ["../assets/images/img21.jpg", "La communauté des Patronnes au marché PK3", "La communauté"],
       ["../assets/images/img26.jpg", "Les invités des Patronnes", "Les voix"],
-      ["../assets/images/img28.jpg", "Un instant de célébration au Marché PK3", "La célébration"],
-      ["../assets/images/img24.jpg", "Les Patronnes au Marché PK3", "La mémoire"]
+      ["../assets/images/img94.jpeg", "Un instant de célébration au Marché PK3", "La célébration"]
     ]
+  }
+};
+
+const eventVideos = {
+  "event-stop-1.html": {
+    eyebrow: "Le film du Stop 1",
+    title: "Ganhi en mouvement",
+    embed: "https://player.vimeo.com/video/1223832115?autoplay=1&muted=1&loop=1&autopause=0&title=0&byline=0&portrait=0"
   }
 };
 
@@ -101,13 +81,17 @@ const pageName = window.location.pathname.split("/").pop();
 const narrative = eventNarratives[pageName];
 const programme = eventProgrammes[pageName];
 const gallery = eventGalleries[pageName];
+const video = eventVideos[pageName];
 const detailNavigation = document.querySelector(".event-detail__back");
 
 if (narrative && detailNavigation) {
   const section = document.createElement("section");
-  section.className = "event-narrative";
+  section.className = narrative.image ? "event-narrative event-narrative--pk3" : "event-narrative";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div><p class="events-eyebrow">${narrative.eyebrow}</p><h2>${narrative.title}</h2></div><div>${narrative.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`;
+  section.innerHTML = narrative.image
+    ? `<div class="event-narrative__heading"><p class="events-eyebrow">${narrative.eyebrow}</p><h2>${narrative.title}</h2></div><figure class="event-narrative__media"><img class="image-fade-in" src="${narrative.image}" alt="Les Patronnes au marché PK3" loading="lazy" decoding="async"></figure><div class="event-narrative__copy">${narrative.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`
+    : `<div><p class="events-eyebrow">${narrative.eyebrow}</p><h2>${narrative.title}</h2></div><div>${narrative.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`;
+  section.querySelectorAll("img").forEach((image) => window.prepareImageFade?.(image));
   detailNavigation.before(section);
 }
 
@@ -120,11 +104,20 @@ if (gallery && detailNavigation) {
   detailNavigation.before(section);
 }
 
+if (video && detailNavigation) {
+  const section = document.createElement("section");
+  section.className = "event-film";
+  section.dataset.eventsReveal = "";
+  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><iframe class="event-film__player" src="${video.embed}" title="Film du Stop 1 des Patronnes au Marché Ganhi" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  detailNavigation.before(section);
+}
+
 if (programme && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-programme";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div><p class="events-eyebrow">${programme.eyebrow}</p><h2>${programme.title}</h2></div><ol>${programme.items.map(([title, text], index) => `<li><span>0${index + 1}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("")}</ol>`;
+  section.innerHTML = `<div><p class="events-eyebrow">${programme.eyebrow}</p><h2>${programme.title}</h2></div><ol>${programme.items.map(([title, text], index) => `<li><span>0${index + 1}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("")}</ol>${programme.video ? `<video class="event-programme__player" autoplay muted loop playsinline controls preload="auto" aria-label="Film des Patronnes au marché PK3"><source src="${programme.video}">Votre navigateur ne prend pas en charge la lecture de cette vidéo.</video>` : ""}`;
+  section.querySelectorAll("video").forEach((player) => player.addEventListener("canplay", () => player.play().catch(() => {}), { once: true }));
   detailNavigation.before(section);
 }
 

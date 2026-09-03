@@ -1168,7 +1168,7 @@ body[data-page="event-detail"] .site-header { color: var(--color-text-light); ba
 .shop-shirt__seal { position: absolute; right: 13%; bottom: 13%; display: grid; width: 2.5rem; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; place-items: center; font-family: var(--font-body); font-size: .48rem; font-weight: 700; letter-spacing: .06em; line-height: 1.1; }
 .shop-product__dots { position: absolute; z-index: 1; right: clamp(1rem, 3vw, 3rem); bottom: clamp(1rem, 3vw, 3rem); display: flex; gap: .35rem; }.shop-product__dots span { width: .4rem; height: .4rem; border-radius: 50%; background: rgba(255,255,255,.25); }.shop-product__dots span:first-child { background: var(--color-text-light); }
 .shop-product__option { margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }.shop-product__option > p { display: flex; margin: 0; justify-content: space-between; gap: var(--space-sm); font-size: var(--font-size-small); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }.shop-product__option > p span { font-weight: 500; letter-spacing: 0; text-transform: none; }.shop-product__swatches, .shop-product__sizes { display: flex; margin-top: var(--space-sm); flex-wrap: wrap; gap: .65rem; }
-.shop-swatch { width: 2.25rem; height: 2.25rem; padding: .18rem; border: 1px solid transparent; border-radius: 50%; background: transparent; cursor: pointer; }.shop-swatch span { display: block; width: 100%; height: 100%; border-radius: inherit; }.shop-swatch[data-colour="red"] span { background: #a43d2e; }.shop-swatch[data-colour="white"] span { border: 1px solid #c7c0b7; background: #ece8df; }.shop-swatch[data-colour="yellow"] span { background: #dca827; }.shop-swatch.is-selected { border-color: var(--color-text-primary); }
+.shop-swatch { width: 2.25rem; height: 2.25rem; padding: .18rem; border: 1px solid transparent; border-radius: 50%; background: transparent; cursor: pointer; }.shop-swatch span { display: block; width: 100%; height: 100%; border-radius: inherit; }.shop-swatch[data-colour="green"] span { background: #006052; }.shop-swatch[data-colour="white"] span { border: 1px solid #c7c0b7; background: #ece8df; }.shop-swatch[data-colour="yellow"] span { background: #dca827; }.shop-swatch.is-selected { border-color: var(--color-text-primary); }
 .shop-product__sizes button { min-width: 2.75rem; padding: .68rem .45rem; border: 1px solid var(--color-border); background: transparent; color: inherit; cursor: pointer; font-family: var(--font-body); font-size: .74rem; font-weight: 700; transition: background-color var(--transition-default), color var(--transition-default); }.shop-product__sizes button.is-selected, .shop-product__sizes button:hover { color: var(--color-text-light); background: var(--color-text-primary); }
 .shop-product__details { margin-top: var(--space-lg); }.shop-product__purchase { display: flex; margin-top: var(--space-xl); align-items: center; justify-content: space-between; gap: var(--space-md); }.shop-product__purchase > div { display: grid; gap: .22rem; }.shop-product__purchase span { font-size: .63rem; font-weight: 700; letter-spacing: .1em; color: var(--color-accent); text-transform: uppercase; }.shop-product__purchase strong { font-size: var(--font-size-small); }.shop-product__cta { margin-top: 0; white-space: nowrap; }.shop-product__cta span { position: relative; display: inline-block; width: 1rem; height: 1rem; margin-left: .3rem; vertical-align: middle; }.shop-product__cta span::before { position: absolute; top: .48rem; left: .08rem; width: .75rem; height: 1px; background: currentColor; content: ""; transform: rotate(-45deg); }.shop-product__cta span::after { position: absolute; top: .12rem; right: .08rem; width: .36rem; height: .36rem; border-top: 1px solid currentColor; border-right: 1px solid currentColor; content: ""; }.shop-product__delivery { margin-top: var(--space-md); font-size: .75rem; line-height: 1.6; color: color-mix(in srgb, var(--color-text-primary) 65%, transparent); }
 @media (max-width: 800px) { .shop-product__visual { position: relative; top: auto; min-height: min(128vw, 680px); }.shop-shirt { width: min(72%, 360px); }.shop-product__purchase { align-items: flex-start; flex-direction: column; }.shop-product__cta { width: 100%; justify-content: center; } }
@@ -1217,7 +1217,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 @media (max-width: 600px) { .event-detail__image--full img { height: 62svh; } }
 
 /* Table ronde Sofitel : l'intervenante reste entière dans le cadre. */
-.event-detail__story--sofitel { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }.event-detail__story--sofitel .event-detail__story-heading { grid-column: 1 / -1; max-width: 660px; }.event-detail__story--sofitel .event-detail__story-media { height: min(60vw, 760px); margin: 0; overflow: hidden; background: var(--color-bg-dark); }.event-detail__story--sofitel .event-detail__story-media img { width: 100%; height: 100%; object-fit: cover; object-position: 20% 76%; transform: scale(1.28); transform-origin: left 72%; }.event-detail__story--sofitel .event-detail__story-copy { align-self: start; padding-top: var(--space-sm); font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.85; }.event-detail__story--sofitel .event-detail__story-copy p + p { margin-top: var(--space-md); color: color-mix(in srgb, var(--color-text-primary) 74%, transparent); }
+.event-detail__story--sofitel { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }.event-detail__story--sofitel .event-detail__story-heading { grid-column: 1 / -1; max-width: 660px; }.event-detail__story--sofitel .event-detail__story-media { height: min(34vw, 470px); margin: 0; overflow: hidden; background: var(--color-bg-dark); }.event-detail__story--sofitel .event-detail__story-media img { width: 100%; height: 100%; object-fit: cover; object-position: 18% 72%; transform: none; }.event-detail__story--sofitel .event-detail__story-copy { align-self: start; padding-top: var(--space-sm); font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.85; }.event-detail__story--sofitel .event-detail__story-copy p + p { margin-top: var(--space-md); color: color-mix(in srgb, var(--color-text-primary) 74%, transparent); }
 @media (max-width: 800px) { .event-detail__story--sofitel { grid-template-columns: 1fr; }.event-detail__story--sofitel .event-detail__story-media { height: min(125vw, 700px); }.event-detail__story--sofitel .event-detail__story-media img { transform: scale(1.35); transform-origin: left 74%; }.event-detail__story--sofitel .event-detail__story-copy { padding-top: 0; } }
 
 /* Vignette de la table ronde : scène et public restent visibles au survol. */
@@ -1274,7 +1274,11 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 @media (max-width: 600px) { .actualites-page { padding-inline: var(--space-sm); padding-bottom: var(--space-xl); }.actualites-feed { margin-top: var(--space-xl); }.actualites-feed__item { display: flex; flex-direction: column; align-items: flex-start; }.actualites-feed__link { align-self: flex-start; } }
 
 .shop-shirt {
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding-top: 0;
+  aspect-ratio: auto;
   clip-path: none;
   border-radius: var(--radius);
   background: var(--color-bg-primary);
@@ -1284,5 +1288,103 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
+
+/* Boutique : visuels produits pleine surface, sans cadre ni mouvement. */
+.shop-product__visual {
+  padding: 0;
+  background: transparent;
+}
+
+.shop-product__visual::before,
+.shop-product__edition,
+.shop-product__caption,
+.shop-product__dots {
+  display: none;
+}
+
+.shop-shirt {
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  border-radius: 0;
+  transition: none;
+}
+
+.shop-shirt:hover {
+  transform: none;
+}
+
+.shop-swatch[data-colour="red"] span {
+  background: #a43d2e;
+}
+
+/* À propos — série de portraits */
+.about-portraits__grid { width: min(100%, 1080px); margin-inline: auto; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: clamp(.75rem, 1.6vw, var(--space-lg)); row-gap: var(--space-xl); }
+.about-portraits__card { display: grid; grid-template-rows: auto auto 1fr; align-content: start; }
+.about-portraits__card img { height: clamp(220px, 22vw, 300px); aspect-ratio: auto; border-radius: 0; object-position: center 44%; transition: transform .55s cubic-bezier(.2,.65,.2,1); }
+.about-portraits__card:hover img { transform: scale(1.025); }
+.about-portraits__badge { min-height: 3.1rem; margin-top: -1.55rem; margin-right: var(--space-sm); padding: .65rem .72rem .55rem; align-self: start; font-size: clamp(1.15rem, 1.65vw, 1.7rem); line-height: .88; background: var(--color-accent); }
+.about-portraits__description { min-height: 5.25rem; margin-top: var(--space-sm); font-size: clamp(.78rem, 1vw, .94rem); line-height: 1.55; }
+@media (max-width: 900px) { .about-portraits__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-md); }.about-portraits__card img { height: min(62vw, 380px); }.about-portraits__badge { font-size: clamp(1.35rem, 3vw, 1.9rem); }.about-portraits__description { min-height: auto; font-size: .95rem; } }
+@media (max-width: 600px) { .about-portraits__grid { grid-template-columns: 1fr; }.about-portraits__card img { height: min(105vw, 460px); }.about-portraits__badge { font-size: clamp(1.4rem, 8vw, 2rem); } }
+
+/* À propos — rapproche le dernier appel à l'action de la série de portraits. */
+.about-portraits { padding-bottom: var(--space-md); }
+.about-cta { min-height: auto; padding-top: var(--space-md); padding-bottom: var(--space-xl); align-items: flex-start; justify-content: center; }
+
+/* Événements — les visuels de fond restent réservés au survol. */
+.event-row img.image-fade-in.is-loaded,
+.event-row img.image-fade-in.is-error { opacity: 0; }
+.event-row:hover img.image-fade-in.is-loaded,
+.event-row:hover img.image-fade-in.is-error { opacity: 1; }
+.event-row:focus:not(:hover) { color: inherit; }
+.event-row:focus:not(:hover) img,
+.event-row:focus:not(:hover)::after { opacity: 0; }
+.event-row:focus:not(:hover) img { transform: scale(1.04); }
+.event-row:focus:not(:hover) .event-row__arrow { transform: none; }
+
+/* Stop 1 — une lecture plus douce et photographique au survol. */
+.event-row--ganhi { min-height: 300px; }
+.event-row--ganhi img { object-position: center 52%; filter: grayscale(0) brightness(1) contrast(1) blur(4px); transform: translateX(-1.5%) scale(1.11); transition: opacity .55s ease, transform .8s cubic-bezier(.22,1,.36,1), filter .65s ease; }
+.event-row--ganhi:hover img { filter: grayscale(.52) brightness(1.22) contrast(.92) blur(0); transform: translateX(0) scale(1); }
+.event-row--ganhi:hover::after { background: rgb(23 23 23 / 48%); }
+@media (max-width: 600px) { .event-row--ganhi { min-height: 235px; } }
+
+/* Stop 1 — le film remplace la galerie photographique. */
+.event-film { width: min(100%, 1320px); margin-inline: auto; padding: var(--space-xxl) clamp(var(--space-lg), 7vw, var(--space-xxl)); }
+.event-film__heading { max-width: 610px; }
+.event-film h2 { margin-top: var(--space-sm); font-family: var(--font-heading); font-size: var(--font-size-h2); font-weight: 400; letter-spacing: .05em; line-height: .88; text-transform: uppercase; }
+.event-film__player { display: block; width: 100%; max-height: 760px; margin-top: var(--space-xl); background: var(--color-bg-dark); object-fit: cover; }
+@media (max-width: 600px) { .event-film { padding: var(--space-xl) var(--space-sm); }.event-film__player { min-height: 52vw; margin-top: var(--space-lg); } }
+
+/* Stop 1 — film hébergé sur Vimeo. */
+.event-film iframe.event-film__player { height: min(56.25vw, 760px); aspect-ratio: 16 / 9; border: 0; }
+
+/* Stop 2 — le titre introduit directement son texte. */
+.event-detail__story--pk3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); align-items: start; column-gap: clamp(var(--space-xl), 6vw, var(--space-xxl)); row-gap: var(--space-lg); }
+.event-detail__story--pk3 .event-detail__story-heading,
+.event-detail__story--pk3 .event-detail__story-copy { max-width: 760px; grid-column: 1; }
+.event-detail__story--pk3 .event-detail__story-heading { grid-column: 1; }
+.event-detail__story--pk3 .event-detail__story-copy { margin-top: 0; }
+.event-detail__story--pk3 .event-detail__story-copy p + p { margin-top: var(--space-md); color: color-mix(in srgb, var(--color-text-primary) 74%, transparent); }
+.event-detail__story--pk3 .event-detail__story-media { position: relative; align-self: end; grid-column: 2; grid-row: 2; width: 100%; height: 0; margin: 0; overflow: visible; background: var(--color-bg-dark); }
+.event-detail__story--pk3 .event-detail__story-media img { position: absolute; right: 0; bottom: 0; left: 0; width: 100%; height: clamp(300px, 31vw, 440px); object-fit: cover; object-position: center; }
+@media (max-width: 800px) { .event-detail__story--pk3 { grid-template-columns: 1fr; }.event-detail__story--pk3 .event-detail__story-heading, .event-detail__story--pk3 .event-detail__story-copy, .event-detail__story--pk3 .event-detail__story-media { grid-column: 1; grid-row: auto; }.event-detail__story--pk3 .event-detail__story-media { height: min(105vw, 540px); }.event-detail__story--pk3 .event-detail__story-copy { margin-top: 0; } }
+
+/* Stop 2 — récit photographique, puis trois voix sur une ligne. */
+.event-narrative--pk3 { display: grid; gap: 0; grid-template-columns: 1fr; padding-top: var(--space-xxl); text-align: center; }
+.event-narrative--pk3 .event-narrative__heading { max-width: 1100px; margin-inline: auto; }
+.event-narrative--pk3 .event-narrative__heading h2 { white-space: nowrap; }
+.event-narrative--pk3 .event-narrative__media { width: min(100%, 820px); height: min(50vw, 570px); margin: 3rem auto 0; overflow: hidden; background: var(--color-bg-dark); }
+.event-narrative--pk3 .event-narrative__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.event-narrative--pk3 .event-narrative__copy { display: grid; max-width: 1180px; margin: 3rem auto 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(var(--space-md), 4vw, var(--space-xl)); text-align: left; }
+.event-narrative--pk3 .event-narrative__copy p + p { margin-top: 0; }
+@media (max-width: 800px) { .event-narrative--pk3 .event-narrative__heading h2 { white-space: normal; }.event-narrative--pk3 .event-narrative__media { height: min(75vw, 500px); }.event-narrative--pk3 .event-narrative__copy { grid-template-columns: 1fr; gap: var(--space-md); }.event-narrative--pk3 .event-narrative__copy p + p { margin-top: 0; } }
+
+/* Stop 2 — film de clôture des temps forts. */
+.event-programme__player { display: block; width: 100%; max-height: 760px; margin-top: var(--space-xl); grid-column: 1 / -1; background: #000; object-fit: cover; }
+@media (max-width: 600px) { .event-programme__player { margin-top: var(--space-lg); } }
