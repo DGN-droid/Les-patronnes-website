@@ -121,6 +121,8 @@ if (programme && detailNavigation) {
   detailNavigation.before(section);
 }
 
+window.applyPageCopy?.();
+
 const revealElements = document.querySelectorAll("[data-events-reveal]");
 
 if (revealElements.length && window.gsap && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

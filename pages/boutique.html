@@ -50,10 +50,10 @@
         <div class="shop-product__option" role="group" aria-labelledby="shirt-colour-label">
           <p id="shirt-colour-label">Choisir un coloris <span data-selected-colour>Blanc coton</span></p>
           <div class="shop-product__swatches">
-            <button class="shop-swatch is-selected" type="button" data-colour="white" data-colour-name="Blanc coton" data-image="../assets/images/t-shirt-blanc.jpeg" aria-label="Choisir Blanc coton" aria-pressed="true"><span></span></button>
-            <button class="shop-swatch" type="button" data-colour="green" data-colour-name="Vert forêt" data-image="../assets/images/t-shirt-vert.jpeg" aria-label="Choisir Vert forêt" aria-pressed="false"><span></span></button>
-            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" data-image="../assets/images/t-shirt-jaune.jpeg" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button>
-            <button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge marché" data-image="../assets/images/t'shirt-rouge.jpeg" aria-label="Choisir Rouge marché" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch is-selected" type="button" data-colour="white" data-colour-name="Blanc coton" data-colour-name-en="Cotton white" data-image="../assets/images/t-shirt-blanc.jpeg" aria-label="Choisir Blanc coton" aria-pressed="true"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="green" data-colour-name="Vert forêt" data-colour-name-en="Forest green" data-image="../assets/images/t-shirt-vert.jpeg" aria-label="Choisir Vert forêt" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" data-colour-name-en="Saffron yellow" data-image="../assets/images/t-shirt-jaune.jpeg" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge marché" data-colour-name-en="Market red" data-image="../assets/images/t'shirt-rouge.jpeg" aria-label="Choisir Rouge marché" aria-pressed="false"><span></span></button>
           </div>
         </div>
         <div class="shop-product__option" role="group" aria-labelledby="shirt-size-label">
@@ -93,7 +93,7 @@
       document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
         document.querySelectorAll('.shop-swatch').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
         button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true');
-        const label = button.dataset.colourName;
+        const label = document.documentElement.lang === 'en' ? button.dataset.colourNameEn : button.dataset.colourName;
         shirtImage.src = button.dataset.image;
         shirtImage.alt = `T-shirt Les Patronnes, coloris ${label}`;
         caption.textContent = label; selectedColour.textContent = label;
@@ -103,6 +103,7 @@
         document.querySelectorAll('.shop-product__sizes button').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
         button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true'); selectedSize.textContent = button.textContent;
       }));
+      window.addEventListener('site:languagechange', () => document.querySelector('.shop-swatch.is-selected')?.click());
     })();
   </script>
   <script>document.querySelectorAll('[data-shop-reveal]').forEach((item) => { if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; window.gsap.fromTo(item, { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: .85, ease: 'power2.out', scrollTrigger: undefined }); });</script>

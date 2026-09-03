@@ -213,6 +213,213 @@ if (!themeOrder.includes(activeTheme)) activeTheme = "light";
 const translate = (key) => translations[activeLanguage][key] || key;
 window.siteTranslate = translate;
 
+// Contenus éditoriaux : le français reste la source, l'anglais est appliqué
+// à la demande sans dupliquer les pages HTML.
+const englishCopy = {
+  home: [
+    [".home-hero__subtitle", "A project imagined by Michelin-starred chef Georgiana Viou, celebrating the women who bring Benin's markets to life."],
+    [".home-manifesto > p:last-child", "A story of women, markets and transmission."]
+  ],
+  about: [
+    [".about-hero__content .about-eyebrow", "The project"],
+    [".about-hero__subtitle", "A living archive of Beninese markets"],
+    [".about-hero__lead", "Les Patronnes celebrates the women who bring Cotonou's markets to life every day. Traders, cooks, keepers of know-how and neighbourhood figures: they feed a city, circulate materials and ideas, and sustain the ties that hold a community together."],
+    [".about-hero__content > p:last-child", "Imagined by Georgiana Viou, the project gives these presences the place they deserve. It uses photography, fashion and gastronomy as ways of looking differently: attentively, respectfully and alongside the women whose gestures shape contemporary Benin."],
+    [".about-timeline .about-eyebrow", "Our approach"],
+    ["#journey-title", "Make visible, connect, pass on"],
+    [".about-section-heading > p:last-child", "Les Patronnes begins with a simple gesture: taking the time to listen to women whose work is everywhere, yet whose stories are still too rarely written into our shared history."],
+    [".about-accordion__item:nth-child(1) summary", "Creating an archive", "leading"],
+    [".about-accordion__item:nth-child(1) p:nth-child(1)", "The portraits, conversations and images created by the project form a sensitive memory of the markets. They protect faces, voices and practices passed from one generation to the next from being forgotten."],
+    [".about-accordion__item:nth-child(1) p:nth-child(2)", "Each documented presence affirms that these women matter today and will still matter when the market stalls have changed hands."],
+    [".about-accordion__item:nth-child(2) summary", "Making the market a stage", "leading"],
+    [".about-accordion__item:nth-child(2) p:nth-child(1)", "A market can become an open-air gallery, a runway or a banquet table. Les Patronnes turns daily space into a place of celebration without ever separating it from the women who sustain it."],
+    [".about-accordion__item:nth-child(2) p:nth-child(2)", "Fashion reveals materials, photography offers a fair perspective and gastronomy brings people together: three languages for bringing voices into conversation."],
+    [".about-accordion__item:nth-child(3) summary", "Honouring know-how", "leading"],
+    [".about-accordion__item:nth-child(3) p:nth-child(1)", "Les Patronnes recognises the expertise of women who know how to select, prepare, negotiate and feed. These skills are not a detail of economic life: they are one of its deepest strengths."],
+    [".about-accordion__item:nth-child(3) p:nth-child(2)", "The project pays tribute to the inventiveness, sovereignty and generosity of Beninese market women."],
+    [".about-accordion__item:nth-child(4) summary", "Building a collective", "leading"],
+    [".about-accordion__item:nth-child(4) p:nth-child(1)", "The project brings together market women, artists, cooks, partners and visitors around one shared ambition: recognising what already exists and giving it greater resonance."],
+    [".about-accordion__item:nth-child(4) p:nth-child(2)", "Les Patronnes is a collective story, made to travel throughout Benin and far beyond its borders."],
+    [".about-quote blockquote p", "Their faces matter, and they will still matter when their market stalls have changed hands."],
+    [".about-quote blockquote footer", "— Les Patronnes"],
+    [".about-portraits .about-section-heading .about-eyebrow", "The project's voices"],
+    ["#portraits-title", "They carry Les Patronnes"],
+    [".about-portraits__card:nth-child(1) .about-portraits__description", "Michelin-starred chef, writer, speaker and founder of Les Patronnes."],
+    [".about-portraits__card:nth-child(2) .about-portraits__description", "Entrepreneur, speaker and builder of bridges between France and Benin."],
+    [".about-portraits__card:nth-child(3) .about-portraits__description", "Opinion leader, bestselling essayist, TEDx speaker and cultural entrepreneur."],
+    [".about-portraits__card:nth-child(4) .about-portraits__description", "Content creator and entrepreneur."],
+    [".about-cta .about-eyebrow", "Take action"],
+    ["#patronnes-title", "Follow the movement"],
+    [".about-cta__content > p:nth-of-type(2)", "Through Stops, portraits, tables and conversations, discover how Les Patronnes makes the market a space for expression, recognition and transmission."],
+    [".about-cta__content > p:nth-of-type(3)", "Each edition extends the story, broadens the collective and brings new light to the women who keep Cotonou alive."]
+  ],
+  events: [
+    [".events-intro__content .events-eyebrow", "Les Patronnes in motion"],
+    ["#events-title", "Events"],
+    [".events-intro__content > p:last-child", "Every gathering offers a new way of seeing markets: a time to listen, celebrate and place the women who bring them to life at the heart of the conversation."],
+    [".event-row--ganhi .event-row__name", "Les Patronnes<br>Stop 1", "html"],
+    [".event-row--ganhi .event-row__place", "Ganhi Market<br><b>7 March 2026</b>", "html"],
+    [".event-row--sofitel .event-row__name", "Les Patronnes<br>Round table", "html"],
+    [".event-row--sofitel .event-row__place", "Sofitel Cotonou Marina<br><b>9 July 2026</b>", "html"],
+    [".event-row--pk3 .event-row__name", "Les Patronnes<br>Stop 2", "html"],
+    [".event-row--pk3 .event-row__place", "PK3 Market<br><b>11 July 2026</b>", "html"]
+  ],
+  actualites: [
+    [".actualites-hero .actualites-eyebrow", "The project in the media"],
+    ["#actualites-title", "News"],
+    [".actualites-hero > p:last-child", "The media reach of Les Patronnes, through each publication."]
+  ],
+  shop: [
+    [".shop-intro .shop-eyebrow", "Inaugural edition"],
+    ["#shop-title", "Shop"],
+    [".shop-intro > p:last-child", "Wearing Les Patronnes means carrying the project beyond the markets. A first collection imagined as a gesture of support, pride and conversation."],
+    [".shop-product__content > .shop-eyebrow", "First drop"],
+    ["#shirt-title", "The Les Patronnes<br>T-shirt", "html"],
+    [".shop-product__content > p:not(.shop-eyebrow)", "A statement piece designed for market days and city life alike. A relaxed fit, a bold mark and four colours inspired by Cotonou's materials, spices and energy."],
+    ["#shirt-colour-label", "Choose a colour <span data-selected-colour>Cotton white</span>", "html"],
+    ["#shirt-size-label", "Choose a size <span data-selected-size>XS</span>", "html"],
+    [".shop-product__details div:nth-child(1) dt", "Fit"],
+    [".shop-product__details div:nth-child(1) dd", "Unisex · relaxed oversized fit"],
+    [".shop-product__details div:nth-child(2) dt", "Material"],
+    [".shop-product__details div:nth-child(2) dd", "240 g/m² cotton jersey"],
+    [".shop-product__details div:nth-child(3) dt", "Finish"],
+    [".shop-product__details div:nth-child(3) dd", "Chest print and woven label"],
+    [".shop-product__details div:nth-child(4) dt", "Sizes"],
+    [".shop-product__purchase span", "Availability"],
+    [".shop-product__purchase strong", "Pre-order coming soon"],
+    [".shop-product__cta", "Be notified at launch <span aria-hidden=\"true\"></span>", "html"],
+    [".shop-product__delivery", "Collection in Cotonou and delivery coming soon. Proceeds support the reach of Les Patronnes."],
+    [".shop-note p", "The collection will grow gradually. For this first chapter: a few carefully considered pieces and one shared desire to help Les Patronnes shine."]
+  ],
+  contact: [
+    [".contact-hero .contact-eyebrow", "Partnerships, patronage & contact"],
+    ["#contact-title", "Let's build<br>what comes next", "html"],
+    [".contact-hero > p:last-child", "Les Patronnes brings together market women, creators, businesses and institutions around a shared story. Whether you want to support the project, talk about it or simply write to us, the conversation starts here."],
+    [".contact-details .contact-eyebrow", "Partnerships & patronage"],
+    [".contact-details h2", "Growing<br>the movement", "html"],
+    [".contact-details > p:nth-of-type(2)", "Les Patronnes is a cultural, social and heritage project. It makes visible the essential role of women who keep Beninese markets alive and places their stories in a contemporary, living and shared memory."],
+    [".contact-details > p:nth-of-type(3)", "Different levels of partnership can be considered according to each partner's objectives: patronage, operational support, visibility, production or the transmission of know-how."],
+    [".contact-details__cta", "Become a partner <span class=\"contact-arrow contact-arrow--down\" aria-hidden=\"true\"></span>", "html"],
+    [".contact-partners > p", "They already support the project"],
+    [".contact-details__note", "Media relations & partnerships: Nere Consultants and Karl Lawson."],
+    [".contact-form-wrap__heading .contact-eyebrow", "Write to us"],
+    [".contact-form-wrap__heading h2", "Your enquiry"],
+    [".contact-form-wrap__heading > p:last-child", "Tell us what you need; we will respond with the attention your message deserves."],
+    [".contact-form label:nth-of-type(1)", "First and last name", "leading"],
+    [".contact-form label:nth-of-type(2)", "Email address", "leading"],
+    [".contact-form > label:nth-of-type(1)", "You are contacting us about", "leading"],
+    [".contact-form > label:nth-of-type(2)", "Your message", "leading"],
+    [".contact-form option[value=\"\"]", "Select a subject"],
+    [".contact-form option[value=\"partnership\"]", "Partnership or patronage"],
+    [".contact-form option[value=\"press\"]", "Media or press enquiry"],
+    [".contact-form option[value=\"market\"]", "Project participation"],
+    [".contact-form option[value=\"other\"]", "Other enquiry"],
+    [".contact-form button", "Send your enquiry <span class=\"contact-arrow contact-arrow--right\" aria-hidden=\"true\"></span>", "html"],
+    [".contact-form__notice", "The form will be connected to the project's mailbox when the website goes live. In the meantime, you can write to us directly."],
+    [".contact-general .contact-eyebrow", "General contact"],
+    [".contact-general > p:last-child", "For media enquiries, exchanges with markets or any other question."],
+    [".contact-closing p", "A partnership is a way of ensuring the stories that matter can endure."],
+    [".contact-closing a", "<span class=\"contact-arrow contact-arrow--left\" aria-hidden=\"true\"></span> Back to home", "html"]
+  ]
+};
+
+const englishEventCopy = {
+  "event-stop-1.html": [
+    [".event-detail__hero header p", "Les Patronnes · Stop 1"],
+    [".event-detail__hero header h1", "Ganhi Market"],
+    [".event-detail__hero header span", "7 March 2026 · Cotonou"],
+    [".event-detail__story > .events-eyebrow", "The first gathering"],
+    [".event-detail__story > h2", "Making the market a place of memory"],
+    [".event-detail__story > div p:nth-child(1)", "Stop 1 opens the Les Patronnes cycle at Ganhi Market. It is dedicated to the women whose presence and work animate the everyday circulation of Cotonou."],
+    [".event-detail__story > div p:nth-child(2)", "Symbolically, the first Les Patronnes Stop was held on the eve of International Women's Rights Day."],
+    [".event-detail__story > div p:nth-child(3)", "Through images, exchanges and shared gestures, the event opens the first chapter of a story made to travel from market to market."],
+    [".event-narrative > div:first-child .events-eyebrow", "The story"],
+    [".event-narrative > div:first-child h2", "A threshold, not an interlude"],
+    [".event-narrative > div:last-child p:nth-child(1)", "At Ganhi Market, Les Patronnes takes the time to name what is already there: a daily economy, meticulous solidarities and women whose gestures organise the city. The first Stop does not turn the market into a backdrop. It listens to it, sees it and recognises it as a place of knowledge."],
+    [".event-narrative > div:last-child p:nth-child(2)", "Photography becomes a way of creating an archive. The portraits reveal faces, but also journeys, professions and a presence that must no longer remain out of frame. Fashion and gastronomy extend this gesture: they create a space for celebration without ever separating the celebration from those who make it possible."],
+    [".event-narrative > div:last-child p:nth-child(3)", "This first gathering makes a promise: to move from market to market, collect stories and circulate a collective history that first belongs to the women who live it."],
+    [".event-film .events-eyebrow", "The Stop 1 film"],
+    [".event-film h2", "Ganhi in motion"],
+    [".event-detail__back a:first-child", "← All events"],
+    [".event-detail__back a:last-child", "Next event →"]
+  ],
+  "event-table-ronde.html": [
+    [".event-detail__hero header p", "Les Patronnes round table"],
+    [".event-detail__hero header h1", "Sofitel Cotonou Marina"],
+    [".event-detail__hero header span", "9 July 2026 · Cotonou"],
+    [".event-detail__story-heading .events-eyebrow", "Voices together"],
+    [".event-detail__story-heading h2", "Creating the conditions for listening"],
+    [".event-detail__story-copy p:nth-child(1)", "At Sofitel Cotonou Marina, Les Patronnes opens a space for conversation where entrepreneurs, creators, chefs and market women meet. It is an exacting dialogue, nourished by the experience of women who act."],
+    [".event-detail__story-copy p:nth-child(2)", "The round table makes hospitality an architecture of care: a time to share stories, circulate ideas and imagine lasting alliances."],
+    [".event-gallery__heading .events-eyebrow", "Sofitel Cotonou Marina"],
+    [".event-gallery__heading h2", "Voices gathered"],
+    [".event-gallery__item--1 figcaption", "The stage"],
+    [".event-gallery__item--2 figcaption", "The voices"],
+    [".event-gallery__item--3 figcaption", "Encounters"],
+    [".event-gallery__item--4 figcaption", "Listening"],
+    [".event-gallery__item--5 figcaption", "The trace"],
+    [".event-detail__back a:first-child", "← All events"],
+    [".event-detail__back a:last-child", "Next event →"]
+  ],
+  "event-stop-2.html": [
+    [".event-detail__hero header p", "Les Patronnes · Stop 2"],
+    [".event-detail__hero header h1", "PK3 Market"],
+    [".event-detail__hero header span", "11 July 2026 · Cotonou"],
+    [".event-detail__story-heading .events-eyebrow", "A market in motion"],
+    [".event-detail__story-heading h2", "Gallery, runway, banquet"],
+    [".event-detail__story-copy p:nth-child(1)", "PK3 Market becomes an open-air gallery, a fashion show and an immense banquet table. This second step pays tribute to women who make textiles, trade and transmission a daily force."],
+    [".event-detail__story-copy p:nth-child(2)", "A photography exhibition, masterclasses, talks and a popular banquet form a day in which the market tells its story through the women who hold it together."],
+    [".event-narrative__heading .events-eyebrow", "The story"],
+    [".event-narrative__heading h2", "PK3, a memory to wear"],
+    [".event-narrative__copy p:nth-child(1)", "At PK3 Market, textiles are an archive in motion. Fabrics, selling gestures and silhouettes tell a story of trade, invention and transmission. By choosing this place, Les Patronnes pays tribute to women who make the market a space of work, style and sovereignty."],
+    [".event-narrative__copy p:nth-child(2)", "For one day, PK3 becomes an open-air gallery, a runway, a place of learning and a long table. The documentary exhibition Ye dje invites visitors to look at the faces of those who feed and dress the city; the fashion show and masterclass put local know-how centre stage."],
+    [".event-narrative__copy p:nth-child(3)", "The grand banquet continues the conversation through food. Around the same table, market women, artists, guests and visitors share a popular moment where recognition, pleasure and memory become one."],
+    [".event-programme > div .events-eyebrow", "A full day"],
+    [".event-programme > div h2", "Highlights"],
+    [".event-programme li:nth-child(1) h3", "Ye dje, the exhibition"],
+    [".event-programme li:nth-child(1) p", "An open-air documentary exhibition dedicated to the women who dress and feed the city."],
+    [".event-programme li:nth-child(2) h3", "Fashion show & masterclass"],
+    [".event-programme li:nth-child(2) p", "Fashion and transmission come together to spotlight materials and know-how."],
+    [".event-programme li:nth-child(3) h3", "Grand banquet"],
+    [".event-programme li:nth-child(3) p", "A popular table imagined with the market's cooks, where gastronomy becomes a shared language."],
+    [".event-detail__back a:first-child", "← All events"],
+    [".event-detail__back a:last-child", "Back to Stop 1 →"]
+  ]
+};
+
+const setLocalizedCopy = (element, value, mode = "text") => {
+  if (!element) return;
+  if (!element.dataset.i18nOriginal) element.dataset.i18nOriginal = element.innerHTML;
+  if (activeLanguage !== "en") {
+    element.innerHTML = element.dataset.i18nOriginal;
+  } else if (mode === "html") {
+    element.innerHTML = value;
+  } else if (mode === "leading") {
+    const textNode = Array.from(element.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
+    if (textNode) textNode.nodeValue = value;
+  } else {
+    element.textContent = value;
+  }
+};
+
+const applyPageCopy = () => {
+  const entries = englishCopy[document.body.dataset.page] || [];
+  entries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
+
+  const eventEntries = englishEventCopy[window.location.pathname.split("/").pop()] || [];
+  eventEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
+
+  if (document.body.dataset.page === "actualites") {
+    document.querySelectorAll(".actualites-feed__link").forEach((link) => setLocalizedCopy(link, "Read article <span class=\"actualites-feed__arrow\" aria-hidden=\"true\"></span>", "html"));
+    document.querySelectorAll(".actualites-feed__date").forEach((date) => {
+      if (!date.dataset.i18nOriginal) date.dataset.i18nOriginal = date.textContent;
+      date.textContent = activeLanguage === "en" ? new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${date.dateTime}T12:00:00`)) : date.dataset.i18nOriginal;
+    });
+  }
+};
+
+window.applyPageCopy = applyPageCopy;
+
 const syncPreferenceLinks = () => {
   document.querySelectorAll('a[href*=".html"]').forEach((link) => {
     if (!link.dataset.preferenceHref) {
@@ -283,6 +490,8 @@ const applyLanguage = (language, persist = true) => {
   if (persist) savePreference("site-language", activeLanguage);
   updateThemeControls();
   syncPreferenceLinks();
+  applyPageCopy();
+  window.dispatchEvent(new CustomEvent("site:languagechange", { detail: { language: activeLanguage } }));
 };
 
 languageButtons.forEach((button) => {
