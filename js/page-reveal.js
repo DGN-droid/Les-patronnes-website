@@ -63,10 +63,10 @@ const eventGalleries = {
     eyebrow: "Regards sur le premier Stop",
     title: "Une présence à raconter",
     images: [
-      ["../assets/images/img53.png", "Les participantes du Stop 1 au Marché Ganhi", "Le rassemblement"],
-      ["../assets/images/img17.jpeg", "Les Patronnes réunies à Cotonou", "Les visages"],
-      ["../assets/images/img1.jpeg", "Le collectif Les Patronnes réuni", "Le collectif"],
-      ["../assets/images/img16.jpeg", "Le manifeste du projet Les Patronnes", "Le manifeste"]
+      ["../assets/images/img53.jpg", "Les participantes du Stop 1 au Marché Ganhi", "Le rassemblement"],
+      ["../assets/images/img17.jpg", "Les Patronnes réunies à Cotonou", "Les visages"],
+      ["../assets/images/img1.jpg", "Le collectif Les Patronnes réuni", "Le collectif"],
+      ["../assets/images/img16.jpg", "Le manifeste du projet Les Patronnes", "Le manifeste"]
     ]
   },
   "event-table-ronde.html": {

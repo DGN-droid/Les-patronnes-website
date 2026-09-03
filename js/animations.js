@@ -244,7 +244,7 @@ if (storyView && storyTriggers.length && window.gsap) {
     main: [
     {
       type: "image",
-      src: "assets/images/img1.jpeg",
+      src: "assets/images/img1.jpg",
       alt: "Les Patronnes, Georgiana Viou et le collectif",
       intro: true
     },
@@ -254,36 +254,36 @@ if (storyView && storyTriggers.length && window.gsap) {
       title: "story.chapter1.title",
       text: "story.chapter1.text"
     },
-    { type: "image", src: "assets/images/img4.jpeg", alt: "Manifeste des panélistes des Patronnes" },
-    { type: "image", src: "assets/images/img5.jpeg", alt: "Texte sur la force des communautés" },
-    { type: "image", src: "assets/images/img6.jpeg", alt: "Portrait collectif des Patronnes" },
+    { type: "image", src: "assets/images/img4.jpg", alt: "Manifeste des panélistes des Patronnes" },
+    { type: "image", src: "assets/images/img5.jpg", alt: "Texte sur la force des communautés" },
+    { type: "image", src: "assets/images/img6.jpg", alt: "Portrait collectif des Patronnes" },
     {
       type: "chapter",
       eyebrow: "story.chapter2.eyebrow",
       title: "story.chapter2.title",
       text: "story.chapter2.text"
     },
-    { type: "image", src: "assets/images/img7.jpeg", alt: "Table ronde Les Patronnes à Cotonou" },
-    { type: "image", src: "assets/images/img8.jpeg", alt: "Récit de la conversation des Patronnes" },
-    { type: "image", src: "assets/images/img9.jpeg", alt: "Gladys et Constance" },
+    { type: "image", src: "assets/images/img7.jpg", alt: "Table ronde Les Patronnes à Cotonou" },
+    { type: "image", src: "assets/images/img8.jpg", alt: "Récit de la conversation des Patronnes" },
+    { type: "image", src: "assets/images/img9.jpg", alt: "Gladys et Constance" },
     {
       type: "chapter",
       eyebrow: "story.chapter3.eyebrow",
       title: "story.chapter3.title",
       text: "story.chapter3.text"
     },
-    { type: "image", src: "assets/images/img10.jpeg", alt: "Les Patronnes à Cotonou" },
-    { type: "image", src: "assets/images/img11.jpeg", alt: "Portrait d'une participante des Patronnes" },
-    { type: "image", src: "assets/images/img12.jpeg", alt: "La table ronde et son manifeste" },
-    { type: "image", src: "assets/images/img13.jpeg", alt: "Georgiana Viou et une membre du collectif" },
-    { type: "image", src: "assets/images/img14.jpeg", alt: "Le récit des Patronnes au Sofitel Cotonou Marina" },
-    { type: "image", src: "assets/images/img15.jpeg", alt: "Le public des Patronnes" },
+    { type: "image", src: "assets/images/img10.jpg", alt: "Les Patronnes à Cotonou" },
+    { type: "image", src: "assets/images/img11.jpg", alt: "Portrait d'une participante des Patronnes" },
+    { type: "image", src: "assets/images/img12.jpg", alt: "La table ronde et son manifeste" },
+    { type: "image", src: "assets/images/img13.jpg", alt: "Georgiana Viou et une membre du collectif" },
+    { type: "image", src: "assets/images/img14.jpg", alt: "Le récit des Patronnes au Sofitel Cotonou Marina" },
+    { type: "image", src: "assets/images/img15.jpg", alt: "Le public des Patronnes" },
     { type: "end" }
     ],
     markets: [
       {
         type: "image",
-        src: "assets/images/img3.jpeg",
+        src: "assets/images/img3.jpg",
         alt: "Les Patronnes au marché PK3",
         intro: true
       },
@@ -300,7 +300,7 @@ if (storyView && storyTriggers.length && window.gsap) {
       },
       {
         type: "image",
-        src: "assets/images/img16.jpeg",
+        src: "assets/images/img16.jpg",
         alt: "Manifeste de Georgiana Viou pour les femmes des marchés béninois"
       },
       {
@@ -316,7 +316,7 @@ if (storyView && storyTriggers.length && window.gsap) {
       },
       {
         type: "image",
-        src: "assets/images/img17.jpeg",
+        src: "assets/images/img17.jpg",
         alt: "Femmes des marchés réunies autour du projet Les Patronnes"
       },
       {
@@ -330,11 +330,11 @@ if (storyView && storyTriggers.length && window.gsap) {
           text: "À PK3, le textile, les rencontres et les mémoires composent un paysage vivant. Le temps d’une journée, le marché devient l’espace d’une célébration collective."
         }
       },
-      { type: "image", src: "assets/images/img18.jpeg", alt: "Participantes des Patronnes arrivant au marché PK3" },
-      { type: "image", src: "assets/images/img19.jpeg", alt: "Danse et célébration lors des Patronnes à PK3" },
-      { type: "image", src: "assets/images/img20.jpeg", alt: "Remerciements aux partenaires de l’édition Les Patronnes à PK3" },
-      { type: "image", src: "assets/images/img21.jpeg", alt: "Collectif des Patronnes devant leur véhicule au marché PK3" },
-      { type: "image", src: "assets/images/img22.jpeg", alt: "Portrait de trois Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img18.jpg", alt: "Participantes des Patronnes arrivant au marché PK3" },
+      { type: "image", src: "assets/images/img19.jpg", alt: "Danse et célébration lors des Patronnes à PK3" },
+      { type: "image", src: "assets/images/img20.jpg", alt: "Remerciements aux partenaires de l’édition Les Patronnes à PK3" },
+      { type: "image", src: "assets/images/img21.jpg", alt: "Collectif des Patronnes devant leur véhicule au marché PK3" },
+      { type: "image", src: "assets/images/img22.jpg", alt: "Portrait de trois Patronnes au marché PK3" },
       {
         type: "chapter",
         eyebrow: "story.market.chapter4.eyebrow",
@@ -346,14 +346,14 @@ if (storyView && storyTriggers.length && window.gsap) {
           text: "Galerie à ciel ouvert, défilé, prise de parole et exposition : chaque geste élargit le regard porté sur celles qui tiennent le marché et inventent son avenir."
         }
       },
-      { type: "image", src: "assets/images/img23.jpeg", alt: "Présentation du marché PK3 de Cotonou et de ses inspirations" },
-      { type: "image", src: "assets/images/img24.jpeg", alt: "Récit du marché PK3 et hommage aux Nana Benz" },
-      { type: "image", src: "assets/images/img25.jpeg", alt: "Affiche de l’édition Les Patronnes au marché PK3" },
-      { type: "image", src: "assets/images/img26.jpeg", alt: "Texte et portraits des invitées de l’édition Les Patronnes" },
-      { type: "image", src: "assets/images/img27.jpeg", alt: "Citation d’Audre Lorde sur le partage et la joie" },
-      { type: "image", src: "assets/images/img28.jpeg", alt: "Manifeste des Patronnes au marché PK3" },
-      { type: "image", src: "assets/images/img29.jpeg", alt: "Prise de parole pendant l’événement Les Patronnes" },
-      { type: "image", src: "assets/images/img30.jpeg", alt: "Exposition photographique consacrée aux femmes des marchés" },
+      { type: "image", src: "assets/images/img23.jpg", alt: "Présentation du marché PK3 de Cotonou et de ses inspirations" },
+      { type: "image", src: "assets/images/img24.jpg", alt: "Récit du marché PK3 et hommage aux Nana Benz" },
+      { type: "image", src: "assets/images/img25.jpg", alt: "Affiche de l’édition Les Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img26.jpg", alt: "Texte et portraits des invitées de l’édition Les Patronnes" },
+      { type: "image", src: "assets/images/img27.jpg", alt: "Citation d’Audre Lorde sur le partage et la joie" },
+      { type: "image", src: "assets/images/img28.jpg", alt: "Manifeste des Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img29.jpg", alt: "Prise de parole pendant l’événement Les Patronnes" },
+      { type: "image", src: "assets/images/img30.jpg", alt: "Exposition photographique consacrée aux femmes des marchés" },
       {
         type: "chapter",
         eyebrow: "story.market.chapter5.eyebrow",
@@ -365,10 +365,10 @@ if (storyView && storyTriggers.length && window.gsap) {
           text: "Le banquet rassemble les voix, les saveurs et les gestes. Il donne une forme concrète à l’ambition des Patronnes : faire de la reconnaissance un moment partagé."
         }
       },
-      { type: "image", src: "assets/images/img31.jpeg", alt: "Portrait d’une participante dans le véhicule des Patronnes" },
-      { type: "image", src: "assets/images/img32.jpeg", alt: "Portrait collectif des Patronnes au marché PK3" },
-      { type: "image", src: "assets/images/img33.jpeg", alt: "Grand banquet populaire imaginé par Georgiana Viou" },
-      { type: "image", src: "assets/images/img34.jpeg", alt: "Hommage au regard photographique porté sur les femmes des marchés" },
+      { type: "image", src: "assets/images/img31.jpg", alt: "Portrait d’une participante dans le véhicule des Patronnes" },
+      { type: "image", src: "assets/images/img32.jpg", alt: "Portrait collectif des Patronnes au marché PK3" },
+      { type: "image", src: "assets/images/img33.jpg", alt: "Grand banquet populaire imaginé par Georgiana Viou" },
+      { type: "image", src: "assets/images/img34.jpg", alt: "Hommage au regard photographique porté sur les femmes des marchés" },
       { type: "end" }
     ]
   };
