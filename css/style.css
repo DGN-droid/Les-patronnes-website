@@ -90,6 +90,16 @@ svg {
   max-width: 100%;
 }
 
+.image-fade-in {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.image-fade-in.is-loaded,
+.image-fade-in.is-error {
+  opacity: 1;
+}
+
 input,
 button,
 textarea,
@@ -613,6 +623,7 @@ body.story-open {
   display: block;
   width: min(72vw, 820px);
   height: auto;
+  aspect-ratio: 4 / 5;
   max-height: 82svh;
   border-radius: 20px;
   object-fit: contain;
@@ -1204,3 +1215,9 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 /* Mobile : le menu garde un contraste sombre et les flèches sont dessinées en CSS, jamais en emoji. */
 @media (max-width: 800px) { .site-mobile-menu { color: var(--color-text-primary); } }
 .event-row__arrow { position: relative; width: 1.65rem; height: 1.65rem; font-size: 0; }.event-row__arrow::before, .event-row__arrow::after { position: absolute; display: block; background: currentColor; content: ""; }.event-row__arrow::before { top: .78rem; left: .16rem; width: 1.2rem; height: 1px; transform: rotate(-45deg); transform-origin: center; }.event-row__arrow::after { top: .25rem; right: .15rem; width: .55rem; height: .55rem; border-top: 1px solid currentColor; border-right: 1px solid currentColor; background: transparent; }.event-row:hover .event-row__arrow { transform: translate(4px, -4px); }
+
+.event-row:focus { color: var(--color-text-light); }
+.event-row:focus img,
+.event-row:focus::after { opacity: 1; }
+.event-row:focus img { transform: scale(1); }
+.event-row:focus .event-row__arrow { transform: translate(4px, -4px); }

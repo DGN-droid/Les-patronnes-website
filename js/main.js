@@ -1,4 +1,19 @@
 
+window.prepareImageFade = (image) => {
+  image.classList.add("image-fade-in");
+  const reveal = () => image.classList.add("is-loaded");
+  const revealError = () => image.classList.add("is-error");
+
+  if (image.complete) {
+    image.naturalWidth > 0 ? reveal() : revealError();
+  } else {
+    image.addEventListener("load", reveal, { once: true });
+    image.addEventListener("error", revealError, { once: true });
+  }
+};
+
+document.querySelectorAll("img").forEach(window.prepareImageFade);
+
 const translations = {
   fr: {
     "nav.main": "Navigation principale",

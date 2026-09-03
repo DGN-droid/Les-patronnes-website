@@ -397,6 +397,7 @@ if (storyView && storyTriggers.length && window.gsap) {
         image.alt = item.alt;
         image.loading = item.intro ? "eager" : "lazy";
         image.decoding = "async";
+        window.prepareImageFade?.(image);
         image.addEventListener("error", () => section.remove());
         section.appendChild(image);
 

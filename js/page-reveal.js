@@ -66,7 +66,8 @@ const eventGalleries = {
       ["../assets/images/img53.jpg", "Les participantes du Stop 1 au Marché Ganhi", "Le rassemblement"],
       ["../assets/images/img17.jpg", "Les Patronnes réunies à Cotonou", "Les visages"],
       ["../assets/images/img1.jpg", "Le collectif Les Patronnes réuni", "Le collectif"],
-      ["../assets/images/img16.jpg", "Le manifeste du projet Les Patronnes", "Le manifeste"]
+      ["../assets/images/img16.jpg", "Le manifeste du projet Les Patronnes", "Le manifeste"],
+      ["../assets/images/img91.JPG", "Les participantes du Stop 1 au Marché Ganhi", "La mémoire"]
     ]
   },
   "event-table-ronde.html": {
@@ -114,7 +115,8 @@ if (gallery && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-gallery";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div class="event-gallery__heading"><p class="events-eyebrow">${gallery.eyebrow}</p><h2>${gallery.title}</h2></div><div class="event-gallery__grid">${gallery.images.map(([src, alt, label], index) => `<figure class="event-gallery__item event-gallery__item--${index + 1}"><img src="${src}" alt="${alt}" loading="lazy"><figcaption>${label}</figcaption></figure>`).join("")}</div>`;
+  section.innerHTML = `<div class="event-gallery__heading"><p class="events-eyebrow">${gallery.eyebrow}</p><h2>${gallery.title}</h2></div><div class="event-gallery__grid">${gallery.images.map(([src, alt, label], index) => `<figure class="event-gallery__item event-gallery__item--${index + 1}"><img class="image-fade-in" src="${src}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${label}</figcaption></figure>`).join("")}</div>`;
+  section.querySelectorAll("img").forEach((image) => window.prepareImageFade?.(image));
   detailNavigation.before(section);
 }
 
