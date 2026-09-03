@@ -20,6 +20,7 @@ const translations = {
     "nav.home": "Accueil",
     "nav.about": "À propos",
     "nav.events": "Événements",
+    "nav.actualites": "Actualités",
     "nav.shop": "Boutique",
     "nav.stop1": "Stop 1",
     "nav.stop2": "Stop 2",
@@ -72,6 +73,7 @@ const translations = {
     "title.patronnes": "Les Patronnes | Cheffe étoilée Michelin",
     "title.press": "Presse et médias | Cheffe étoilée Michelin",
     "title.contact": "Contact | Cheffe étoilée Michelin"
+    ,"title.actualites": "Actualités | Les Patronnes"
     ,"title.events": "Événements | Les Patronnes"
     ,"title.event-detail": "Événement | Les Patronnes"
     ,"title.shop": "Boutique | Les Patronnes"
@@ -81,6 +83,7 @@ const translations = {
     "nav.home": "Home",
     "nav.about": "About",
     "nav.events": "Events",
+    "nav.actualites": "News",
     "nav.shop": "Shop",
     "nav.stop1": "Stop 1",
     "nav.stop2": "Stop 2",
@@ -133,6 +136,7 @@ const translations = {
     "title.patronnes": "Les Patronnes | Michelin-starred chef",
     "title.press": "Press and media | Michelin-starred chef",
     "title.contact": "Contact | Michelin-starred chef"
+    ,"title.actualites": "News | Les Patronnes"
     ,"title.events": "Events | Les Patronnes"
     ,"title.event-detail": "Event | Les Patronnes"
     ,"title.shop": "Shop | Les Patronnes"
@@ -143,10 +147,11 @@ const translations = {
 document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
   const aboutLink = linksContainer.querySelector('[data-i18n="nav.about"]');
   const eventsLink = linksContainer.querySelector('[data-i18n="nav.events"]');
+  const actualitesLink = linksContainer.querySelector('[data-i18n="nav.actualites"]');
   const eventHref = eventsLink?.getAttribute("href") || "pages/events.html";
   const pagePrefix = eventHref.includes("/") ? eventHref.slice(0, eventHref.lastIndexOf("/") + 1) : "";
 
-  linksContainer.replaceChildren(...[aboutLink, eventsLink].filter(Boolean));
+  linksContainer.replaceChildren(...[aboutLink, eventsLink, actualitesLink].filter(Boolean));
 
   const shopLink = document.createElement("a");
   shopLink.href = `${pagePrefix}boutique.html`;

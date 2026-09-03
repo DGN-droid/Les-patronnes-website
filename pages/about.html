@@ -20,6 +20,7 @@
         <div class="site-nav__links">
           <a href="about.html" data-i18n="nav.about">À propos</a>
           <a href="events.html" data-i18n="nav.events">Événements</a>
+          <a href="actualites.html" data-i18n="nav.actualites">Actualités</a>
           <a href="press.html" data-i18n="nav.press">Presse</a>
         </div>
       </div>
@@ -98,6 +99,35 @@
       </blockquote>
     </section>
 
+    <section class="about-portraits about-reveal" aria-labelledby="portraits-title">
+      <div class="about-section-heading">
+        <p class="about-eyebrow">Les voix du projet</p>
+        <h2 id="portraits-title">Elles portent Les Patronnes</h2>
+      </div>
+      <div class="about-portraits__grid">
+        <article class="about-portraits__card">
+          <img src="../assets/images/img40.jpg" alt="Georgiana Viou" width="1200" height="1800" loading="lazy" decoding="async">
+          <h3 class="about-portraits__badge">GEORGIANA VIOU</h3>
+          <p class="about-portraits__description">Cheffe étoilée, écrivaine, conférencière & fondatrice de l'initiative « Les Patronnes »</p>
+        </article>
+        <article class="about-portraits__card">
+          <img src="../assets/images/img39.jpg" alt="Brigitte Houssou" width="1200" height="1800" loading="lazy" decoding="async">
+          <h3 class="about-portraits__badge">BRIGITTE HOUSSOU</h3>
+          <p class="about-portraits__description">Entrepreneuse, conférencière & bâtisseuse de passerelles entre la France et le Bénin.</p>
+        </article>
+        <article class="about-portraits__card">
+          <img src="../assets/images/img37.jpg" alt="Camille Aumont Carnel" width="1200" height="1800" loading="lazy" decoding="async">
+          <h3 class="about-portraits__badge">CAMILLE AUMONT CARNEL</h3>
+          <p class="about-portraits__description">Leadeuse d'opinion, essayiste best-sellers, Tedx speaker & entrepreneuse culturelle</p>
+        </article>
+        <article class="about-portraits__card">
+          <img src="../assets/images/img38.jpg" alt="Karelle Vignon Vuillerme" width="1200" height="1800" loading="lazy" decoding="async">
+          <h3 class="about-portraits__badge">KARELLE VIGNON VUILLERME</h3>
+          <p class="about-portraits__description">Créatrice de contenus & entrepreneuse</p>
+        </article>
+      </div>
+    </section>
+
     <section class="about-cta about-reveal" aria-labelledby="patronnes-title">
       <div class="about-cta__content">
         <p class="about-eyebrow">Passer à l’action</p>
@@ -115,14 +145,17 @@
   <script>
     (() => {
       const sections = document.querySelectorAll(".about-reveal");
+      const portraitCards = document.querySelectorAll(".about-portraits__card");
       if (!sections.length || !window.gsap) return;
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         window.gsap.set(sections, { autoAlpha: 1, y: 0 });
+        window.gsap.set(portraitCards, { autoAlpha: 1, y: 0 });
         return;
       }
 
       window.gsap.set(sections, { autoAlpha: 0, y: 28 });
+      window.gsap.set(portraitCards, { autoAlpha: 0, y: 24 });
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
@@ -130,7 +163,18 @@
             autoAlpha: 1,
             y: 0,
             duration: 0.9,
-            ease: "power2.out"
+            ease: "power2.out",
+            onComplete: () => {
+              if (entry.target.matches(".about-portraits")) {
+                window.gsap.to(portraitCards, {
+                  autoAlpha: 1,
+                  y: 0,
+                  duration: 0.7,
+                  stagger: 0.12,
+                  ease: "power2.out"
+                });
+              }
+            }
           });
           observer.unobserve(entry.target);
         });
