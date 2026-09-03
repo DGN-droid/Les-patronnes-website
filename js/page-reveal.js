@@ -108,7 +108,7 @@ if (video && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-film";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><iframe class="event-film__player" src="${video.embed}" title="Film du Stop 1 des Patronnes au Marché Ganhi" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><iframe class="event-film__player" src="${video.embed}" title="Film du Stop 1 des Patronnes au Marché Ganhi" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
   detailNavigation.before(section);
 }
 
@@ -116,10 +116,31 @@ if (programme && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-programme";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div><p class="events-eyebrow">${programme.eyebrow}</p><h2>${programme.title}</h2></div><ol>${programme.items.map(([title, text], index) => `<li><span>0${index + 1}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("")}</ol>${programme.video ? `<video class="event-programme__player" autoplay muted loop playsinline controls preload="auto" aria-label="Film des Patronnes au marché PK3"><source src="${programme.video}">Votre navigateur ne prend pas en charge la lecture de cette vidéo.</video>` : ""}`;
-  section.querySelectorAll("video").forEach((player) => player.addEventListener("canplay", () => player.play().catch(() => {}), { once: true }));
+  section.innerHTML = `<div><p class="events-eyebrow">${programme.eyebrow}</p><h2>${programme.title}</h2></div><ol>${programme.items.map(([title, text], index) => `<li><span>0${index + 1}</span><div><h3>${title}</h3><p>${text}</p></div></li>`).join("")}</ol>${programme.video ? `<video class="event-programme__player" data-video-src="${programme.video}" muted loop playsinline controls preload="none" aria-label="Film des Patronnes au marché PK3">Votre navigateur ne prend pas en charge la lecture de cette vidéo.</video>` : ""}`;
   detailNavigation.before(section);
 }
+
+document.querySelectorAll("video[data-video-src]").forEach((player) => {
+  const loadVideo = () => {
+    if (player.dataset.videoLoaded) return;
+    player.dataset.videoLoaded = "true";
+    player.src = player.dataset.videoSrc;
+    player.muted = true;
+    player.load();
+    player.addEventListener("canplay", () => player.play().catch(() => {}), { once: true });
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      loadVideo();
+      observer.disconnect();
+    }, { rootMargin: "300px 0px" });
+    observer.observe(player);
+  } else {
+    loadVideo();
+  }
+});
 
 window.applyPageCopy?.();
 

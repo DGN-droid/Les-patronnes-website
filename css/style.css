@@ -1363,6 +1363,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 
 /* Stop 1 — film hébergé sur Vimeo. */
 .event-film iframe.event-film__player { height: min(56.25vw, 760px); aspect-ratio: 16 / 9; border: 0; }
+@media (max-width: 600px) { .event-film iframe.event-film__player { height: 78vw; max-height: none; } }
 
 /* Stop 2 — le titre introduit directement son texte. */
 .event-detail__story--pk3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); align-items: start; column-gap: clamp(var(--space-xl), 6vw, var(--space-xxl)); row-gap: var(--space-lg); }
@@ -1388,3 +1389,19 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 /* Stop 2 — film de clôture des temps forts. */
 .event-programme__player { display: block; width: 100%; max-height: 760px; margin-top: var(--space-xl); grid-column: 1 / -1; background: #000; object-fit: cover; }
 @media (max-width: 600px) { .event-programme__player { margin-top: var(--space-lg); } }
+
+/* Performance mobile : les contenus lourds sous la ligne de flottaison ne se rendent qu'à l'approche. */
+@supports (content-visibility: auto) {
+  .about-portraits,
+  .about-cta,
+  .event-gallery,
+  .event-film,
+  .event-programme,
+  .event-narrative,
+  .actualites-feed,
+  .shop-note,
+  .contact-closing {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}
