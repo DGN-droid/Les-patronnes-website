@@ -1246,14 +1246,9 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 @media (max-width: 1000px) { .about-portraits__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .about-portraits { padding: var(--space-xl) var(--space-sm); }.about-portraits__grid { grid-template-columns: 1fr; gap: var(--space-xl); }.about-portraits__badge { font-size: clamp(1.35rem, 7vw, 2rem); } }
 
-.home-hero h1 {
-  font-family: "Rubik Distressed", var(--font-heading);
-  text-transform: uppercase;
-}
-
 .home-hero__title-word {
   display: inline-block;
-  transform: translateX(-1em);
+  transform: translateX(-0.12em);
 }
 
 /* Actualités */
