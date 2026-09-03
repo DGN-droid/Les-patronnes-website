@@ -146,11 +146,38 @@
     (() => {
       const sections = document.querySelectorAll(".about-reveal");
       const portraitCards = document.querySelectorAll(".about-portraits__card");
-      if (!sections.length || !window.gsap) return;
+      if (!sections.length) return;
+
+      const revealDirectly = (elements) => {
+        elements.forEach((element) => {
+          if (window.gsap) {
+            window.gsap.set(element, { autoAlpha: 1, y: 0 });
+          } else {
+            element.style.opacity = "1";
+            element.style.visibility = "visible";
+            element.style.transform = "translateY(0)";
+          }
+        });
+      };
+
+      const revealEverything = () => {
+        revealDirectly(sections);
+        revealDirectly(portraitCards);
+      };
+
+      window.addEventListener("load", () => {
+        if (typeof window.IntersectionObserver === "undefined") revealEverything();
+      }, { once: true });
+
+      window.setTimeout(revealEverything, 2500);
+
+      if (!window.gsap) {
+        revealEverything();
+        return;
+      }
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        window.gsap.set(sections, { autoAlpha: 1, y: 0 });
-        window.gsap.set(portraitCards, { autoAlpha: 1, y: 0 });
+        revealEverything();
         return;
       }
 

@@ -37,9 +37,8 @@
     <article class="shop-product" data-shop-reveal aria-labelledby="shirt-title">
       <div class="shop-product__visual" data-shirt-stage aria-label="Aperçu du t-shirt Les Patronnes, coloris rouge">
         <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
-        <div class="shop-shirt shop-shirt--red" data-shirt-preview aria-hidden="true">
-          <span class="shop-shirt__mark">Les<br>Patronnes</span>
-          <span class="shop-shirt__seal">LP<br>229</span>
+        <div class="shop-shirt" data-shirt-preview aria-hidden="true">
+          <img src="../assets/images/tshirt-rouge.jpg" alt="T-shirt Les Patronnes, coloris Rouge marché" data-shirt-image>
         </div>
         <p class="shop-product__caption" data-shirt-caption>Rouge marché</p>
         <div class="shop-product__dots" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -51,9 +50,9 @@
         <div class="shop-product__option" role="group" aria-labelledby="shirt-colour-label">
           <p id="shirt-colour-label">Choisir un coloris <span data-selected-colour>Rouge marché</span></p>
           <div class="shop-product__swatches">
-            <button class="shop-swatch is-selected" type="button" data-colour="red" data-colour-name="Rouge marché" aria-label="Choisir Rouge marché" aria-pressed="true"><span></span></button>
-            <button class="shop-swatch" type="button" data-colour="white" data-colour-name="Blanc coton" aria-label="Choisir Blanc coton" aria-pressed="false"><span></span></button>
-            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch is-selected" type="button" data-colour="red" data-colour-name="Rouge marché" data-image="../assets/images/tshirt-rouge.jpg" aria-label="Choisir Rouge marché" aria-pressed="true"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="white" data-colour-name="Blanc coton" data-image="../assets/images/tshirt-blanc.jpg" aria-label="Choisir Blanc coton" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" data-image="../assets/images/tshirt-jaune.jpg" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button>
           </div>
         </div>
         <div class="shop-product__option" role="group" aria-labelledby="shirt-size-label">
@@ -87,13 +86,15 @@
       const preview = document.querySelector('[data-shirt-preview]');
       const stage = document.querySelector('[data-shirt-stage]');
       const caption = document.querySelector('[data-shirt-caption]');
+      const shirtImage = document.querySelector('[data-shirt-image]');
       const selectedColour = document.querySelector('[data-selected-colour]');
       const selectedSize = document.querySelector('[data-selected-size]');
       document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
         document.querySelectorAll('.shop-swatch').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
         button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true');
-        preview.className = `shop-shirt shop-shirt--${button.dataset.colour}`;
         const label = button.dataset.colourName;
+        shirtImage.src = button.dataset.image;
+        shirtImage.alt = `T-shirt Les Patronnes, coloris ${label}`;
         caption.textContent = label; selectedColour.textContent = label;
         stage.setAttribute('aria-label', `Aperçu du t-shirt Les Patronnes, coloris ${label}`);
       }));
