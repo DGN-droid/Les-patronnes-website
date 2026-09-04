@@ -34,7 +34,12 @@
       <p>Porter Les Patronnes, c’est faire circuler le projet au-delà des marchés. Une première série imaginée comme un objet de soutien, de fierté et de conversation.</p>
     </section>
 
-    <article class="shop-product" data-shop-reveal aria-labelledby="shirt-title">
+    <div class="shop-tabs" role="tablist" aria-label="Catégories boutique">
+      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt">T-shirt</button>
+      <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="photography">Photographies</button>
+    </div>
+
+    <article class="shop-product" data-shop-reveal data-shop-panel="shirt" aria-labelledby="shirt-title">
       <div class="shop-product__visual" data-shirt-stage aria-label="Aperçu du t-shirt Les Patronnes, coloris blanc">
         <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
         <div class="shop-shirt" data-shirt-preview aria-hidden="true">
@@ -53,7 +58,7 @@
             <button class="shop-swatch is-selected" type="button" data-colour="white" data-colour-name="Blanc coton" data-colour-name-en="Cotton white" data-image="../assets/images/t-shirt-blanc.jpeg" aria-label="Choisir Blanc coton" aria-pressed="true"><span></span></button>
             <button class="shop-swatch" type="button" data-colour="green" data-colour-name="Vert forêt" data-colour-name-en="Forest green" data-image="../assets/images/t-shirt-vert.jpeg" aria-label="Choisir Vert forêt" aria-pressed="false"><span></span></button>
             <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" data-colour-name-en="Saffron yellow" data-image="../assets/images/t-shirt-jaune.jpeg" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button>
-            <button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge marché" data-colour-name-en="Market red" data-image="../assets/images/t'shirt-rouge.jpeg" aria-label="Choisir Rouge marché" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge marché" data-colour-name-en="Market red" data-image="../assets/images/t-shirt-rouge.jpeg" aria-label="Choisir Rouge marché" aria-pressed="false"><span></span></button>
           </div>
         </div>
         <div class="shop-product__option" role="group" aria-labelledby="shirt-size-label">
@@ -76,6 +81,13 @@
       </div>
     </article>
 
+    <section class="shop-panel-photography" data-shop-panel="photography" hidden>
+      <p class="shop-eyebrow">Édition photographique</p>
+      <h2>Les photographies<br>de Maki Manoukian</h2>
+      <p>Une sélection d'images signées Maki Manoukian, capturées au cœur du projet Les Patronnes, bientôt disponible à la vente.</p>
+      <p class="shop-photography__soon">Cette section sera bientôt disponible.</p>
+    </section>
+
     <section class="shop-note" data-shop-reveal>
       <p>La collection s’étoffera progressivement. Pour ce premier chapitre : peu de pièces, bien pensées, et une même envie de faire rayonner Les Patronnes.</p>
     </section>
@@ -90,6 +102,15 @@
       const shirtImage = document.querySelector('[data-shirt-image]');
       const selectedColour = document.querySelector('[data-selected-colour]');
       const selectedSize = document.querySelector('[data-selected-size]');
+      const tabs = document.querySelectorAll('[data-shop-tab]');
+      const panels = document.querySelectorAll('[data-shop-panel]');
+      tabs.forEach((tab) => tab.addEventListener('click', () => {
+        tabs.forEach((item) => { item.classList.remove('is-active'); item.setAttribute('aria-selected', 'false'); });
+        panels.forEach((panel) => { panel.hidden = panel.dataset.shopPanel !== tab.dataset.shopTab; panel.classList.remove('is-visible'); });
+        tab.classList.add('is-active'); tab.setAttribute('aria-selected', 'true');
+        const panel = document.querySelector(`[data-shop-panel="${tab.dataset.shopTab}"]`);
+        requestAnimationFrame(() => panel?.classList.add('is-visible'));
+      }));
       document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
         document.querySelectorAll('.shop-swatch').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
         button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true');
