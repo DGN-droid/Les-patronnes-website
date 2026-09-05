@@ -1374,6 +1374,13 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 @media (max-width: 600px) { .event-row--ganhi { min-height: 235px; } }
 
 /* Stop 1 — le film remplace la galerie photographique. */
+.event-detail__story--ganhi { grid-template-columns: .8fr 1fr; grid-template-areas: "eyebrow ." "title title" "copy image"; }
+.event-detail__story--ganhi > .events-eyebrow { grid-area: eyebrow; }
+.event-detail__story--ganhi > h2 { grid-area: title; text-align: center; white-space: nowrap; }
+.event-detail__story--ganhi > div { grid-area: copy; }
+.event-detail__story--ganhi > .event-detail__story-media { grid-area: image; width: 100%; height: min(34vw, 460px); margin: 0; overflow: hidden; }
+.event-detail__story--ganhi > .event-detail__story-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+@media (max-width: 800px) { .event-detail__story--ganhi { grid-template-columns: 1fr; grid-template-areas: "eyebrow" "title" "copy" "image"; }.event-detail__story--ganhi > h2 { white-space: normal; }.event-detail__story--ganhi > .event-detail__story-media { height: min(105vw, 560px); } }
 .event-film { width: min(100%, 1320px); margin-inline: auto; padding: var(--space-xxl) clamp(var(--space-lg), 7vw, var(--space-xxl)); }
 .event-film__heading { max-width: 610px; }
 .event-film h2 { margin-top: var(--space-sm); font-family: var(--font-heading); font-size: var(--font-size-h2); font-weight: 400; letter-spacing: .05em; line-height: .88; text-transform: uppercase; }
