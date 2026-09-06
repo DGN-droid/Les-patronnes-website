@@ -1,7 +1,17 @@
 
 window.prepareImageFade = (image) => {
   image.classList.add("image-fade-in");
-  const reveal = () => image.classList.add("is-loaded");
+  let revealed = false;
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
+    const show = () => window.requestAnimationFrame(() => image.classList.add("is-loaded"));
+    if (typeof image.decode === "function") {
+      image.decode().then(show).catch(show);
+    } else {
+      show();
+    }
+  };
   const revealError = () => image.classList.add("is-error");
 
   if (image.complete) {
@@ -143,15 +153,22 @@ const translations = {
   }
 };
 
-// Navigation commune : Presse quitte le menu au profit de la boutique.
+// Navigation commune : Presse, à la place des Actualités, et Boutique.
 document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
   const aboutLink = linksContainer.querySelector('[data-i18n="nav.about"]');
   const eventsLink = linksContainer.querySelector('[data-i18n="nav.events"]');
-  const actualitesLink = linksContainer.querySelector('[data-i18n="nav.actualites"]');
+  let pressLink = linksContainer.querySelector('[data-i18n="nav.press"]');
   const eventHref = eventsLink?.getAttribute("href") || "pages/events.html";
   const pagePrefix = eventHref.includes("/") ? eventHref.slice(0, eventHref.lastIndexOf("/") + 1) : "";
 
-  linksContainer.replaceChildren(...[aboutLink, eventsLink, actualitesLink].filter(Boolean));
+  if (!pressLink) {
+    pressLink = document.createElement("a");
+    pressLink.href = `${pagePrefix}press.html`;
+    pressLink.dataset.i18n = "nav.press";
+    pressLink.textContent = "Presse";
+  }
+
+  linksContainer.replaceChildren(...[aboutLink, eventsLink, pressLink].filter(Boolean));
 
   const shopLink = document.createElement("a");
   shopLink.href = `${pagePrefix}boutique.html`;
