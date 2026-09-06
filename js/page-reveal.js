@@ -73,7 +73,7 @@ const eventVideos = {
   "event-stop-1.html": {
     eyebrow: "Le film du Stop 1",
     title: "Ganhi en mouvement",
-    embed: "https://player.vimeo.com/video/1223832115?autoplay=1&muted=1&loop=1&autopause=0&title=0&byline=0&portrait=0"
+    src: "../assets/images/Ganhi.mp4"
   }
 };
 
@@ -108,7 +108,8 @@ if (video && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-film";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><iframe class="event-film__player" src="${video.embed}" title="Film du Stop 1 des Patronnes au Marché Ganhi" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><video class="event-film__player event-programme__player" autoplay muted loop playsinline controls preload="auto" aria-label="Film du Stop 1 des Patronnes au Marché Ganhi"><source src="${video.src}" type="video/mp4">Votre navigateur ne prend pas en charge la lecture de cette vidéo.</video>`;
+  section.querySelector("video")?.addEventListener("canplay", (event) => event.currentTarget.play().catch(() => {}), { once: true });
   detailNavigation.before(section);
 }
 

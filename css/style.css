@@ -1421,6 +1421,8 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 
 /* Stop 2 — film de clôture des temps forts. */
 .event-programme__player { display: block; width: 100%; max-height: 760px; margin-top: var(--space-xl); grid-column: 1 / -1; background: #000; object-fit: cover; }
+.event-film video.event-film__player,
+.event-programme__player { aspect-ratio: 16 / 9; }
 @media (max-width: 600px) { .event-programme__player { margin-top: var(--space-lg); } }
 
 /* Performance mobile : les contenus lourds sous la ligne de flottaison ne se rendent qu'à l'approche. */
