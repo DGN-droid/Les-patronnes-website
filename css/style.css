@@ -91,11 +91,10 @@ svg {
 }
 
 .image-fade-in {
-  opacity: 0;
+  opacity: 1;
   background: color-mix(in srgb, var(--color-bg-primary) 92%, var(--color-text-primary));
   transform: translateZ(0);
-  transition: opacity 0.55s ease;
-  will-change: opacity;
+  transition: none;
 }
 
 .image-fade-in.is-loaded,
@@ -1363,6 +1362,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .about-cta { min-height: auto; padding-top: var(--space-md); padding-bottom: var(--space-xl); align-items: flex-start; justify-content: center; }
 
 /* Événements — les visuels de fond restent réservés au survol. */
+.event-row img.image-fade-in,
 .event-row img.image-fade-in.is-loaded,
 .event-row img.image-fade-in.is-error { opacity: 0; }
 .event-row:hover img.image-fade-in.is-loaded,
@@ -1396,7 +1396,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 
 /* Stop 1 — film hébergé sur Vimeo. */
 .event-film iframe.event-film__player { height: min(56.25vw, 760px); aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius); box-shadow: 0 18px 40px rgb(23 23 23 / 14%); }
-@media (max-width: 800px) { .event-film iframe.event-film__player { height: auto; aspect-ratio: 16 / 9; max-height: none; } }
+@media (max-width: 800px) { .event-film iframe.event-film__player { height: 56.25vw; aspect-ratio: 16 / 9; max-height: none; } }
 
 /* Stop 2 — le titre introduit directement son texte. */
 .event-detail__story--pk3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); align-items: start; column-gap: clamp(var(--space-xl), 6vw, var(--space-xxl)); row-gap: var(--space-lg); }

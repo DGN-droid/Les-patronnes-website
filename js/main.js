@@ -286,6 +286,11 @@ const englishCopy = {
     ["#actualites-title", "News"],
     [".actualites-hero > p:last-child", "The media reach of Les Patronnes, through each publication."]
   ],
+  press: [
+    [".actualites-hero .actualites-eyebrow", "The project in the media"],
+    ["#press-title", "Press"],
+    [".actualites-hero > p:last-child", "All project news, listed by date."]
+  ],
   shop: [
     [".shop-intro .shop-eyebrow", "Inaugural edition"],
     ["#shop-title", "Shop"],
@@ -426,7 +431,7 @@ const applyPageCopy = () => {
   const eventEntries = englishEventCopy[window.location.pathname.split("/").pop()] || [];
   eventEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
 
-  if (document.body.dataset.page === "actualites") {
+  if (["actualites", "press"].includes(document.body.dataset.page)) {
     document.querySelectorAll(".actualites-feed__link").forEach((link) => setLocalizedCopy(link, "Read article <span class=\"actualites-feed__arrow\" aria-hidden=\"true\"></span>", "html"));
     document.querySelectorAll(".actualites-feed__date").forEach((date) => {
       if (!date.dataset.i18nOriginal) date.dataset.i18nOriginal = date.textContent;
