@@ -73,7 +73,8 @@ const eventVideos = {
   "event-stop-1.html": {
     eyebrow: "Le film du Stop 1",
     title: "Ganhi en mouvement",
-    src: "../assets/images/Ganhi.mp4"
+    src: "../assets/images/Ganhi.mp4",
+    poster: "../assets/images/optimized/img75.JPG"
   }
 };
 
@@ -89,7 +90,7 @@ if (narrative && detailNavigation) {
   section.className = narrative.image ? "event-narrative event-narrative--pk3" : "event-narrative";
   section.dataset.eventsReveal = "";
   section.innerHTML = narrative.image
-    ? `<div class="event-narrative__heading"><p class="events-eyebrow">${narrative.eyebrow}</p><h2>${narrative.title}</h2></div><figure class="event-narrative__media"><img class="image-fade-in" src="${narrative.image}" alt="Les Patronnes au marché PK3" loading="lazy" decoding="async"></figure><div class="event-narrative__copy">${narrative.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`
+    ? `<div class="event-narrative__heading"><p class="events-eyebrow">${narrative.eyebrow}</p><h2>${narrative.title}</h2></div><figure class="event-narrative__media"><img class="image-fade-in" src="${window.optimizedImagePath?.(narrative.image) || narrative.image}" alt="Les Patronnes au marché PK3" loading="lazy" decoding="async"></figure><div class="event-narrative__copy">${narrative.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`
     : `<div><p class="events-eyebrow">${narrative.eyebrow}</p><h2>${narrative.title}</h2></div><div>${narrative.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`;
   section.querySelectorAll("img").forEach((image) => window.prepareImageFade?.(image));
   detailNavigation.before(section);
@@ -99,7 +100,7 @@ if (gallery && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-gallery";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div class="event-gallery__heading"><p class="events-eyebrow">${gallery.eyebrow}</p><h2>${gallery.title}</h2></div><div class="event-gallery__grid">${gallery.images.map(([src, alt, label], index) => `<figure class="event-gallery__item event-gallery__item--${index + 1}"><img class="image-fade-in" src="${src}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${label}</figcaption></figure>`).join("")}</div>`;
+  section.innerHTML = `<div class="event-gallery__heading"><p class="events-eyebrow">${gallery.eyebrow}</p><h2>${gallery.title}</h2></div><div class="event-gallery__grid">${gallery.images.map(([src, alt, label], index) => `<figure class="event-gallery__item event-gallery__item--${index + 1}"><img class="image-fade-in" src="${window.optimizedImagePath?.(src) || src}" alt="${alt}" loading="lazy" decoding="async"><figcaption>${label}</figcaption></figure>`).join("")}</div>`;
   section.querySelectorAll("img").forEach((image) => window.prepareImageFade?.(image));
   detailNavigation.before(section);
 }
@@ -108,7 +109,7 @@ if (video && detailNavigation) {
   const section = document.createElement("section");
   section.className = "event-film";
   section.dataset.eventsReveal = "";
-  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><video class="event-film__player event-programme__player" autoplay muted loop playsinline controls preload="auto" aria-label="Film du Stop 1 des Patronnes au Marché Ganhi"><source src="${video.src}" type="video/mp4">Votre navigateur ne prend pas en charge la lecture de cette vidéo.</video>`;
+  section.innerHTML = `<div class="event-film__heading"><p class="events-eyebrow">${video.eyebrow}</p><h2>${video.title}</h2></div><video class="event-film__player event-programme__player" autoplay muted loop playsinline controls preload="metadata" poster="${video.poster || ""}" aria-label="Film du Stop 1 des Patronnes au Marché Ganhi"><source src="${video.src}" type="video/mp4">Votre navigateur ne prend pas en charge la lecture de cette vidéo.</video>`;
   section.querySelector("video")?.addEventListener("canplay", (event) => event.currentTarget.play().catch(() => {}), { once: true });
   detailNavigation.before(section);
 }

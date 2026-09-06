@@ -1,4 +1,21 @@
 
+// Les originaux restent archivés ; le site affiche leurs versions optimisées.
+const optimizedImageFiles = new Set([
+  "img1.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg", "img12.jpg", "img13.jpg", "img14.jpg", "img15.jpg", "img16.jpg", "img17.jpg", "img18.jpg", "img19.jpg", "img20.jpg", "img21.jpg", "img23.jpg", "img24.jpg", "img25.jpg", "img26.jpg", "img27.jpg", "img28.jpg", "img29.jpg", "img30.jpg", "img31.jpg", "img32.jpg", "img33.jpg", "img34.jpg", "img42.jpg", "img44.jpg", "img47.jpg", "img51.jpg", "img55.jpg", "img58.jpg", "img60.jpg", "img61.jpg", "img68.JPG", "img75.JPG", "img83.JPG"
+]);
+
+window.optimizedImagePath = (source) => {
+  if (source.includes("assets/images/optimized/")) return source;
+  const fileName = source.split("/").pop();
+  return optimizedImageFiles.has(fileName)
+    ? source.replace("assets/images/", "assets/images/optimized/")
+    : source;
+};
+
+document.querySelectorAll("img[src]").forEach((image) => {
+  image.src = window.optimizedImagePath(image.getAttribute("src"));
+});
+
 window.prepareImageFade = (image) => {
   image.classList.add("image-fade-in");
   let revealed = false;

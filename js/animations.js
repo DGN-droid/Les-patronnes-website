@@ -393,7 +393,7 @@ if (storyView && storyTriggers.length && window.gsap) {
         if (item.intro) section.classList.add("story-item--intro");
 
         const image = document.createElement("img");
-        image.src = item.src;
+        image.src = window.optimizedImagePath?.(item.src) || item.src;
         image.alt = item.alt;
         image.loading = item.intro ? "eager" : "lazy";
         image.decoding = "async";
