@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devenir partenaire | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body data-page="partner">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left">
+        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button>
+        <div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a></div>
+      </div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main class="partner-page">
+    <section class="partner-hero" data-partner-reveal aria-labelledby="partner-title">
+      <p class="partner-eyebrow">Partenariats & mécénat</p>
+      <h1 id="partner-title">Faire grandir<br>Les Patronnes</h1>
+      <p>Devenir partenaire, c’est inscrire votre engagement dans un projet culturel, social et patrimonial qui rend visibles les femmes faisant vivre les marchés béninois.</p>
+    </section>
+
+    <section class="partner-introduction" data-partner-reveal>
+      <div><p class="partner-eyebrow">Un engagement vivant</p><h2>Accompagner<br>ce qui compte</h2></div>
+      <div><p>Les Patronnes rassemble des femmes de marché, des créatrices, des cuisinières, des artistes et des institutions autour d’un même geste : reconnaître les savoir-faire qui structurent la vie quotidienne, et leur donner l’espace qu’ils méritent.</p><p>Votre accompagnement permet de faire circuler ces récits, de produire des images, de créer des rendez-vous publics et de faire du marché un lieu de reconnaissance, de transmission et de fierté.</p></div>
+    </section>
+
+    <section class="partner-contributions" data-partner-reveal aria-labelledby="contributions-title">
+      <div class="partner-contributions__heading"><p class="partner-eyebrow">Les formes de soutien</p><h2 id="contributions-title">Construire<br>ensemble</h2></div>
+      <div class="partner-contributions__list">
+        <article><span>01</span><h3>Mécénat</h3><p>Soutenir la création, la documentation et la pérennité d’un projet qui porte une mémoire collective.</p></article>
+        <article><span>02</span><h3>Partenariat</h3><p>Associer votre organisation à des événements, des prises de parole et des formats imaginés à Cotonou.</p></article>
+        <article><span>03</span><h3>Savoir-faire</h3><p>Mettre une expertise, un lieu, des ressources ou une énergie au service du collectif.</p></article>
+      </div>
+    </section>
+
+    <section class="partner-trust" data-partner-reveal>
+      <p class="partner-eyebrow">Ils accompagnent déjà le projet</p>
+      <div><span>Sofitel<br>Cotonou Marina</span><span>BYD by CFAO<br>Mobility Bénin</span><span>Papier<br>Plus</span></div>
+    </section>
+
+    <section class="partner-cta" data-partner-reveal>
+      <p class="partner-eyebrow">Ouvrons la conversation</p>
+      <h2>Votre engagement<br>peut faire récit.</h2>
+      <p>Parlons de vos objectifs et imaginons le partenariat le plus juste pour faire avancer Les Patronnes.</p>
+      <form class="partner-form" id="partner-form" action="#" method="post">
+        <div class="partner-form__row"><label>Nom et prénom<input type="text" name="name" autocomplete="name" required></label><label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label></div>
+        <div class="partner-form__row"><label>Organisation<input type="text" name="organisation" autocomplete="organization"></label><label>Type de soutien<select name="support" required><option value="" selected disabled>Choisissez une option</option><option value="mecenat">Mécénat</option><option value="partenariat">Partenariat</option><option value="savoir-faire">Apport de savoir-faire</option><option value="autre">Autre</option></select></label></div>
+        <label>Votre message<textarea name="message" rows="5" required></textarea></label>
+        <button type="submit">Envoyer ma demande <span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></button>
+        <p class="partner-form__notice">Votre demande sera traitée par l’équipe en charge des partenariats.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script>
+  <script>(() => { const items = document.querySelectorAll("[data-partner-reveal]"); if (!items.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; window.gsap.set(items, { autoAlpha: 0, y: 28 }); const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (!entry.isIntersecting) return; window.gsap.to(entry.target, { autoAlpha: 1, y: 0, duration: .85, ease: "power2.out" }); observer.unobserve(entry.target); }), { threshold: .12 }); items.forEach((item) => observer.observe(item)); })();</script>
+</body>
+</html>

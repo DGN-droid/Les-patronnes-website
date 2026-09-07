@@ -54,6 +54,7 @@ const translations = {
     "nav.patronnes": "Patronnes",
     "nav.press": "Presse",
     "nav.contact": "Contact",
+    "nav.partner": "Devenir partenaire",
     "menu.open": "Ouvrir le menu",
     "menu.close": "Fermer le menu",
     search: "Rechercher",
@@ -95,11 +96,12 @@ const translations = {
     "theme.system": "Système",
     "theme.light": "Clair",
     "theme.dark": "Sombre",
-    "title.home": "Accueil | Cheffe étoilée Michelin",
+    "title.home": "Site Officiel | Association Les Patronnes",
     "title.about": "À propos | Cheffe étoilée Michelin",
     "title.patronnes": "Les Patronnes | Cheffe étoilée Michelin",
     "title.press": "Presse et médias | Cheffe étoilée Michelin",
-    "title.contact": "Contact | Cheffe étoilée Michelin"
+    "title.contact": "Contact | Cheffe étoilée Michelin",
+    "title.partner": "Devenir partenaire | Les Patronnes"
     ,"title.actualites": "Actualités | Les Patronnes"
     ,"title.events": "Événements | Les Patronnes"
     ,"title.event-detail": "Événement | Les Patronnes"
@@ -117,6 +119,7 @@ const translations = {
     "nav.patronnes": "Patronnes",
     "nav.press": "Press",
     "nav.contact": "Contact",
+    "nav.partner": "Become a partner",
     "menu.open": "Open menu",
     "menu.close": "Close menu",
     search: "Search",
@@ -158,11 +161,12 @@ const translations = {
     "theme.system": "System",
     "theme.light": "Light",
     "theme.dark": "Dark",
-    "title.home": "Home | Michelin-starred chef",
+    "title.home": "Official Site | Les Patronnes Association",
     "title.about": "About | Michelin-starred chef",
     "title.patronnes": "Les Patronnes | Michelin-starred chef",
     "title.press": "Press and media | Michelin-starred chef",
-    "title.contact": "Contact | Michelin-starred chef"
+    "title.contact": "Contact | Michelin-starred chef",
+    "title.partner": "Become a partner | Les Patronnes"
     ,"title.actualites": "News | Les Patronnes"
     ,"title.events": "Events | Les Patronnes"
     ,"title.event-detail": "Event | Les Patronnes"
@@ -192,6 +196,19 @@ document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
   shopLink.dataset.i18n = "nav.shop";
   shopLink.textContent = "Boutique";
   linksContainer.appendChild(shopLink);
+});
+
+// L'appel au partenariat reste visible à côté du contact, sur chaque page.
+document.querySelectorAll(".site-nav__right").forEach((rightSide) => {
+  const contactLink = rightSide.querySelector(".site-nav__contact");
+  if (!contactLink || rightSide.querySelector(".site-nav__partner")) return;
+
+  const partnerLink = document.createElement("a");
+  partnerLink.className = "site-nav__partner";
+  partnerLink.href = contactLink.getAttribute("href").replace("contact.html", "devenir-partenaire.html");
+  partnerLink.dataset.i18n = "nav.partner";
+  partnerLink.textContent = "Devenir partenaire";
+  rightSide.insertBefore(partnerLink, contactLink);
 });
 
 const readPreference = (key, fallback) => {
@@ -330,6 +347,28 @@ const englishCopy = {
     [".shop-product__delivery", "Collection in Cotonou and delivery coming soon. Proceeds support the reach of Les Patronnes."],
     [".shop-note p", "The collection will grow gradually. For this first chapter: a few carefully considered pieces and one shared desire to help Les Patronnes shine."]
   ],
+  partner: [
+    [".partner-hero .partner-eyebrow", "Partnerships & patronage"],
+    ["#partner-title", "Growing<br>Les Patronnes", "html"],
+    [".partner-hero > p:last-child", "Becoming a partner means placing your commitment within a cultural, social and heritage project that makes visible the women who keep Beninese markets alive."],
+    [".partner-introduction .partner-eyebrow", "A living commitment"],
+    [".partner-introduction h2", "Supporting<br>what matters", "html"],
+    [".partner-introduction > div:last-child p:nth-child(1)", "Les Patronnes brings together market women, creators, cooks, artists and institutions around one shared gesture: recognising the know-how that shapes everyday life and giving it the space it deserves."],
+    [".partner-introduction > div:last-child p:nth-child(2)", "Your support helps these stories travel, produces images, creates public gatherings and makes the market a place of recognition, transmission and pride."],
+    [".partner-contributions .partner-eyebrow", "Ways to support"],
+    ["#contributions-title", "Building<br>together", "html"],
+    [".partner-contributions article:nth-child(1) h3", "Patronage"],
+    [".partner-contributions article:nth-child(1) p", "Supporting creation, documentation and the lasting future of a project that carries a collective memory."],
+    [".partner-contributions article:nth-child(2) h3", "Partnership"],
+    [".partner-contributions article:nth-child(2) p", "Connecting your organisation with gatherings, conversations and formats imagined in Cotonou."],
+    [".partner-contributions article:nth-child(3) h3", "Know-how"],
+    [".partner-contributions article:nth-child(3) p", "Offering expertise, a place, resources or energy in service of the collective."],
+    [".partner-trust .partner-eyebrow", "They already support the project"],
+    [".partner-cta .partner-eyebrow", "Let's start a conversation"],
+    [".partner-cta h2", "Your commitment<br>can become a story.", "html"],
+    [".partner-cta > p:last-of-type", "Let us discuss your objectives and imagine the right partnership to move Les Patronnes forward."],
+    [".partner-cta > a", "Become a partner <span class=\"contact-arrow contact-arrow--right\" aria-hidden=\"true\"></span>", "html"]
+  ],
   contact: [
     [".contact-hero .contact-eyebrow", "Partnerships, patronage & contact"],
     ["#contact-title", "Let's build<br>what comes next", "html"],
@@ -350,6 +389,8 @@ const englishCopy = {
     [".contact-form > label:nth-of-type(2)", "Your message", "leading"],
     [".contact-form option[value=\"\"]", "Select a subject"],
     [".contact-form option[value=\"partnership\"]", "Partnership or patronage"],
+    [".contact-form option[value=\"donation\"]", "Donation or project support"],
+    [".contact-form option[value=\"event\"]", "Propose an event or workshop"],
     [".contact-form option[value=\"press\"]", "Media or press enquiry"],
     [".contact-form option[value=\"market\"]", "Project participation"],
     [".contact-form option[value=\"other\"]", "Other enquiry"],
@@ -577,6 +618,14 @@ document.querySelectorAll(".site-nav").forEach((nav) => {
     }
     menuLinks.appendChild(mobileContactLink);
   }
+  const partnerLink = nav.querySelector(".site-nav__partner");
+  if (partnerLink) {
+    const mobilePartnerLink = partnerLink.cloneNode(true);
+    if (mobilePartnerLink.dataset.i18n) {
+      mobilePartnerLink.textContent = translate(mobilePartnerLink.dataset.i18n);
+    }
+    menuLinks.appendChild(mobilePartnerLink);
+  }
   menu.appendChild(menuLinks);
   nav.closest(".site-header")?.appendChild(menu);
 
@@ -737,3 +786,184 @@ if (heroCarousel) {
     heroCarousel.resumeAuto(500);
   });
 }
+
+// Invitations éditoriales : une fois par visite de page, après un temps d'inactivité.
+(() => {
+  const idleDelay = 20000;
+  const excludedPages = ["contact", "partner"];
+  if (excludedPages.includes(document.body.dataset.page)) return;
+
+  const isEnglish = document.documentElement.lang === "en";
+  const pagePrefix = window.location.pathname.includes("/pages/") ? "" : "pages/";
+  const variants = {
+    events: {
+      fr: ["Faire vivre les prochains rendez-vous", "Chaque Stop donne aux femmes de marché un espace pour être vues, entendues et célébrées. Aidez-nous à imaginer les prochains rendez-vous."],
+      en: ["Bring the next gatherings to life", "Each Stop gives market women a space to be seen, heard and celebrated. Help us imagine the next gatherings."]
+    },
+    memory: {
+      fr: ["Préserver une mémoire vivante", "Les images, les conversations et les gestes partagés constituent une archive vivante. Participez à la faire durer."],
+      en: ["Preserve a living memory", "Images, conversations and shared gestures form a living archive. Help it endure."]
+    },
+    reach: {
+      fr: ["Porter Les Patronnes plus loin", "Chaque relais, chaque soutien et chaque collaboration donne davantage de portée aux femmes qui font vivre les marchés."],
+      en: ["Carry Les Patronnes further", "Every introduction, contribution and collaboration gives greater reach to the women who bring markets to life."]
+    }
+  };
+  const variantName = document.body.dataset.page === "events"
+    ? "events"
+    : ["about", "event-detail"].includes(document.body.dataset.page)
+      ? "memory"
+      : ["shop", "press"].includes(document.body.dataset.page)
+        ? "reach"
+        : null;
+  if (!variantName) return;
+
+  const [title, text] = variants[variantName][isEnglish ? "en" : "fr"];
+  const copy = isEnglish ? {
+    eyebrow: "Les Patronnes grows with you", title, text,
+    donate: "Make a donation", partner: "Become a partner", event: "Propose an event or workshop", close: "Close"
+  } : {
+    eyebrow: "Les Patronnes grandit avec vous", title, text,
+    donate: "Faire un don", partner: "Devenir partenaire", event: "Proposer un événement ou un atelier", close: "Fermer"
+  };
+
+  const dialog = document.createElement("div");
+  dialog.className = "cta-dialog";
+  dialog.hidden = true;
+  dialog.innerHTML = `
+    <div class="cta-dialog__backdrop" data-cta-close></div>
+    <section class="cta-dialog__panel" role="dialog" aria-modal="true" aria-labelledby="cta-dialog-title">
+      <button class="cta-dialog__close" type="button" aria-label="${copy.close}" data-cta-close><span></span><span></span></button>
+      <p>${copy.eyebrow}</p>
+      <h2 id="cta-dialog-title">${copy.title}</h2>
+      <p class="cta-dialog__text">${copy.text}</p>
+      <div class="cta-dialog__actions">
+        <a href="${pagePrefix}contact.html?subject=donation">${copy.donate}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}devenir-partenaire.html#partner-form">${copy.partner}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}contact.html?subject=event">${copy.event}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+      </div>
+      <button class="cta-dialog__dismiss" type="button" data-cta-close>${copy.close}</button>
+    </section>`;
+  document.body.appendChild(dialog);
+
+  const close = () => {
+    dialog.classList.remove("is-open");
+    window.setTimeout(() => { dialog.hidden = true; }, 220);
+  };
+  const open = () => {
+    if (dialog.dataset.wasShown) return;
+    if (document.querySelector(".cookie-consent:not([hidden])")) {
+      window.addEventListener("site:cookieconsent", () => window.setTimeout(open, 2500), { once: true });
+      return;
+    }
+    dialog.dataset.wasShown = "true";
+    dialog.hidden = false;
+    window.requestAnimationFrame(() => dialog.classList.add("is-open"));
+  };
+
+  dialog.addEventListener("click", (event) => {
+    if (!event.target.closest("[data-cta-close]")) return;
+    event.preventDefault();
+    event.stopPropagation();
+    close();
+  });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !dialog.hidden) close(); });
+
+  let idleTimer = window.setTimeout(open, idleDelay);
+  const resetIdleTimer = () => {
+    if (dialog.dataset.wasShown) return;
+    window.clearTimeout(idleTimer);
+    idleTimer = window.setTimeout(open, idleDelay);
+  };
+  ["pointerdown", "keydown", "scroll", "touchstart"].forEach((eventName) => {
+    window.addEventListener(eventName, resetIdleTimer, { passive: eventName === "scroll" || eventName === "touchstart" });
+  });
+})();
+
+// Pré-sélectionne la demande choisie depuis l'invitation à agir.
+(() => {
+  if (document.body.dataset.page !== "contact") return;
+  const subject = new URLSearchParams(window.location.search).get("subject");
+  const select = document.querySelector('.contact-form select[name="subject"]');
+  if (subject && select?.querySelector(`option[value="${subject}"]`)) select.value = subject;
+})();
+
+// Consentement aux cookies : aucun outil de mesure n'est activé sans accord.
+(() => {
+  const storageKey = "les-patronnes-cookie-consent";
+  const isEnglish = document.documentElement.lang === "en";
+  const copy = isEnglish ? {
+    eyebrow: "Your privacy",
+    title: "Cookies, with care.",
+    text: "We use essential cookies to keep the site working. With your agreement, anonymous audience measurement may help us improve the experience.",
+    accept: "Accept all", reject: "Reject", customise: "Customise", save: "Save my choices", settings: "Cookies",
+    essential: "Essential cookies", essentialText: "Always active — needed for the site to work.",
+    audience: "Audience measurement", audienceText: "Help us understand anonymous browsing patterns.", close: "Close"
+  } : {
+    eyebrow: "Votre confidentialité",
+    title: "Des cookies, avec attention.",
+    text: "Nous utilisons des cookies essentiels au bon fonctionnement du site. Avec votre accord, une mesure d’audience anonyme pourra nous aider à améliorer l’expérience.",
+    accept: "Tout accepter", reject: "Refuser", customise: "Personnaliser", save: "Enregistrer mes choix", settings: "Cookies",
+    essential: "Cookies essentiels", essentialText: "Toujours actifs — nécessaires au fonctionnement du site.",
+    audience: "Mesure d’audience", audienceText: "Nous aide à comprendre la navigation de façon anonyme.", close: "Fermer"
+  };
+  const savedConsent = () => {
+    try { return JSON.parse(localStorage.getItem(storageKey) || "null"); } catch { return null; }
+  };
+  const saveConsent = (audience) => {
+    localStorage.setItem(storageKey, JSON.stringify({ essential: true, audience, savedAt: Date.now() }));
+  };
+
+  const dialog = document.createElement("section");
+  dialog.className = "cookie-consent";
+  dialog.hidden = true;
+  dialog.setAttribute("role", "dialog");
+  dialog.setAttribute("aria-modal", "true");
+  dialog.setAttribute("aria-labelledby", "cookie-consent-title");
+  dialog.innerHTML = `
+    <button class="cookie-consent__close" type="button" aria-label="${copy.close}" data-cookie-action="reject"><span></span><span></span></button>
+    <div class="cookie-consent__main">
+      <p>${copy.eyebrow}</p><h2 id="cookie-consent-title">${copy.title}</h2><p>${copy.text}</p>
+      <div class="cookie-consent__actions">
+        <button type="button" data-cookie-action="reject">${copy.reject}</button>
+        <button type="button" data-cookie-action="customise">${copy.customise}</button>
+        <button class="is-primary" type="button" data-cookie-action="accept">${copy.accept}</button>
+      </div>
+    </div>
+    <div class="cookie-consent__preferences" hidden>
+      <div><strong>${copy.essential}</strong><span>${copy.essentialText}</span><b>✓</b></div>
+      <label><span><strong>${copy.audience}</strong><small>${copy.audienceText}</small></span><input type="checkbox" data-cookie-audience><i aria-hidden="true"></i></label>
+      <div class="cookie-consent__preferences-actions"><button type="button" data-cookie-action="back">${copy.close}</button><button class="is-primary" type="button" data-cookie-action="save">${copy.save}</button></div>
+    </div>`;
+  document.body.appendChild(dialog);
+
+  const main = dialog.querySelector(".cookie-consent__main");
+  const preferences = dialog.querySelector(".cookie-consent__preferences");
+  const audience = dialog.querySelector("[data-cookie-audience]");
+  const open = (preferencesOpen = false) => {
+    const stored = savedConsent();
+    audience.checked = Boolean(stored?.audience);
+    main.hidden = preferencesOpen;
+    preferences.hidden = !preferencesOpen;
+    dialog.hidden = false;
+    window.requestAnimationFrame(() => dialog.classList.add("is-open"));
+  };
+  const close = () => {
+    dialog.classList.remove("is-open");
+    window.setTimeout(() => { dialog.hidden = true; }, 180);
+  };
+  dialog.addEventListener("click", (event) => {
+    const action = event.target.closest("[data-cookie-action]")?.dataset.cookieAction;
+    if (!action) return;
+    if (action === "customise") { open(true); return; }
+    if (action === "back") { open(false); return; }
+    if (action === "accept") saveConsent(true);
+    if (action === "reject") saveConsent(false);
+    if (action === "save") saveConsent(audience.checked);
+    if (["accept", "reject", "save"].includes(action)) {
+      close();
+      window.dispatchEvent(new Event("site:cookieconsent"));
+    }
+  });
+  if (!savedConsent()) open();
+})();
