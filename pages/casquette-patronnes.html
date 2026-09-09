@@ -27,14 +27,22 @@
     <article class="shop-product" aria-labelledby="cap-title">
       <div class="shop-product__visual" aria-label="Collection de casquettes Les Patronnes">
         <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
-        <div class="shop-cap-preview"><img src="../assets/images/Casquette.png" alt="Six coloris de casquettes Les Patronnes"></div>
-        <p class="shop-product__caption">Six coloris</p>
+        <div class="shop-cap-preview"><img src="../assets/images/casquette-belge.png" alt="Casquette Les Patronnes, coloris beige"></div>
+        <p class="shop-product__caption">Quatre coloris</p>
       </div>
       <div class="shop-product__content">
         <p class="shop-eyebrow">Premier drop</p>
         <h1 id="cap-title">La casquette<br>Les Patronnes</h1>
         <p>Une casquette pensée comme un signe de ralliement. Une pièce à porter au marché, dans la ville et partout où Les Patronnes continue de circuler.</p>
-        <div class="shop-product__option"><p>Choisir un coloris <span>Noir, beige, bleu, jaune, bordeaux ou kaki</span></p></div>
+        <div class="shop-product__option" role="group" aria-labelledby="cap-colour-label">
+          <p id="cap-colour-label">Choisir un coloris <span data-selected-cap-colour>Beige</span></p>
+          <div class="shop-product__swatches">
+            <button class="shop-swatch is-selected" type="button" data-colour="beige" data-colour-name="Beige" data-colour-name-en="Beige" data-image="../assets/images/casquette-belge.png" aria-label="Choisir Beige" aria-pressed="true"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="blue" data-colour-name="Bleu" data-colour-name-en="Blue" data-image="../assets/images/casquette-bleu.png" aria-label="Choisir Bleu" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune" data-colour-name-en="Yellow" data-image="../assets/images/casquette-jaune.png" aria-label="Choisir Jaune" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge" data-colour-name-en="Red" data-image="../assets/images/casquette-rouge.png" aria-label="Choisir Rouge" aria-pressed="false"><span></span></button>
+          </div>
+        </div>
         <dl class="shop-product__details"><div><dt>Coupe</dt><dd>Casquette à six panneaux</dd></div><div><dt>Matière</dt><dd>Coton résistant</dd></div><div><dt>Finition</dt><dd>Broderie et impression frontale</dd></div><div><dt>Taille</dt><dd>Unique, réglable</dd></div></dl>
         <div class="shop-product__purchase"><div><span>Disponibilité</span><strong>Précommande bientôt</strong></div><a class="shop-product__cta" href="contact.html">Être informé·e du lancement <span aria-hidden="true"></span></a></div>
         <p class="shop-product__delivery">Retrait à Cotonou et livraison à venir. Les bénéfices participent au rayonnement du projet Les Patronnes.</p>

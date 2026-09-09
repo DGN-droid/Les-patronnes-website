@@ -27,14 +27,22 @@
     <article class="shop-product" aria-labelledby="band-title">
       <div class="shop-product__visual" aria-label="Collection de bandeaux Les Patronnes">
         <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
-        <div class="shop-cap-preview"><img src="../assets/images/Bandeaux.png" alt="Quatre coloris de bandeaux Les Patronnes"></div>
-        <p class="shop-product__caption">Quatre coloris</p>
+        <div class="shop-cap-preview"><img src="../assets/images/bandeau-vert.png" alt="Bandeau Les Patronnes, coloris vert"></div>
+        <p class="shop-product__caption">Vert</p>
       </div>
       <div class="shop-product__content">
         <p class="shop-eyebrow">Premier drop</p>
         <h1 id="band-title">Le bandeau<br>Les Patronnes</h1>
         <p>Un accessoire souple, imaginé pour porter les couleurs du collectif au quotidien. Chaque bandeau rassemble les visages et l’énergie qui font vivre Les Patronnes.</p>
-        <div class="shop-product__option"><p>Choisir un coloris <span>Blanc, jaune, bleu ou brun</span></p></div>
+        <div class="shop-product__option" role="group" aria-labelledby="band-colour-label">
+          <p id="band-colour-label">Choisir un coloris <span data-selected-band-colour>Vert</span></p>
+          <div class="shop-product__swatches">
+            <button class="shop-swatch is-selected" type="button" data-colour="green" data-colour-name="Vert" data-colour-name-en="Green" data-image="../assets/images/bandeau-vert.png" aria-label="Choisir Vert" aria-pressed="true"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="blue" data-colour-name="Bleu" data-colour-name-en="Blue" data-image="../assets/images/bandeau-bleu.png" aria-label="Choisir Bleu" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune" data-colour-name-en="Yellow" data-image="../assets/images/bandeau-jaune.png" aria-label="Choisir Jaune" aria-pressed="false"><span></span></button>
+            <button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge" data-colour-name-en="Red" data-image="../assets/images/bandeau-rouge.png" aria-label="Choisir Rouge" aria-pressed="false"><span></span></button>
+          </div>
+        </div>
         <dl class="shop-product__details"><div><dt>Coupe</dt><dd>Bandeau souple et confortable</dd></div><div><dt>Matière</dt><dd>Jersey doux</dd></div><div><dt>Finition</dt><dd>Impression frontale</dd></div><div><dt>Taille</dt><dd>Unique, extensible</dd></div></dl>
         <div class="shop-product__purchase"><div><span>Disponibilité</span><strong>Précommande bientôt</strong></div><a class="shop-product__cta" href="contact.html">Être informé·e du lancement <span aria-hidden="true"></span></a></div>
         <p class="shop-product__delivery">Retrait à Cotonou et livraison à venir. Les bénéfices participent au rayonnement du projet Les Patronnes.</p>

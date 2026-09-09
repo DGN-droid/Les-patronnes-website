@@ -64,18 +64,18 @@
       <a class="shop-shirt-cover__name" id="pull-cover-title" href="pull-patronnes.html">Le Pull Patronnes <span>Édition 01</span></a>
     </section>
 
-    <section class="shop-shirt-cover shop-cap-cover" aria-labelledby="cap-cover-title">
+    <section class="shop-shirt-cover shop-cap-cover" data-product-cover="cap" aria-labelledby="cap-cover-title">
       <div class="shop-shirt-cover__card">
-        <a class="shop-shirt-cover__link" href="casquette-patronnes.html" aria-label="Découvrir la fiche des casquettes Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/Casquette.png" alt="Collection de casquettes Les Patronnes" loading="eager" decoding="async"></a>
-        <span class="shop-shirt-cover__index" aria-hidden="true">06 coloris</span>
+        <a class="shop-shirt-cover__link" href="casquette-patronnes.html" aria-label="Découvrir la fiche des casquettes Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/casquette-belge.png" alt="Casquette Les Patronnes, coloris beige" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/casquette-belge.png|../assets/images/casquette-bleu.png|../assets/images/casquette-jaune.png|../assets/images/casquette-rouge.png" data-shirt-cover-labels="beige|bleu|jaune|rouge"><span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 04</span></a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button><button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
       </div>
       <a class="shop-shirt-cover__name" id="cap-cover-title" href="casquette-patronnes.html">La Casquette Patronnes <span>Édition 01</span></a>
     </section>
 
-    <section class="shop-shirt-cover shop-band-cover" aria-labelledby="band-cover-title">
+    <section class="shop-shirt-cover shop-band-cover" data-product-cover="band" aria-labelledby="band-cover-title">
       <div class="shop-shirt-cover__card">
-        <a class="shop-shirt-cover__link" href="bandeau-patronnes.html" aria-label="Découvrir la fiche des bandeaux Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/Bandeaux.png" alt="Collection de bandeaux Les Patronnes" loading="eager" decoding="async"></a>
-        <span class="shop-shirt-cover__index" aria-hidden="true">04 coloris</span>
+        <a class="shop-shirt-cover__link" href="bandeau-patronnes.html" aria-label="Découvrir la fiche des bandeaux Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/bandeau-vert.png" alt="Bandeau Les Patronnes, coloris vert" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/bandeau-vert.png|../assets/images/bandeau-bleu.png|../assets/images/bandeau-jaune.png|../assets/images/bandeau-rouge.png" data-shirt-cover-labels="vert|bleu|jaune|rouge"><span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 04</span></a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button><button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
       </div>
       <a class="shop-shirt-cover__name" id="band-cover-title" href="bandeau-patronnes.html">Le Bandeau Patronnes <span>Édition 01</span></a>
     </section>
@@ -211,7 +211,7 @@
         const coverLabels = coverImage.dataset.shirtCoverLabels.split('|');
         let activeCoverImage = 0;
         const coverIndex = cover.querySelector('[data-shirt-cover-index]');
-        const productName = { pull: 'Pull', skirt: 'Jupe' }[cover.dataset.productCover] || 'T-shirt';
+        const productName = { pull: 'Pull', skirt: 'Jupe', cap: 'Casquette', band: 'Bandeau' }[cover.dataset.productCover] || 'T-shirt';
         const showCoverImage = (nextIndex) => {
           activeCoverImage = (nextIndex + coverSources.length) % coverSources.length;
           coverImage.classList.remove('is-active');

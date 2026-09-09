@@ -203,14 +203,21 @@ document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
 // L'appel au partenariat reste visible à côté du contact, sur chaque page.
 document.querySelectorAll(".site-nav__right").forEach((rightSide) => {
   const contactLink = rightSide.querySelector(".site-nav__contact");
-  if (!contactLink || rightSide.querySelector(".site-nav__partner")) return;
+  contactLink?.remove();
+  if (rightSide.querySelector(".site-nav__partner")) return;
 
   const partnerLink = document.createElement("a");
   partnerLink.className = "site-nav__partner";
-  partnerLink.href = contactLink.getAttribute("href").replace("contact.html", "devenir-partenaire.html");
+  partnerLink.href = document.querySelector(".site-nav__logo")?.getAttribute("href")?.startsWith("../")
+    ? "devenir-partenaire.html"
+    : "pages/devenir-partenaire.html";
   partnerLink.dataset.i18n = "nav.partner";
   partnerLink.textContent = "Contribuer";
-  rightSide.insertBefore(partnerLink, contactLink);
+  rightSide.appendChild(partnerLink);
+});
+
+document.querySelectorAll('a[href^="contact.html"]').forEach((link) => {
+  link.href = "mailto:lespatronnes229@gmail.com";
 });
 
 const readPreference = (key, fallback) => {
@@ -317,7 +324,7 @@ const englishCopy = {
     [".event-row--pk3 .event-row__name", "Les Patronnes<br>Stop 2", "html"],
     [".event-row--pk3 .event-row__place", "PK3 Market<br><b>11 July 2026</b>", "html"],
     [".event-row--akassato .event-row__name", "Les Patronnes<br>Stop 3", "html"],
-    [".event-row--akassato .event-row__place", "Akassato Market<br><b>Date to be announced</b>", "html"],
+    [".event-row--akassato .event-row__place", "Akassato Market<br><b>31 December 2025</b>", "html"],
     [".event-row--akassato .event-row__cta", "Become a volunteer <span aria-hidden=\"true\">→</span>", "html"]
   ],
   actualites: [
@@ -365,7 +372,7 @@ const englishCopy = {
     [".partner-contributions article:nth-child(1) h3", "Patronage"],
     [".partner-contributions article:nth-child(1) p", "Supporting creation, documentation and the lasting future of a project that carries a collective memory."],
     [".partner-contributions article:nth-child(2) h3", "Partnership"],
-    [".partner-contributions article:nth-child(2) p", "Connecting your organisation with gatherings, conversations and formats imagined in Cotonou."],
+    [".partner-contributions article:nth-child(2) p", "Connecting your organisation with gatherings, conversations and formats imagined by the association."],
     [".partner-contributions article:nth-child(3) h3", "Know-how"],
     [".partner-contributions article:nth-child(3) p", "Offering expertise, a place, resources or energy in service of the collective."],
     [".partner-trust .partner-eyebrow", "They already support the project"],
@@ -848,7 +855,7 @@ if (heroCarousel) {
       <div class="cta-dialog__actions">
         <a href="${pagePrefix}don.html">${copy.donate}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
         <a href="${pagePrefix}devenir-partenaire.html#partenariats-mecenat">${copy.partner}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
-        <a href="${pagePrefix}devenir-partenaire.html#partner-form">${copy.event}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}devenir-partenaire.html#partner-form-start">${copy.event}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
       </div>
       <button class="cta-dialog__dismiss" type="button" data-cta-close>${copy.close}</button>
     </section>`;
@@ -897,6 +904,53 @@ if (heroCarousel) {
   };
   ["pointerdown", "keydown", "scroll", "touchstart"].forEach((eventName) => {
     window.addEventListener(eventName, resetIdleTimer, { passive: eventName === "scroll" || eventName === "touchstart" });
+  });
+})();
+
+// Boutique : un seul comportement fiable pour les sélecteurs de coloris.
+// Il couvre le tee et toutes les fiches produit qui utilisent les mêmes pastilles.
+(() => {
+  document.querySelectorAll(".shop-product").forEach((product) => {
+    const swatches = Array.from(product.querySelectorAll(".shop-swatch[data-image]"));
+    const image = product.querySelector(".shop-product__visual img");
+    const colourLabel = product.querySelector('[data-selected-colour], [data-selected-pull-colour], [data-selected-skirt-colour], [data-selected-jogging-colour], [data-selected-chemise-colour], [data-selected-polo-colour], [data-selected-cap-colour], [data-selected-band-colour]');
+    const caption = product.querySelector(".shop-product__caption");
+    const stage = product.querySelector(".shop-product__visual");
+
+    if (!swatches.length || !image) return;
+
+    const setColour = (button) => {
+      const source = button.dataset.image;
+      if (!source) return;
+
+      const label = document.documentElement.lang === "en"
+        ? button.dataset.colourNameEn
+        : button.dataset.colourName;
+
+      swatches.forEach((swatch) => {
+        const selected = swatch === button;
+        swatch.classList.toggle("is-selected", selected);
+        swatch.setAttribute("aria-pressed", String(selected));
+      });
+
+      // Précharge la nouvelle image puis remplace explicitement la source affichée.
+      // Cela évite qu'un cache lent laisse l'ancien coloris visible.
+      const nextImage = new Image();
+      nextImage.onload = () => {
+        image.src = source;
+        image.alt = `${product.querySelector("h1, h2")?.textContent.replace(/\s+/g, " ").trim() || "Produit Les Patronnes"}, coloris ${label}`;
+      };
+      nextImage.onerror = () => {
+        image.src = source;
+      };
+      nextImage.src = source;
+
+      if (colourLabel) colourLabel.textContent = label;
+      if (caption) caption.textContent = label;
+      if (stage) stage.setAttribute("aria-label", `Aperçu du produit Les Patronnes, coloris ${label}`);
+    };
+
+    swatches.forEach((button) => button.addEventListener("click", () => setColour(button)));
   });
 })();
 
