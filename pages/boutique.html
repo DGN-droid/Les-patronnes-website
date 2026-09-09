@@ -35,7 +35,7 @@
     </section>
 
     <div class="shop-tabs" role="tablist" aria-label="Catégories boutique">
-      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8.2 4.5 1.6 2h4.4l1.6-2 4.4 3.1-2.3 3.3v8.6H6.1v-8.6L3.8 7.6l4.4-3.1Z"></path><path d="M9.8 6.5 8.4 9.2m5.8-2.7 1.4 2.7"></path></svg></span><span class="shop-tab__label">T-shirt</span></button>
+      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8.2 4.5 1.6 2h4.4l1.6-2 4.4 3.1-2.3 3.3v8.6H6.1v-8.6L3.8 7.6l4.4-3.1Z"></path><path d="M9.8 6.5 8.4 9.2m5.8-2.7 1.4 2.7"></path></svg></span><span class="shop-tab__label">Vêtement</span></button>
       <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="photography"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5h4l1.2-2h5.6l1.2 2h4v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span><span class="shop-tab__label">Photographies</span></button>
     </div>
 
@@ -226,7 +226,6 @@
         coverSources.slice(1).forEach((source) => { const image = new Image(); image.src = source; });
         cover.querySelector('[data-shirt-cover-previous]')?.addEventListener('click', () => showCoverImage(activeCoverImage - 1));
         cover.querySelector('[data-shirt-cover-next]')?.addEventListener('click', nextCoverImage);
-        window.setInterval(nextCoverImage, 2500);
       });
       document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
         document.querySelectorAll('.shop-swatch').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });

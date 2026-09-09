@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faire un don | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body data-page="don">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left">
+        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button>
+        <div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a></div>
+      </div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main class="don-page">
+    <section class="don-hero" aria-labelledby="don-title">
+      <p class="don-eyebrow">Soutenir Les Patronnes</p>
+      <h1 id="don-title">Faire un don</h1>
+      <p>Votre soutien aide à faire vivre les images, les rencontres et les transmissions portées par Les Patronnes.</p>
+    </section>
+
+    <section class="don-content" aria-labelledby="don-form-title">
+      <div class="don-introduction">
+        <p class="don-eyebrow">Un engagement vivant</p>
+        <h2 id="don-form-title">Votre soutien<br>compte</h2>
+        <p>Indiquez vos coordonnées, le montant souhaité et le moyen de paiement que vous préférez. Nous vous répondrons directement sur WhatsApp pour vous accompagner.</p>
+      </div>
+      <form class="don-form" id="don-form">
+        <div class="don-form__row">
+          <label>Prénom<input type="text" name="firstName" autocomplete="given-name" required></label>
+          <label>Nom<input type="text" name="lastName" autocomplete="family-name" required></label>
+        </div>
+        <label>Organisation <span>(facultatif)</span><input type="text" name="organisation" autocomplete="organization"></label>
+        <div class="don-form__row">
+          <label>Montant<input type="number" name="amount" min="1" step="1" placeholder="Ex. 25 000" required></label>
+          <label>Devise<select name="currency" required><option value="FCFA">FCFA</option><option value="EUR">EUR</option></select></label>
+        </div>
+        <label>Numéro de téléphone<input type="tel" name="phone" autocomplete="tel" placeholder="Ex. 97 00 00 00" required></label>
+        <fieldset>
+          <legend>Moyen de paiement</legend>
+          <label class="don-form__choice"><input type="radio" name="payment" value="Moov Money" required><span>Moov Money</span></label>
+          <label class="don-form__choice"><input type="radio" name="payment" value="MTN Mobile Money"><span>MTN Mobile Money</span></label>
+          <label class="don-form__choice"><input type="radio" name="payment" value="Carte bancaire"><span>Carte bancaire</span></label>
+        </fieldset>
+        <button type="submit">Continuer la transaction <span aria-hidden="true">→</span></button>
+        <p class="don-form__notice">Aucun paiement n’est effectué sur cette page. Le moyen choisi sera confirmé avec notre équipe.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="../js/main.js"></script>
+  <script>
+    (() => {
+      const form = document.querySelector("#don-form");
+      if (!form) return;
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const firstName = data.get("firstName");
+        const lastName = data.get("lastName");
+        const organisation = data.get("organisation") || "Non précisée";
+        const amount = data.get("amount");
+        const currency = data.get("currency");
+        const phone = data.get("phone");
+        const payment = data.get("payment");
+        const message = [
+          "Bonjour Les Patronnes,",
+          `Je m'appelle ${firstName} ${lastName}.`,
+          `Je viens faire un don de ${amount} ${currency}.`,
+          `Mon organisation : ${organisation}.`,
+          `Je souhaite utiliser le moyen de paiement suivant : ${payment}.`,
+          `Mon numéro de téléphone est : ${phone}.`
+        ].join("\n");
+        window.location.href = `https://wa.me/22997000000?text=${encodeURIComponent(message)}`;
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -106,6 +106,7 @@ const translations = {
     ,"title.events": "Événements | Les Patronnes"
     ,"title.event-detail": "Événement | Les Patronnes"
     ,"title.shop": "Boutique | Les Patronnes"
+    ,"title.don": "Faire un don | Les Patronnes"
   },
   en: {
     "nav.main": "Main navigation",
@@ -171,6 +172,7 @@ const translations = {
     ,"title.events": "Events | Les Patronnes"
     ,"title.event-detail": "Event | Les Patronnes"
     ,"title.shop": "Shop | Les Patronnes"
+    ,"title.don": "Make a donation | Les Patronnes"
   }
 };
 
@@ -506,14 +508,17 @@ window.applyPageCopy = applyPageCopy;
 const syncPreferenceLinks = () => {
   document.querySelectorAll('a[href*=".html"]').forEach((link) => {
     if (!link.dataset.preferenceHref) {
-      link.dataset.preferenceHref = link.getAttribute("href").split("?")[0];
+      const href = link.getAttribute("href");
+      const [path, hash = ""] = href.split("#");
+      link.dataset.preferenceHref = path.split("?")[0];
+      link.dataset.preferenceHash = hash ? `#${hash}` : "";
     }
 
     const parameters = new URLSearchParams({
       lang: activeLanguage,
       theme: activeTheme
     });
-    link.setAttribute("href", `${link.dataset.preferenceHref}?${parameters}`);
+    link.setAttribute("href", `${link.dataset.preferenceHref}?${parameters}${link.dataset.preferenceHash || ""}`);
   });
 };
 
@@ -841,9 +846,9 @@ if (heroCarousel) {
       <h2 id="cta-dialog-title">${copy.title}</h2>
       <p class="cta-dialog__text">${copy.text}</p>
       <div class="cta-dialog__actions">
-        <a href="${pagePrefix}contact.html?subject=donation">${copy.donate}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
-        <a href="${pagePrefix}devenir-partenaire.html#partner-form">${copy.partner}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
-        <a href="${pagePrefix}contact.html?subject=event">${copy.event}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}don.html">${copy.donate}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}devenir-partenaire.html#partenariats-mecenat">${copy.partner}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}devenir-partenaire.html#partner-form">${copy.event}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
       </div>
       <button class="cta-dialog__dismiss" type="button" data-cta-close>${copy.close}</button>
     </section>`;
@@ -859,18 +864,30 @@ if (heroCarousel) {
       window.addEventListener("site:cookieconsent", () => window.setTimeout(open, 2500), { once: true });
       return;
     }
-    dialog.dataset.wasShown = "true";
     dialog.hidden = false;
     window.requestAnimationFrame(() => dialog.classList.add("is-open"));
   };
+
+  dialog.querySelectorAll(".cta-dialog__actions a").forEach((link) => {
+    link.addEventListener("click", () => {
+      dialog.dataset.wasShown = "true";
+    });
+  });
 
   dialog.addEventListener("click", (event) => {
     if (!event.target.closest("[data-cta-close]")) return;
     event.preventDefault();
     event.stopPropagation();
     close();
+    window.clearTimeout(idleTimer);
+    idleTimer = window.setTimeout(open, idleDelay);
   });
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !dialog.hidden) close(); });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || dialog.hidden) return;
+    close();
+    window.clearTimeout(idleTimer);
+    idleTimer = window.setTimeout(open, idleDelay);
+  });
 
   let idleTimer = window.setTimeout(open, idleDelay);
   const resetIdleTimer = () => {

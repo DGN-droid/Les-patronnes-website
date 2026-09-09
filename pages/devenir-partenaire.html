@@ -23,13 +23,13 @@
   </header>
 
   <main class="partner-page">
-    <section class="partner-hero" data-partner-reveal aria-labelledby="partner-title">
+    <section class="partner-hero" id="partenariats-mecenat" data-partner-reveal aria-labelledby="partner-title">
       <p class="partner-eyebrow">Partenariats & mécénat</p>
       <h1 id="partner-title">Faire grandir<br>Les Patronnes</h1>
       <p>Devenir partenaire, c’est inscrire votre engagement dans un projet culturel, social et patrimonial qui rend visibles les femmes faisant vivre les marchés béninois.</p>
     </section>
 
-    <section class="partner-introduction" data-partner-reveal>
+    <section class="partner-introduction" id="engagement-vivant" data-partner-reveal>
       <div><p class="partner-eyebrow">Un engagement vivant</p><h2>Accompagner<br>ce qui compte</h2></div>
       <div><p>Les Patronnes rassemble des femmes de marché, des créatrices, des cuisinières, des artistes et des institutions autour d’un même geste : reconnaître les savoir-faire qui structurent la vie quotidienne, et leur donner l’espace qu’ils méritent.</p><p>Votre accompagnement permet de faire circuler ces récits, de produire des images, de créer des rendez-vous publics et de faire du marché un lieu de reconnaissance, de transmission et de fierté.</p></div>
     </section>
@@ -74,5 +74,6 @@
   <footer></footer>
   <script src="../js/main.js"></script><script src="../js/animations.js"></script>
   <script>(() => { const items = document.querySelectorAll("[data-partner-reveal]"); if (!items.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; window.gsap.set(items, { autoAlpha: 0, y: 28 }); const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (!entry.isIntersecting) return; window.gsap.to(entry.target, { autoAlpha: 1, y: 0, duration: .85, ease: "power2.out" }); observer.unobserve(entry.target); }), { threshold: .12 }); items.forEach((item) => observer.observe(item)); })();</script>
+  <script>window.addEventListener("load", () => { const targetId = window.location.hash.slice(1); const target = targetId ? document.getElementById(targetId) : null; if (!target) return; window.requestAnimationFrame(() => window.requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth", block: "start" }))); }, { once: true });</script>
 </body>
 </html>
