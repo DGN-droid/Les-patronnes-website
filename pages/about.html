@@ -36,6 +36,11 @@
   </header>
 
   <main class="about-page">
+    <nav class="about-replays" aria-label="Revivre les éditions Les Patronnes">
+      <a href="film-stop-1.html">Revivre Les Patronnes Stop 1 <span aria-hidden="true">→</span></a>
+      <a href="film-stop-2.html">Revivre Les Patronnes Stop 2 <span aria-hidden="true">→</span></a>
+    </nav>
+
     <section class="about-hero about-reveal" aria-labelledby="about-title">
       <div class="about-hero__media">
         <img class="image-fade-in" src="../assets/images/optimized/img61.jpg" alt="Portrait collectif des femmes réunies pour Les Patronnes" width="4862" height="7289" loading="eager" decoding="async">
@@ -109,19 +114,53 @@
           <img src="../assets/images/img40.jpg" alt="Georgiana Viou" width="1200" height="1800" loading="lazy" decoding="async">
           <h3 class="about-portraits__badge">GEORGIANA VIOU</h3>
           <p class="about-portraits__description">Cheffe étoilée, écrivaine, conférencière & fondatrice de l'initiative « Les Patronnes »</p>
+          <a class="about-portraits__founder-link" href="fondatrice.html">En savoir plus sur la fondatrice <span aria-hidden="true">→</span></a>
         </article>
         <article class="about-portraits__card">
-          <img src="../assets/images/img39.jpg" alt="Brigitte Houssou" width="1200" height="1800" loading="lazy" decoding="async">
+          <button class="about-portraits__flip" type="button" aria-label="Lire le témoignage de Brigitte Houssou" aria-pressed="false">
+            <span class="about-portraits__flip-inner">
+              <span class="about-portraits__flip-face about-portraits__flip-face--front">
+                <img src="../assets/images/img39.jpg" alt="Brigitte Houssou" width="1200" height="1800" loading="lazy" decoding="async">
+                <span class="about-portraits__flip-hint">Lire son témoignage <span aria-hidden="true">→</span></span>
+              </span>
+              <span class="about-portraits__flip-face about-portraits__flip-face--back">
+                <span class="about-portraits__quote">« Je participe aux Patronnes avec beaucoup de fierté, parce que je crois en la force des femmes qui entreprennent et transforment leur environnement. Ce projet nous rappelle que bien avant nous, d’autres femmes ont ouvert la voie. Aujourd’hui, nous sommes simplement réunis pour célébrer leurs histoires, leur héritage et l’inspiration qu’elles continuent de transmettre. »</span>
+                <span class="about-portraits__quote-author">Brigitte Houssou</span>
+              </span>
+            </span>
+          </button>
           <h3 class="about-portraits__badge">BRIGITTE HOUSSOU</h3>
           <p class="about-portraits__description">Entrepreneuse, conférencière & bâtisseuse de passerelles entre la France et le Bénin.</p>
         </article>
         <article class="about-portraits__card">
-          <img src="../assets/images/img37.jpg" alt="Camille Aumont Carnel" width="1200" height="1800" loading="lazy" decoding="async">
+          <button class="about-portraits__flip" type="button" aria-label="Lire le témoignage de Camille Aumont Carnel" aria-pressed="false">
+            <span class="about-portraits__flip-inner">
+              <span class="about-portraits__flip-face about-portraits__flip-face--front">
+                <img src="../assets/images/img37.jpg" alt="Camille Aumont Carnel" width="1200" height="1800" loading="lazy" decoding="async">
+                <span class="about-portraits__flip-hint">Lire son témoignage <span aria-hidden="true">→</span></span>
+              </span>
+              <span class="about-portraits__flip-face about-portraits__flip-face--back">
+                <span class="about-portraits__quote">« Participer à cette deuxième édition des Patronnes est pour moi un honneur et une nécessité. Le Bénin m’a saisie aux tripes dès mon premier passage en janvier dernier, lors du dîner Kondokpo avec la cheffe Georgiana Viou. Cette journée au cœur du marché de Missebo prolonge la mission et le combat qui sont les miens depuis plus de 10 ans : donner de la force et de la lumière aux femmes du monde entier, et tout particulièrement à celles du continent africain, en commençant par celles qu’on ne regarde et n’entend jamais. »</span>
+                <span class="about-portraits__quote-author">Camille Aumont Carnel</span>
+              </span>
+            </span>
+          </button>
           <h3 class="about-portraits__badge">CAMILLE AUMONT CARNEL</h3>
           <p class="about-portraits__description">Leadeuse d'opinion, essayiste best-sellers, Tedx speaker & entrepreneuse culturelle</p>
         </article>
         <article class="about-portraits__card">
-          <img src="../assets/images/img38.jpg" alt="Karelle Vignon Vuillerme" width="1200" height="1800" loading="lazy" decoding="async">
+          <button class="about-portraits__flip" type="button" aria-label="Lire le témoignage de Karelle Vignon Vuillerme" aria-pressed="false">
+            <span class="about-portraits__flip-inner">
+              <span class="about-portraits__flip-face about-portraits__flip-face--front">
+                <img src="../assets/images/img38.jpg" alt="Karelle Vignon Vuillerme" width="1200" height="1800" loading="lazy" decoding="async">
+                <span class="about-portraits__flip-hint">Lire son témoignage <span aria-hidden="true">→</span></span>
+              </span>
+              <span class="about-portraits__flip-face about-portraits__flip-face--back">
+                <span class="about-portraits__quote">« Pour Karelle et moi, participer aux Patronnes, c’est avant tout une évidence. Parce que derrière les marchés, il y a des femmes, des parcours, des familles, des histoires de courage et de transmission qui nous touchent profondément. Karelle est béninoise, la cuisine et le partage font partie de notre quotidien, de notre famille et de ce que nous racontons depuis des années. Être là pour mettre en lumière ces femmes qui travaillent, nourrissent, habillent et font avancer leur communauté, c’est une manière simple mais forte de leur dire qu’on les voit, qu’on les respecte et que leurs histoires méritent d’être racontées. »</span>
+                <span class="about-portraits__quote-author">Karelle Vignon Vuillerme</span>
+              </span>
+            </span>
+          </button>
           <h3 class="about-portraits__badge">KARELLE VIGNON VUILLERME</h3>
           <p class="about-portraits__description">Créatrice de contenus & entrepreneuse</p>
         </article>
@@ -146,7 +185,15 @@
     (() => {
       const sections = document.querySelectorAll(".about-reveal");
       const portraitCards = document.querySelectorAll(".about-portraits__card");
+      const portraitFlips = document.querySelectorAll(".about-portraits__flip");
       if (!sections.length) return;
+
+      portraitFlips.forEach((flip) => {
+        flip.addEventListener("click", () => {
+          const isFlipped = flip.classList.toggle("is-flipped");
+          flip.setAttribute("aria-pressed", String(isFlipped));
+        });
+      });
 
       const revealDirectly = (elements) => {
         elements.forEach((element) => {

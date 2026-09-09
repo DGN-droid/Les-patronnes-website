@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Bandeau Patronnes | Association Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body data-page="shop">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left">
+        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button>
+        <div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a></div>
+      </div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main class="shop-page shop-product-page">
+    <a class="shop-product-page__back" href="boutique.html">← Retour à la boutique</a>
+    <article class="shop-product" aria-labelledby="band-title">
+      <div class="shop-product__visual" aria-label="Collection de bandeaux Les Patronnes">
+        <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
+        <div class="shop-cap-preview"><img src="../assets/images/Bandeaux.png" alt="Quatre coloris de bandeaux Les Patronnes"></div>
+        <p class="shop-product__caption">Quatre coloris</p>
+      </div>
+      <div class="shop-product__content">
+        <p class="shop-eyebrow">Premier drop</p>
+        <h1 id="band-title">Le bandeau<br>Les Patronnes</h1>
+        <p>Un accessoire souple, imaginé pour porter les couleurs du collectif au quotidien. Chaque bandeau rassemble les visages et l’énergie qui font vivre Les Patronnes.</p>
+        <div class="shop-product__option"><p>Choisir un coloris <span>Blanc, jaune, bleu ou brun</span></p></div>
+        <dl class="shop-product__details"><div><dt>Coupe</dt><dd>Bandeau souple et confortable</dd></div><div><dt>Matière</dt><dd>Jersey doux</dd></div><div><dt>Finition</dt><dd>Impression frontale</dd></div><div><dt>Taille</dt><dd>Unique, extensible</dd></div></dl>
+        <div class="shop-product__purchase"><div><span>Disponibilité</span><strong>Précommande bientôt</strong></div><a class="shop-product__cta" href="contact.html">Être informé·e du lancement <span aria-hidden="true"></span></a></div>
+        <p class="shop-product__delivery">Retrait à Cotonou et livraison à venir. Les bénéfices participent au rayonnement du projet Les Patronnes.</p>
+      </div>
+    </article>
+  </main>
+  <footer></footer>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script>
+</body>
+</html>

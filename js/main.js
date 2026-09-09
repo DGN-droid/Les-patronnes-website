@@ -54,7 +54,7 @@ const translations = {
     "nav.patronnes": "Patronnes",
     "nav.press": "Presse",
     "nav.contact": "Contact",
-    "nav.partner": "Devenir partenaire",
+    "nav.partner": "Contribuer",
     "menu.open": "Ouvrir le menu",
     "menu.close": "Fermer le menu",
     search: "Rechercher",
@@ -119,7 +119,7 @@ const translations = {
     "nav.patronnes": "Patronnes",
     "nav.press": "Press",
     "nav.contact": "Contact",
-    "nav.partner": "Become a partner",
+    "nav.partner": "Contribute",
     "menu.open": "Open menu",
     "menu.close": "Close menu",
     search: "Search",
@@ -207,7 +207,7 @@ document.querySelectorAll(".site-nav__right").forEach((rightSide) => {
   partnerLink.className = "site-nav__partner";
   partnerLink.href = contactLink.getAttribute("href").replace("contact.html", "devenir-partenaire.html");
   partnerLink.dataset.i18n = "nav.partner";
-  partnerLink.textContent = "Devenir partenaire";
+  partnerLink.textContent = "Contribuer";
   rightSide.insertBefore(partnerLink, contactLink);
 });
 

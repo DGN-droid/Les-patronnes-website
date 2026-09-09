@@ -35,11 +35,98 @@
     </section>
 
     <div class="shop-tabs" role="tablist" aria-label="Catégories boutique">
-      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt">T-shirt</button>
-      <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="photography">Photographies</button>
+      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8.2 4.5 1.6 2h4.4l1.6-2 4.4 3.1-2.3 3.3v8.6H6.1v-8.6L3.8 7.6l4.4-3.1Z"></path><path d="M9.8 6.5 8.4 9.2m5.8-2.7 1.4 2.7"></path></svg></span><span class="shop-tab__label">T-shirt</span></button>
+      <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="photography"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5h4l1.2-2h5.6l1.2 2h4v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span><span class="shop-tab__label">Photographies</span></button>
     </div>
 
-    <article class="shop-product" data-shop-reveal data-shop-panel="shirt" aria-labelledby="shirt-title">
+    <div class="shop-products-showcase" data-shop-panel="shirt">
+    <section class="shop-shirt-cover" data-product-cover aria-labelledby="shirt-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="tee-patronnes.html" aria-label="Découvrir la fiche du t-shirt Les Patronnes">
+          <img class="shop-shirt-cover__image is-active" src="../assets/images/t-shirt-blanc.jpeg" alt="T-shirt Les Patronnes, coloris blanc" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/t-shirt-blanc.jpeg|../assets/images/t-shirt-vert.jpeg|../assets/images/t-shirt-jaune.jpeg|../assets/images/t-shirt-rouge.jpeg" data-shirt-cover-labels="blanc|vert|jaune|rouge">
+          <span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 04</span>
+        </a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
+      </div>
+      <a class="shop-shirt-cover__name" id="shirt-cover-title" href="tee-patronnes.html">Le Tee Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-pull-cover" data-product-cover="pull" aria-labelledby="pull-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="pull-patronnes.html" aria-label="Découvrir la fiche du pull Les Patronnes">
+          <img class="shop-shirt-cover__image is-active" src="../assets/images/pull-noir.png" alt="Pull Les Patronnes, coloris noir" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/pull-noir.png|../assets/images/pull-bleu.png|../assets/images/pull-jaune.png|../assets/images/pull-rouge.png" data-shirt-cover-labels="noir|bleu|jaune|rouge">
+          <span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 04</span>
+        </a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
+      </div>
+      <a class="shop-shirt-cover__name" id="pull-cover-title" href="pull-patronnes.html">Le Pull Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-cap-cover" aria-labelledby="cap-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="casquette-patronnes.html" aria-label="Découvrir la fiche des casquettes Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/Casquette.png" alt="Collection de casquettes Les Patronnes" loading="eager" decoding="async"></a>
+        <span class="shop-shirt-cover__index" aria-hidden="true">06 coloris</span>
+      </div>
+      <a class="shop-shirt-cover__name" id="cap-cover-title" href="casquette-patronnes.html">La Casquette Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-band-cover" aria-labelledby="band-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="bandeau-patronnes.html" aria-label="Découvrir la fiche des bandeaux Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/Bandeaux.png" alt="Collection de bandeaux Les Patronnes" loading="eager" decoding="async"></a>
+        <span class="shop-shirt-cover__index" aria-hidden="true">04 coloris</span>
+      </div>
+      <a class="shop-shirt-cover__name" id="band-cover-title" href="bandeau-patronnes.html">Le Bandeau Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-skirt-cover" data-product-cover="skirt" aria-labelledby="skirt-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="jupe-patronnes.html" aria-label="Découvrir la fiche de la jupe Les Patronnes">
+          <img class="shop-shirt-cover__image is-active" src="../assets/images/jupe-blanche.jpg" alt="Jupe Les Patronnes, coloris blanc" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/jupe-blanche.jpg|../assets/images/jupe-noir.jpg" data-shirt-cover-labels="blanc|noir">
+          <span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 02</span>
+        </a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
+      </div>
+      <a class="shop-shirt-cover__name" id="skirt-cover-title" href="jupe-patronnes.html">La Jupe Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-jogging-cover" data-product-cover="jogging" aria-labelledby="jogging-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="jogging-patronnes.html" aria-label="Découvrir la fiche du jogging Les Patronnes">
+          <img class="shop-shirt-cover__image is-active" src="../assets/images/jogging-gris.jpg" alt="Jogging Les Patronnes, coloris gris" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/jogging-gris.jpg|../assets/images/jogging-noir.jpg|../assets/images/jogging-marrons.jpg" data-shirt-cover-labels="gris|noir|marron">
+          <span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 03</span>
+        </a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
+      </div>
+      <a class="shop-shirt-cover__name" id="jogging-cover-title" href="jogging-patronnes.html">Le Jogging Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-shirt-product-cover" data-product-cover="chemise" aria-labelledby="chemise-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="chemise-patronnes.html" aria-label="Découvrir la fiche de la chemise Les Patronnes">
+          <img class="shop-shirt-cover__image is-active" src="../assets/images/Chemise-blanche.jpg" alt="Chemise Les Patronnes, coloris blanc" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/Chemise-blanche.jpg|../assets/images/Chemise-noir.jpg|../assets/images/chemise-marron.jpg|../assets/images/Chemise-orange.jpg" data-shirt-cover-labels="blanc|noir|marron|orange">
+          <span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 04</span>
+        </a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
+      </div>
+      <a class="shop-shirt-cover__name" id="chemise-cover-title" href="chemise-patronnes.html">La Chemise Patronnes <span>Édition 01</span></a>
+    </section>
+
+    <section class="shop-shirt-cover shop-polo-cover" data-product-cover="polo" aria-labelledby="polo-cover-title">
+      <div class="shop-shirt-cover__card">
+        <a class="shop-shirt-cover__link" href="polo-patronnes.html" aria-label="Découvrir la fiche du polo Les Patronnes"><img class="shop-shirt-cover__image is-active" src="../assets/images/polo-blanc.jpg" alt="Polo Les Patronnes, coloris blanc" loading="eager" decoding="async" data-shirt-cover-image data-shirt-cover-sources="../assets/images/polo-blanc.jpg|../assets/images/polo-vert.jpg|../assets/images/polo-rouge.jpg|../assets/images/polo-marron.jpg" data-shirt-cover-labels="blanc|vert|rouge|marron"><span class="shop-shirt-cover__index" aria-hidden="true" data-shirt-cover-index>01 — 04</span></a>
+        <button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--previous" type="button" aria-label="Coloris précédent" data-shirt-cover-previous><span></span></button><button class="shop-shirt-cover__arrow shop-shirt-cover__arrow--next" type="button" aria-label="Coloris suivant" data-shirt-cover-next><span></span></button>
+      </div>
+      <a class="shop-shirt-cover__name" id="polo-cover-title" href="polo-patronnes.html">Le Polo Patronnes <span>Édition 01</span></a>
+    </section>
+    </div>
+
+    <!-- La fiche complète est désormais accessible depuis la carte ci-dessus. -->
+    <article class="shop-product shop-product--embedded" id="shirt-details" data-shop-reveal aria-labelledby="shirt-title">
       <div class="shop-product__visual" data-shirt-stage aria-label="Aperçu du t-shirt Les Patronnes, coloris blanc">
         <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
         <div class="shop-shirt" data-shirt-preview aria-hidden="true">
@@ -117,6 +204,30 @@
         const panel = document.querySelector(`[data-shop-panel="${tab.dataset.shopTab}"]`);
         requestAnimationFrame(() => panel?.classList.add('is-visible'));
       }));
+      document.querySelectorAll('[data-product-cover]').forEach((cover) => {
+        const coverImage = cover.querySelector('[data-shirt-cover-image]');
+        if (!coverImage) return;
+        const coverSources = coverImage.dataset.shirtCoverSources.split('|');
+        const coverLabels = coverImage.dataset.shirtCoverLabels.split('|');
+        let activeCoverImage = 0;
+        const coverIndex = cover.querySelector('[data-shirt-cover-index]');
+        const productName = { pull: 'Pull', skirt: 'Jupe' }[cover.dataset.productCover] || 'T-shirt';
+        const showCoverImage = (nextIndex) => {
+          activeCoverImage = (nextIndex + coverSources.length) % coverSources.length;
+          coverImage.classList.remove('is-active');
+          window.setTimeout(() => {
+            coverImage.src = coverSources[activeCoverImage];
+            coverImage.alt = `${productName} Les Patronnes, coloris ${coverLabels[activeCoverImage]}`;
+            coverImage.classList.add('is-active');
+          }, 120);
+          if (coverIndex) coverIndex.textContent = `${String(activeCoverImage + 1).padStart(2, '0')} — ${String(coverSources.length).padStart(2, '0')}`;
+        };
+        const nextCoverImage = () => showCoverImage(activeCoverImage + 1);
+        coverSources.slice(1).forEach((source) => { const image = new Image(); image.src = source; });
+        cover.querySelector('[data-shirt-cover-previous]')?.addEventListener('click', () => showCoverImage(activeCoverImage - 1));
+        cover.querySelector('[data-shirt-cover-next]')?.addEventListener('click', nextCoverImage);
+        window.setInterval(nextCoverImage, 2500);
+      });
       document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
         document.querySelectorAll('.shop-swatch').forEach((item) => { item.classList.remove('is-selected'); item.setAttribute('aria-pressed', 'false'); });
         button.classList.add('is-selected'); button.setAttribute('aria-pressed', 'true');

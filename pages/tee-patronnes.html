@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Tee Patronnes | Association Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body data-page="shop">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left"><button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button><div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a></div></div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+  <main class="shop-page shop-product-page">
+    <a class="shop-product-page__back" href="boutique.html">← Retour à la boutique</a>
+    <article class="shop-product" aria-labelledby="shirt-title">
+      <div class="shop-product__visual" data-shirt-stage aria-label="Aperçu du t-shirt Les Patronnes, coloris blanc">
+        <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
+        <div class="shop-shirt" data-shirt-preview aria-hidden="true"><img src="../assets/images/t-shirt-blanc.jpeg" alt="T-shirt Les Patronnes, coloris Blanc coton" data-shirt-image></div>
+        <p class="shop-product__caption" data-shirt-caption>Blanc coton</p><div class="shop-product__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+      <div class="shop-product__content">
+        <p class="shop-eyebrow">Premier drop</p><h1 id="shirt-title">Le t-shirt<br>Les Patronnes</h1>
+        <p>Une pièce manifeste, dessinée pour les jours de marché comme pour la ville. Une coupe ample, un marquage assumé et quatre couleurs inspirées des matières, des épices et de l’énergie de Cotonou.</p>
+        <div class="shop-product__option" role="group" aria-labelledby="shirt-colour-label"><p id="shirt-colour-label">Choisir un coloris <span data-selected-colour>Blanc coton</span></p><div class="shop-product__swatches"><button class="shop-swatch is-selected" type="button" data-colour="white" data-colour-name="Blanc coton" data-colour-name-en="Cotton white" data-image="../assets/images/t-shirt-blanc.jpeg" aria-label="Choisir Blanc coton" aria-pressed="true"><span></span></button><button class="shop-swatch" type="button" data-colour="green" data-colour-name="Vert forêt" data-colour-name-en="Forest green" data-image="../assets/images/t-shirt-vert.jpeg" aria-label="Choisir Vert forêt" aria-pressed="false"><span></span></button><button class="shop-swatch" type="button" data-colour="yellow" data-colour-name="Jaune safran" data-colour-name-en="Saffron yellow" data-image="../assets/images/t-shirt-jaune.jpeg" aria-label="Choisir Jaune safran" aria-pressed="false"><span></span></button><button class="shop-swatch" type="button" data-colour="red" data-colour-name="Rouge marché" data-colour-name-en="Market red" data-image="../assets/images/t-shirt-rouge.jpeg" aria-label="Choisir Rouge marché" aria-pressed="false"><span></span></button></div></div>
+        <div class="shop-product__option" role="group" aria-labelledby="shirt-size-label"><p id="shirt-size-label">Choisir une taille <span data-selected-size>XS</span></p><div class="shop-product__sizes"><button class="is-selected" type="button" aria-pressed="true">XS</button><button type="button" aria-pressed="false">S</button><button type="button" aria-pressed="false">M</button><button type="button" aria-pressed="false">L</button><button type="button" aria-pressed="false">XL</button><button type="button" aria-pressed="false">2XL</button><button type="button" aria-pressed="false">3XL</button></div></div>
+        <dl class="shop-product__details"><div><dt>Coupe</dt><dd>Unisexe · légèrement oversize</dd></div><div><dt>Matière</dt><dd>Jersey de coton, 240 g/m²</dd></div><div><dt>Finition</dt><dd>Impression poitrine et label tissé</dd></div><div><dt>Tailles</dt><dd>XS à 3XL</dd></div></dl>
+        <div class="shop-product__purchase"><div><span>Disponibilité</span><strong>Précommande bientôt</strong></div><a class="shop-product__cta" href="contact.html">Être informé·e du lancement <span aria-hidden="true"></span></a></div>
+        <p class="shop-product__delivery">Retrait à Cotonou et livraison à venir. Les bénéfices participent au rayonnement du projet Les Patronnes.</p>
+      </div>
+    </article>
+  </main>
+  <footer></footer>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script>
+  <script>(() => { const preview=document.querySelector('[data-shirt-preview]'), stage=document.querySelector('[data-shirt-stage]'), caption=document.querySelector('[data-shirt-caption]'), shirtImage=document.querySelector('[data-shirt-image]'), selectedColour=document.querySelector('[data-selected-colour]'), selectedSize=document.querySelector('[data-selected-size]'); document.querySelectorAll('.shop-swatch').forEach((button)=>button.addEventListener('click',()=>{document.querySelectorAll('.shop-swatch').forEach((item)=>{item.classList.remove('is-selected');item.setAttribute('aria-pressed','false');});button.classList.add('is-selected');button.setAttribute('aria-pressed','true');const label=document.documentElement.lang==='en'?button.dataset.colourNameEn:button.dataset.colourName;shirtImage.src=button.dataset.image;shirtImage.alt=`T-shirt Les Patronnes, coloris ${label}`;caption.textContent=label;selectedColour.textContent=label;stage.setAttribute('aria-label',`Aperçu du t-shirt Les Patronnes, coloris ${label}`);}); document.querySelectorAll('.shop-product__sizes button').forEach((button)=>button.addEventListener('click',()=>{document.querySelectorAll('.shop-product__sizes button').forEach((item)=>{item.classList.remove('is-selected');item.setAttribute('aria-pressed','false');});button.classList.add('is-selected');button.setAttribute('aria-pressed','true');selectedSize.textContent=button.textContent;})); })();</script>
+</body>
+</html>
