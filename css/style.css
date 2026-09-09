@@ -1506,6 +1506,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 /* La fiche détaillée du tee vit sur tee-patronnes.html, pas dans la liste boutique. */
 .shop-product--embedded { display: none !important; }
 .shop-products-showcase { display: grid; width: min(100%, 980px); margin: 0 auto; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(var(--space-md), 2.5vw, var(--space-xl)); }
+.shop-products-showcase[hidden] { display: none; }
 .shop-products-showcase .shop-shirt-cover { width: 100%; }
 .shop-cap-cover .shop-shirt-cover__image, .shop-band-cover .shop-shirt-cover__image { background: #c4c4c4; object-fit: contain; }
 .shop-cap-preview { position: relative; z-index: 1; width: 100%; align-self: center; }.shop-cap-preview img { display: block; width: 100%; max-height: 480px; object-fit: contain; }
@@ -1630,3 +1631,8 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 @keyframes partner-logo-scroll { to { transform: translateX(-50%); } }
 @media (max-width: 600px) { .partner-logo { width: 8.5rem; height: 6rem; padding: var(--space-sm); } }
 @media (prefers-reduced-motion: reduce) { .partner-logo-marquee__track { animation: none; } }
+
+/* Événements : appel à bénévoles pour le Stop 3, en attente de sa date. */
+.event-row--akassato { color: var(--color-text-primary); background: var(--color-bg-primary); }.event-row--akassato:hover { color: var(--color-text-primary); }.event-row--akassato .event-row__place { color: var(--color-text-primary); }.event-row--akassato .event-row__cta { display: inline-flex; min-height: 2.9rem; padding: .75rem 1rem; border: 1px solid var(--color-text-primary); border-radius: 999px; align-items: center; justify-content: center; gap: .55rem; color: var(--color-text-primary); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color var(--transition-default), border-color var(--transition-default), background-color var(--transition-default), transform var(--transition-default); }.event-row--akassato .event-row__cta:hover { border-color: var(--color-accent); color: var(--color-text-light); background: var(--color-accent); transform: scale(1.03); }
+@media (max-width: 800px) { .event-row--akassato { grid-template-columns: .2fr 1fr; }.event-row--akassato .event-row__cta { grid-column: 2; justify-self: start; } }
+@media (max-width: 600px) { .event-row--akassato { min-height: 235px; grid-template-columns: .22fr 1fr; }.event-row--akassato .event-row__cta { min-height: 2.7rem; } }

@@ -313,7 +313,10 @@ const englishCopy = {
     [".event-row--sofitel .event-row__name", "Les Patronnes<br>Round table", "html"],
     [".event-row--sofitel .event-row__place", "Sofitel Cotonou Marina<br><b>9 July 2026</b>", "html"],
     [".event-row--pk3 .event-row__name", "Les Patronnes<br>Stop 2", "html"],
-    [".event-row--pk3 .event-row__place", "PK3 Market<br><b>11 July 2026</b>", "html"]
+    [".event-row--pk3 .event-row__place", "PK3 Market<br><b>11 July 2026</b>", "html"],
+    [".event-row--akassato .event-row__name", "Les Patronnes<br>Stop 3", "html"],
+    [".event-row--akassato .event-row__place", "Akassato Market<br><b>Date to be announced</b>", "html"],
+    [".event-row--akassato .event-row__cta", "Become a volunteer <span aria-hidden=\"true\">→</span>", "html"]
   ],
   actualites: [
     [".actualites-hero .actualites-eyebrow", "The project in the media"],
