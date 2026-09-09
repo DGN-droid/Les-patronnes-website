@@ -42,7 +42,7 @@
         </div>
         <label>Organisation <span>(facultatif)</span><input type="text" name="organisation" autocomplete="organization"></label>
         <div class="don-form__row">
-          <label class="don-form__amount">Montant du don <output for="don-amount" data-don-amount>25 000 FCFA</output><input id="don-amount" type="range" name="amount" min="5000" max="500000" step="5000" value="25000" aria-valuemin="5000" aria-valuemax="500000" aria-valuenow="25000" aria-valuetext="25 000 FCFA" required><small>De 5 000 à 500 000 FCFA, par paliers de 5 000 FCFA.</small></label>
+          <label>Montant<input id="don-amount" type="number" name="amount" min="5000" step="5000" value="5000" inputmode="numeric" required></label>
           <label>Devise<select name="currency" required><option value="FCFA">FCFA</option><option value="EUR">EUR</option></select></label>
         </div>
         <label>Numéro de téléphone<input type="tel" name="phone" autocomplete="tel" placeholder="Ex. 97 00 00 00" required></label>
@@ -65,17 +65,6 @@
     (() => {
       const form = document.querySelector("#don-form");
       if (!form) return;
-      const amountInput = form.querySelector("#don-amount");
-      const amountOutput = form.querySelector("[data-don-amount]");
-      const formatAmount = (amount) => `${Number(amount).toLocaleString("fr-FR")} FCFA`;
-      const syncAmount = () => {
-        const amount = amountInput.value;
-        amountOutput.value = formatAmount(amount);
-        amountOutput.textContent = formatAmount(amount);
-        amountInput.setAttribute("aria-valuetext", formatAmount(amount));
-      };
-      amountInput.addEventListener("input", syncAmount);
-      syncAmount();
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const data = new FormData(form);
