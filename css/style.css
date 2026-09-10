@@ -1678,6 +1678,8 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 @media (max-width: 600px) { .partner-logo img { max-width: 8.5rem; max-height: 5rem; } }
 @media (prefers-reduced-motion: reduce) { .partner-logo-marquee__track { animation: none; } }
 
+.partner-cta h2 { line-height: 1.02; }
+
 /* Événements : appel à bénévoles pour le Stop 3, en attente de sa date. */
 .event-row--akassato { color: var(--color-text-primary); background: var(--color-bg-primary); }.event-row--akassato:hover { color: var(--color-text-primary); }.event-row--akassato .event-row__place { color: var(--color-text-primary); }.event-row--akassato .event-row__cta { display: inline-flex; min-height: 2.9rem; padding: .75rem 1rem; border: 1px solid var(--color-text-primary); border-radius: 999px; align-items: center; justify-content: center; gap: .55rem; color: var(--color-text-primary); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color var(--transition-default), border-color var(--transition-default), background-color var(--transition-default), transform var(--transition-default); }.event-row--akassato .event-row__cta:hover { border-color: var(--color-accent); color: var(--color-text-light); background: var(--color-accent); transform: scale(1.03); }
 @media (min-width: 801px) { .event-row--akassato .event-row__place { transform: translateX(clamp(4rem, 6vw, 6rem)); } }
