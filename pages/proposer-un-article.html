@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposer un article | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="press">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left">
+        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button>
+        <div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a></div>
+      </div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="contact.html" data-i18n="nav.contact">Contact</a></div>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+    <section class="contact-hero" aria-labelledby="article-title">
+      <p class="contact-eyebrow">Presse &amp; médias</p>
+      <h1 id="article-title">Proposer<br>un article</h1>
+      <p>Partagez votre projet éditorial avec Les Patronnes. Notre équipe vous répondra pour organiser la suite.</p>
+    </section>
+
+    <section class="contact-content" aria-labelledby="article-form-title">
+      <div class="contact-details">
+        <p class="contact-eyebrow">Une demande éditoriale</p>
+        <h2 id="article-form-title">Raconter<br>le projet</h2>
+        <p>Indiquez l’angle envisagé, votre calendrier et les personnes que vous souhaitez rencontrer. Ces éléments nous permettent de vous répondre avec précision.</p>
+      </div>
+      <form class="contact-form" id="article-form">
+        <div class="contact-form__row">
+          <label>Prénom<input type="text" name="firstName" autocomplete="given-name" required></label>
+          <label>Nom<input type="text" name="lastName" autocomplete="family-name" required></label>
+        </div>
+        <label>Média ou organisation<input type="text" name="organisation" autocomplete="organization" required></label>
+        <div class="contact-form__row">
+          <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+          <label>Téléphone <span>(facultatif)</span><input type="tel" name="phone" autocomplete="tel"></label>
+        </div>
+        <label>Titre ou angle de l’article<input type="text" name="angle" required></label>
+        <label>Lien vers votre média, dossier ou référence <span>(facultatif)</span><input type="url" name="reference" inputmode="url" placeholder="https://"></label>
+        <label>Votre message<textarea name="message" rows="6" required placeholder="Présentez votre projet, vos besoins et vos échéances."></textarea></label>
+        <button type="submit">Envoyer ma proposition</button>
+        <p class="contact-form__notice">Le formulaire ouvre votre messagerie avec votre demande préremplie. Pour joindre un fichier, ajoutez-le directement à votre e-mail avant l’envoi.</p>
+        <a class="press-form__back" href="press.html">Retour à la presse</a>
+      </form>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="../js/main.js"></script>
+  <script>
+    (() => {
+      const form = document.querySelector("#article-form");
+      if (!form) return;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const message = [
+          "Bonjour Les Patronnes,",
+          "",
+          "Je souhaite proposer un article.",
+          `Nom : ${data.get("firstName")} ${data.get("lastName")}`,
+          `Média / organisation : ${data.get("organisation")}`,
+          `E-mail : ${data.get("email")}`,
+          `Téléphone : ${data.get("phone") || "Non renseigné"}`,
+          `Angle : ${data.get("angle")}`,
+          `Référence : ${data.get("reference") || "Non renseignée"}`,
+          "",
+          "Message :",
+          data.get("message")
+        ].join("\n");
+        window.location.href = `mailto:lespatronnes229@gmail.com?subject=${encodeURIComponent("Proposition d’article — Les Patronnes")}&body=${encodeURIComponent(message)}`;
+      });
+    })();
+  </script>
+</body>
+</html>

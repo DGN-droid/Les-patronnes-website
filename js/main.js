@@ -605,6 +605,27 @@ themeButtons.forEach((button) => {
 applyTheme(activeTheme, false);
 applyLanguage(activeLanguage, false);
 
+/* Le logo partenaire concerné conserve sa version claire ou sombre selon le thème actif. */
+(() => {
+  const syncThemeAwareLogos = () => {
+    const isDarkTheme = document.documentElement.dataset.theme === "dark";
+
+    document.querySelectorAll("[data-logo-light][data-logo-dark]").forEach((logo) => {
+      const source = isDarkTheme ? logo.dataset.logoDark : logo.dataset.logoLight;
+      if (logo.getAttribute("src") !== source) {
+        logo.setAttribute("src", source);
+      }
+    });
+  };
+
+  syncThemeAwareLogos();
+
+  new MutationObserver(syncThemeAwareLogos).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"]
+  });
+})();
+
 // Menu plein écran pour la navigation mobile, partagé par toutes les pages.
 document.querySelectorAll(".site-nav").forEach((nav) => {
   const burger = nav.querySelector(".site-nav__burger");
