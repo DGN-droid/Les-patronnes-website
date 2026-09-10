@@ -1292,6 +1292,11 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .press-reach__links { display: flex; flex: 0 0 auto; gap: var(--space-sm); }
 .press-reach__links a { display: inline-flex; width: 3rem; height: 3rem; align-items: center; justify-content: center; border: 1px solid var(--color-text-primary); border-radius: 50%; transition: color var(--transition-default), background-color var(--transition-default), transform var(--transition-default); }
 .press-reach__links svg { width: 1.15rem; height: 1.15rem; fill: currentColor; stroke: currentColor; stroke-width: 1.5; }
+.press-reach__links .social-facebook__background { fill: #1877f2; stroke: none; }
+.press-reach__links .social-facebook__mark { fill: #fff; stroke: none; }
+.press-reach__links .social-instagram__background { fill: url(#instagram-brand-gradient); stroke: none; }
+.press-reach__links .social-instagram__mark { fill: none; stroke: #fff; stroke-width: 1.7; }
+.press-reach__links .social-instagram__dot { fill: #fff; stroke: none; }
 .press-reach__links a:hover { color: var(--color-text-light); background: var(--color-accent); border-color: var(--color-accent); transform: scale(1.06); }
 .press-reach__links span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 .actualites-feed { margin-top: var(--space-xxl); border-top: 1px solid var(--color-border); }
