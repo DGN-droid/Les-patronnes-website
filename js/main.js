@@ -335,11 +335,7 @@ const englishCopy = {
   press: [
     [".actualites-hero .actualites-eyebrow", "The project in the media"],
     ["#press-title", "Press"],
-    [".actualites-hero > p:last-child", "Already covered by Beninese and international media, Les Patronnes carries its stories far beyond the markets."],
-    [".press-cta a:first-child", "Suggest an article"],
-    [".press-cta a:last-child", "Suggest an interview"],
-    [".press-reach .actualites-eyebrow", "Cumulative reach"],
-    [".press-reach > div > p:last-child", "Les Patronnes continues the conversation across social media through images, encounters and shared stories."]
+    [".actualites-hero > p:last-child", "Already covered by Beninese and international media, Les Patronnes carries its stories far beyond the markets."]
   ],
   shop: [
     [".shop-intro .shop-eyebrow", "Inaugural edition"],
@@ -483,28 +479,6 @@ const englishEventCopy = {
   ]
 };
 
-const englishStandaloneCopy = {
-  "proposer-un-article.html": [
-    [".contact-hero .contact-eyebrow", "Press & media"],
-    ["#article-title", "Suggest<br>an article", "html"],
-    [".contact-hero > p:last-child", "Share your editorial project with Les Patronnes. Our team will get back to you to organise the next steps."],
-    [".contact-details .contact-eyebrow", "An editorial enquiry"],
-    ["#article-form-title", "Telling<br>the project", "html"],
-    [".contact-details > p:last-child", "Tell us about your proposed angle, schedule and the people you would like to meet. This information helps us respond accurately."],
-    ["#article-form .contact-form__row:first-child label:first-child", "First name", "leading"],
-    ["#article-form .contact-form__row:first-child label:last-child", "Last name", "leading"],
-    ["#article-form > label:nth-of-type(1)", "Media or organisation", "leading"],
-    ["#article-form .contact-form__row:nth-of-type(2) label:first-child", "Email", "leading"],
-    ["#article-form .contact-form__row:nth-of-type(2) label:last-child", "Phone (optional)", "leading"],
-    ["#article-form > label:nth-of-type(2)", "Article title or angle", "leading"],
-    ["#article-form > label:nth-of-type(3)", "Link to your outlet, press kit or reference (optional)", "leading"],
-    ["#article-form > label:nth-of-type(4)", "Your message", "leading"],
-    ["#article-form button", "Send my proposal"],
-    ["#article-form .contact-form__notice", "The form opens your email client with your request pre-filled. To attach a file, add it directly to your email before sending."],
-    ["#article-form .press-form__back", "Back to press"]
-  ]
-};
-
 const setLocalizedCopy = (element, value, mode = "text") => {
   if (!element) return;
   if (!element.dataset.i18nOriginal) element.dataset.i18nOriginal = element.innerHTML;
@@ -526,18 +500,6 @@ const applyPageCopy = () => {
 
   const eventEntries = englishEventCopy[window.location.pathname.split("/").pop()] || [];
   eventEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
-
-  const currentFile = window.location.pathname.split("/").pop();
-  const standaloneEntries = englishStandaloneCopy[currentFile] || [];
-  standaloneEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
-
-  if (currentFile === "proposer-un-article.html") {
-    const message = document.querySelector('#article-form textarea[name="message"]');
-    if (message) {
-      if (!message.dataset.i18nPlaceholder) message.dataset.i18nPlaceholder = message.placeholder;
-      message.placeholder = activeLanguage === "en" ? "Tell us about your project, requirements and deadlines." : message.dataset.i18nPlaceholder;
-    }
-  }
 
   if (["actualites", "press"].includes(document.body.dataset.page)) {
     document.querySelectorAll(".actualites-feed__link").forEach((link) => setLocalizedCopy(link, "Read article <span class=\"actualites-feed__arrow\" aria-hidden=\"true\"></span>", "html"));
