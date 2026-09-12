@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes favoris | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="favourites">
+  <header class="site-header" data-header>
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-aria-label="nav.main">
+      <div class="site-nav__left">
+        <button class="site-nav__burger" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label="menu.open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button>
+        <div class="site-nav__links"><a href="about.html" data-i18n="nav.about">À propos</a><a href="events.html" data-i18n="nav.events">Événements</a><a href="press.html" data-i18n="nav.press">Presse</a><a href="boutique.html" data-i18n="nav.shop">Boutique</a></div>
+      </div>
+      <a class="site-nav__logo" href="../index.html" aria-label="Les Patronnes — Accueil">Les Patronnes</a>
+      <div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="devenir-partenaire.html" data-i18n="nav.contribute">Contribuer</a></div>
+    </nav>
+  </header>
+
+  <main class="favourites-page">
+    <section class="favourites-hero" aria-labelledby="favourites-title">
+      <p class="favourites-eyebrow">La sélection Les Patronnes</p>
+      <h1 id="favourites-title">Mes favoris</h1>
+      <p>Retrouvez ici les articles que vous avez mis de côté, pour y revenir quand vous le souhaitez.</p>
+      <a class="favourites-back" href="boutique.html"><span aria-hidden="true">←</span> Retour à la boutique</a>
+    </section>
+    <section class="favourites-list" id="favourites-list" aria-live="polite"></section>
+  </main>
+
+  <footer></footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

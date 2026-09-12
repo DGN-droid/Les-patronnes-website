@@ -278,6 +278,7 @@ window.siteTranslate = translate;
 const englishCopy = {
   home: [
     [".home-hero__subtitle", "A project imagined by Michelin-starred chef Georgiana Viou, celebrating the women who bring Benin's markets to life."],
+    [".home-hero__collective", "Les Patronnes is a collective story, meant to travel across Benin and far beyond its borders."],
     [".home-manifesto > p:last-child", "A story of women, markets and transmission."]
   ],
   about: [
@@ -855,6 +856,8 @@ if (heroCarousel) {
   const idleDelay = 20000;
   const excludedPages = ["contact", "partner"];
   if (excludedPages.includes(document.body.dataset.page)) return;
+  // Une vidéo ne doit jamais être masquée par une invitation : aucune pop-up sur les pages filmées.
+  if (document.querySelector("video")) return;
 
   const isEnglish = document.documentElement.lang === "en";
   const pagePrefix = window.location.pathname.includes("/pages/") ? "" : "pages/";
@@ -902,7 +905,7 @@ if (heroCarousel) {
       <p class="cta-dialog__text">${copy.text}</p>
       <div class="cta-dialog__actions">
         <a href="${pagePrefix}don.html">${copy.donate}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
-        <a href="${pagePrefix}devenir-partenaire.html#partenariats-mecenat">${copy.partner}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
+        <a href="${pagePrefix}devenir-partenaire.html">${copy.partner}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
         <a href="${pagePrefix}devenir-partenaire.html#partner-form-start">${copy.event}<span class="contact-arrow contact-arrow--right" aria-hidden="true"></span></a>
       </div>
       <button class="cta-dialog__dismiss" type="button" data-cta-close>${copy.close}</button>
@@ -957,6 +960,138 @@ if (heroCarousel) {
 
 // Boutique : un seul comportement fiable pour les sélecteurs de coloris.
 // Il couvre le tee et toutes les fiches produit qui utilisent les mêmes pastilles.
+(() => {
+  const shopCards = document.querySelectorAll(".shop-shirt-cover__card, .shop-photography__item");
+  if (!shopCards.length) return;
+
+  const storageKey = "les-patronnes-shop-favourites";
+  const favourites = new Map();
+  try {
+    const storedFavourites = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
+    if (Array.isArray(storedFavourites)) {
+      storedFavourites.forEach((entry) => {
+        if (typeof entry === "string") favourites.set(entry, { id: entry });
+        if (entry && typeof entry === "object" && entry.id) favourites.set(entry.id, entry);
+      });
+    }
+  } catch (_) {}
+
+  const save = () => {
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify([...favourites.values()]));
+    } catch (_) {}
+  };
+  const getCardDetails = (card, index) => {
+    const cover = card.closest(".shop-shirt-cover");
+    const product = cover?.dataset.productCover;
+    const image = card.querySelector("img")?.getAttribute("src") || index;
+    const href = cover?.querySelector(".shop-shirt-cover__name")?.getAttribute("href") || "boutique.html#photographies";
+    const title = cover?.querySelector(".shop-shirt-cover__name")?.textContent.trim() || `Photographie Les Patronnes ${String(index + 1).padStart(2, "0")}`;
+    return {
+      id: cover ? `product-${product || href}` : `photography-${image}`,
+      title,
+      image,
+      href
+    };
+  };
+
+  const toast = document.createElement("aside");
+  toast.className = "shop-favourites-toast";
+  toast.hidden = true;
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
+  toast.innerHTML = '<span class="shop-favourites-toast__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 8.7c0 5.4-8.8 10.1-8.8 10.1S3.2 14.1 3.2 8.7A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.7Z"></path></svg></span><div class="shop-favourites-toast__content"><strong>Ajouté aux favoris</strong><a href="favoris.html">Voir mes favoris</a></div><button class="shop-favourites-toast__close" type="button" aria-label="Fermer la notification"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>';
+  document.body.appendChild(toast);
+
+  let toastTimer;
+  let toastHideTimer;
+  const closeToast = () => {
+    window.clearTimeout(toastTimer);
+    window.clearTimeout(toastHideTimer);
+    toast.classList.remove("is-visible");
+    toastHideTimer = window.setTimeout(() => { toast.hidden = true; }, 220);
+  };
+  const showToast = () => {
+    window.clearTimeout(toastTimer);
+    window.clearTimeout(toastHideTimer);
+    toast.hidden = false;
+    window.requestAnimationFrame(() => toast.classList.add("is-visible"));
+    toastTimer = window.setTimeout(closeToast, 5000);
+  };
+  toast.querySelector(".shop-favourites-toast__close")?.addEventListener("click", closeToast);
+
+  shopCards.forEach((card, index) => {
+    const favourite = getCardDetails(card, index);
+    const { id } = favourite;
+    if (favourites.has(id) && !favourites.get(id).image) {
+      favourites.set(id, favourite);
+      save();
+    }
+    const button = document.createElement("button");
+    button.className = "shop-card-favourite";
+    button.type = "button";
+    button.setAttribute("aria-label", "Ajouter aux favoris");
+    button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.7c0 5.4-8.8 10.1-8.8 10.1S3.2 14.1 3.2 8.7A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.7Z"></path></svg>';
+
+    const setState = (isFavourite) => {
+      button.classList.toggle("is-favourite", isFavourite);
+      button.setAttribute("aria-pressed", String(isFavourite));
+      button.setAttribute("aria-label", isFavourite ? "Retirer des favoris" : "Ajouter aux favoris");
+    };
+
+    setState(favourites.has(id));
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const isFavourite = !favourites.has(id);
+      if (isFavourite) {
+        favourites.set(id, favourite);
+        showToast();
+      } else {
+        favourites.delete(id);
+      }
+      save();
+      setState(isFavourite);
+    });
+    card.appendChild(button);
+  });
+})();
+
+// Page Mes favoris : lecture des choix conservés depuis la boutique.
+(() => {
+  const list = document.querySelector("#favourites-list");
+  if (!list) return;
+
+  const storageKey = "les-patronnes-shop-favourites";
+  const readFavourites = () => {
+    try {
+      const entries = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
+      return Array.isArray(entries) ? entries.filter((entry) => entry && typeof entry === "object" && entry.id) : [];
+    } catch (_) {
+      return [];
+    }
+  };
+  const saveFavourites = (entries) => {
+    try { window.localStorage.setItem(storageKey, JSON.stringify(entries)); } catch (_) {}
+  };
+  const escapeHTML = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
+  const render = () => {
+    const favourites = readFavourites();
+    if (!favourites.length) {
+      list.innerHTML = '<p class="favourites-list__empty">Aucun favori pour le moment. <a href="boutique.html">Découvrir la boutique</a></p>';
+      return;
+    }
+    list.innerHTML = `<div class="favourites-list__grid">${favourites.map((favourite) => `<article class="favourites-card"><a class="favourites-card__image" href="${escapeHTML(favourite.href || "boutique.html")}"><img src="${escapeHTML(favourite.image || "")}" alt="${escapeHTML(favourite.title || "Article Les Patronnes")}"></a><div class="favourites-card__content"><h2>${escapeHTML(favourite.title || "Article Les Patronnes")}</h2><div class="favourites-card__actions"><a href="${escapeHTML(favourite.href || "boutique.html")}">Voir l’article <span aria-hidden="true">→</span></a><button type="button" data-favourite-remove="${escapeHTML(favourite.id)}">Retirer</button></div></div></article>`).join("")}</div>`;
+  };
+  list.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-favourite-remove]");
+    if (!button) return;
+    saveFavourites(readFavourites().filter((favourite) => favourite.id !== button.dataset.favouriteRemove));
+    render();
+  });
+  render();
+})();
+
 (() => {
   document.querySelectorAll(".shop-product").forEach((product) => {
     const swatches = Array.from(product.querySelectorAll(".shop-swatch[data-image]"));
