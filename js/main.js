@@ -290,7 +290,8 @@ const englishCopy = {
   home: [
     [".home-hero__subtitle", "A project imagined by Michelin-starred chef Georgiana Viou, celebrating the women who bring Benin's markets to life."],
     [".home-hero__collective", "Les Patronnes is a collective story, meant to travel across Benin and far beyond its borders."],
-    [".home-manifesto > p:last-child", "A story of women, markets and transmission."]
+    [".home-manifesto > p:nth-child(2)", "A story of women, markets and transmission."],
+    [".home-manifesto__reach", "Born in Benin, Les Patronnes aims to grow across West Africa and then throughout the continent."]
   ],
   about: [
     [".about-hero__content .about-eyebrow", "The project"],
