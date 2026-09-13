@@ -167,16 +167,20 @@
       <p class="shop-eyebrow">Édition photographique</p>
       <h2>Les photographies<br>de Maki Manoukian</h2>
       <p>Une sélection d'images signées Maki Manoukian, capturées au cœur du projet Les Patronnes.</p>
-      <div class="shop-photography__gallery">
-        <figure class="shop-photography__item shop-photography__item--1"><img class="image-fade-in" src="../assets/images/img99.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--2"><img class="image-fade-in" src="../assets/images/img102.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--3"><img class="image-fade-in" src="../assets/images/img98.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--4"><img class="image-fade-in" src="../assets/images/img101.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--5"><img class="image-fade-in" src="../assets/images/img96.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--6"><img class="image-fade-in" src="../assets/images/img97.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--7"><img class="image-fade-in" src="../assets/images/img100.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
-        <figure class="shop-photography__item shop-photography__item--8"><img class="image-fade-in" src="../assets/images/img103.jpeg" alt="Photographie de Maki Manoukian pour Les Patronnes" loading="lazy" decoding="async"></figure>
+      <div class="shop-photography__formats" role="group" aria-label="Choisir le format d'affichage des photographies">
+        <button class="shop-photography__format is-active" type="button" data-photography-format="standard" aria-pressed="true">Format galerie</button>
       </div>
+      <div class="shop-photography__gallery" data-photography-gallery>
+        <figure class="shop-photography__item shop-photography__item--1"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=1"><img class="image-fade-in" src="../assets/images/img99.jpeg" alt="Œuvre n°01 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=1">Œuvre n°01</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--2"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=2"><img class="image-fade-in" src="../assets/images/img102.jpeg" alt="Œuvre n°02 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=2">Œuvre n°02</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--3"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=3"><img class="image-fade-in" src="../assets/images/img98.jpeg" alt="Œuvre n°03 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=3">Œuvre n°03</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--4"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=4"><img class="image-fade-in" src="../assets/images/img101.jpeg" alt="Œuvre n°04 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=4">Œuvre n°04</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--5"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=5"><img class="image-fade-in" src="../assets/images/img96.jpeg" alt="Œuvre n°05 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=5">Œuvre n°05</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--6"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=6"><img class="image-fade-in" src="../assets/images/img97.jpeg" alt="Œuvre n°06 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=6">Œuvre n°06</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--7"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=7"><img class="image-fade-in" src="../assets/images/img100.jpeg" alt="Œuvre n°07 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=7">Œuvre n°07</a></figcaption></figure>
+        <figure class="shop-photography__item shop-photography__item--8"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=8"><img class="image-fade-in" src="../assets/images/img103.jpeg" alt="Œuvre n°08 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=8">Œuvre n°08</a></figcaption></figure>
+      </div>
+      <p class="shop-photography__edition-note">Chaque photographie est disponible en 40 × 60 cm ou 60 × 90 cm. Tirage numéroté, signé et encadré sur papier William Turner 310 g, avec cadre noir.</p>
     </section>
 
   </main>
@@ -197,8 +201,73 @@
         panels.forEach((panel) => { panel.hidden = panel.dataset.shopPanel !== tab.dataset.shopTab; panel.classList.remove('is-visible'); });
         tab.classList.add('is-active'); tab.setAttribute('aria-selected', 'true');
         const panel = document.querySelector(`[data-shop-panel="${tab.dataset.shopTab}"]`);
-        requestAnimationFrame(() => panel?.classList.add('is-visible'));
+        requestAnimationFrame(() => {
+          panel?.classList.add('is-visible');
+          if (tab.dataset.shopTab === 'photography' && photographyGallery?.classList.contains('is-video-format')) updateFocusedPhotography();
+        });
       }));
+      const photographyGallery = document.querySelector('[data-photography-gallery]');
+      const photographyFormats = document.querySelectorAll('[data-photography-format]');
+      const photographyFormatKey = 'les-patronnes-photography-format';
+      const photographyItems = photographyGallery ? Array.from(photographyGallery.querySelectorAll('.shop-photography__item')) : [];
+      const photographyProgress = document.querySelector('[data-photography-progress]');
+      const photographyCurrent = document.querySelector('[data-photography-current]');
+      let photographyFocusObserver;
+      let photographyFocusFrame;
+      const updateFocusedPhotography = () => {
+        if (!photographyGallery?.classList.contains('is-video-format')) return;
+        const galleryCenter = photographyGallery.getBoundingClientRect().top + (photographyGallery.clientHeight / 2);
+        let focusedItem = null;
+        let smallestDistance = Infinity;
+        photographyItems.forEach((item) => {
+          const rect = item.getBoundingClientRect();
+          const distance = Math.abs((rect.top + (rect.height / 2)) - galleryCenter);
+          if (distance < smallestDistance) {
+            smallestDistance = distance;
+            focusedItem = item;
+          }
+        });
+        photographyItems.forEach((item) => item.classList.toggle('is-focused', item === focusedItem));
+        if (photographyCurrent && focusedItem) {
+          photographyCurrent.textContent = String(photographyItems.indexOf(focusedItem) + 1).padStart(2, '0');
+        }
+      };
+      const stopPhotographyFocus = () => {
+        photographyFocusObserver?.disconnect();
+        photographyFocusObserver = undefined;
+        window.cancelAnimationFrame(photographyFocusFrame);
+        photographyItems.forEach((item) => item.classList.remove('is-focused'));
+        if (photographyCurrent) photographyCurrent.textContent = '01';
+      };
+      const startPhotographyFocus = () => {
+        if (!photographyGallery || photographyFocusObserver) return;
+        photographyFocusObserver = new IntersectionObserver(() => {
+          window.cancelAnimationFrame(photographyFocusFrame);
+          photographyFocusFrame = window.requestAnimationFrame(updateFocusedPhotography);
+        }, { root: photographyGallery, threshold: [0.6, 0.7, 0.8] });
+        photographyItems.forEach((item) => photographyFocusObserver.observe(item));
+        window.requestAnimationFrame(updateFocusedPhotography);
+      };
+      photographyGallery?.addEventListener('scroll', () => {
+        if (!photographyGallery.classList.contains('is-video-format')) return;
+        window.cancelAnimationFrame(photographyFocusFrame);
+        photographyFocusFrame = window.requestAnimationFrame(updateFocusedPhotography);
+      }, { passive: true });
+      const setPhotographyFormat = (format) => {
+        if (!photographyGallery) return;
+        const isVideoFormat = format === 'video';
+        photographyGallery.classList.toggle('is-video-format', isVideoFormat);
+        photographyProgress?.classList.toggle('is-visible', isVideoFormat);
+        photographyFormats.forEach((button) => {
+          const selected = button.dataset.photographyFormat === format;
+          button.classList.toggle('is-active', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+        if (isVideoFormat) startPhotographyFocus(); else stopPhotographyFocus();
+        try { window.localStorage.setItem(photographyFormatKey, format); } catch (_) {}
+      };
+      setPhotographyFormat('standard');
+      photographyFormats.forEach((button) => button.addEventListener('click', () => setPhotographyFormat(button.dataset.photographyFormat)));
       document.querySelectorAll('[data-product-cover]').forEach((cover) => {
         const coverImage = cover.querySelector('[data-shirt-cover-image]');
         if (!coverImage) return;

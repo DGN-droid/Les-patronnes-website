@@ -55,6 +55,7 @@ const translations = {
     "nav.press": "Presse",
     "nav.contact": "Contact",
     "nav.partner": "Contribuer",
+    "nav.contribute": "Contribuer",
     "menu.open": "Ouvrir le menu",
     "menu.close": "Fermer le menu",
     search: "Rechercher",
@@ -107,6 +108,7 @@ const translations = {
     ,"title.event-detail": "Événement | Les Patronnes"
     ,"title.shop": "Boutique | Les Patronnes"
     ,"title.don": "Faire un don | Les Patronnes"
+    ,"title.artwork": "Œuvre | Les Patronnes"
   },
   en: {
     "nav.main": "Main navigation",
@@ -121,6 +123,7 @@ const translations = {
     "nav.press": "Press",
     "nav.contact": "Contact",
     "nav.partner": "Contribute",
+    "nav.contribute": "Contribute",
     "menu.open": "Open menu",
     "menu.close": "Close menu",
     search: "Search",
@@ -173,11 +176,13 @@ const translations = {
     ,"title.event-detail": "Event | Les Patronnes"
     ,"title.shop": "Shop | Les Patronnes"
     ,"title.don": "Make a donation | Les Patronnes"
+    ,"title.artwork": "Artwork | Les Patronnes"
   }
 };
 
 // Navigation commune : Presse, à la place des Actualités, et Boutique.
 document.querySelectorAll(".site-nav__links").forEach((linksContainer) => {
+  if (linksContainer.closest("[data-artwork-page]")) return;
   const aboutLink = linksContainer.querySelector('[data-i18n="nav.about"]');
   const eventsLink = linksContainer.querySelector('[data-i18n="nav.events"]');
   let pressLink = linksContainer.querySelector('[data-i18n="nav.press"]');

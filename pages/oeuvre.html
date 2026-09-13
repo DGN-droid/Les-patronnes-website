@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Œuvre | Les Patronnes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="artwork" data-artwork-page>
+  <header class="site-header" data-header><nav class="site-nav" aria-label="Navigation principale"><div class="site-nav__left"><button class="site-nav__burger" type="button" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg></button><div class="site-nav__links"><a href="about.html">À propos</a><a href="events.html">Événements</a></div></div><a class="site-nav__logo" href="../index.html">Les Patronnes</a><div class="site-nav__right"><div class="site-nav__preferences" data-nav-preferences></div><a class="site-nav__contact" href="devenir-partenaire.html">Contribuer</a></div></nav></header>
+  <main class="artwork-page"><a class="artwork-page__back" href="boutique.html">← Retour à la boutique</a><article class="artwork-product"><div class="artwork-product__visual"><img data-artwork-image src="../assets/images/img99.jpeg" alt="Œuvre Les Patronnes"></div><div><p class="artwork-product__eyebrow">Édition photographique</p><h1 data-artwork-title>Œuvre n°01</h1><p class="artwork-product__intro">Un tirage d’art issu du regard porté sur les femmes et les marchés qui font vivre Les Patronnes.</p><section class="artwork-product__choice"><p>Choisir un format <span data-artwork-size>40 × 60 cm</span></p><div class="artwork-product__sizes"><button class="is-selected" type="button" data-size="40 × 60 cm" aria-pressed="true">40 × 60 cm</button><button type="button" data-size="60 × 90 cm" aria-pressed="false">60 × 90 cm</button></div></section><dl class="artwork-product__details"><div><dt>Édition</dt><dd>Numérotée et signée</dd></div><div><dt>Papier</dt><dd>William Turner 310 g</dd></div><div><dt>Encadrement</dt><dd>Cadre noir</dd></div><div><dt>Livraison</dt><dd>3 à 4 semaines</dd></div></dl><a class="artwork-product__cta" data-artwork-contact href="mailto:lespatronnes229@gmail.com">Réserver cette œuvre</a><p class="artwork-product__note">Chaque commande est préparée avec soin. Nous vous répondrons personnellement pour confirmer la disponibilité et les modalités de retrait ou livraison.</p></div></article></main>
+  <footer></footer><script src="../js/main.js"></script><script>
+  (() => { const works=['img99.jpeg','img102.jpeg','img98.jpeg','img101.jpeg','img96.jpeg','img97.jpeg','img100.jpeg','img103.jpeg']; const id=Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('oeuvre'))||1)); const title=`Œuvre n°${String(id).padStart(2,'0')}`; document.querySelector('[data-artwork-image]').src=`../assets/images/${works[id-1]}`; document.querySelector('[data-artwork-image]').alt=title; document.querySelector('[data-artwork-title]').textContent=title; document.title=`${title} | Les Patronnes`; const size=document.querySelector('[data-artwork-size]'); const contact=document.querySelector('[data-artwork-contact]'); const update=(value)=>{size.textContent=value; contact.href=`mailto:lespatronnes229@gmail.com?subject=${encodeURIComponent(`Réservation ${title}`)}&body=${encodeURIComponent(`Bonjour,%0A%0AJe souhaite réserver ${title} au format ${value}.%0A%0AMerci.`)}`;}; document.querySelectorAll('[data-size]').forEach((button)=>button.addEventListener('click',()=>{document.querySelectorAll('[data-size]').forEach((item)=>{item.classList.toggle('is-selected',item===button);item.setAttribute('aria-pressed',String(item===button));});update(button.dataset.size);})); update('40 × 60 cm'); })();
+  </script><script>
+  (() => {
+    const backLink = document.querySelector('.artwork-page__back');
+    if (!backLink) return;
+    const carousel = document.createElement('nav');
+    carousel.className = 'artwork-page__carousel';
+    carousel.setAttribute('aria-label', 'Explorer les autres œuvres');
+    backLink.insertAdjacentElement('afterend', carousel);
+    const works = ['img99.jpeg', 'img102.jpeg', 'img98.jpeg', 'img101.jpeg', 'img96.jpeg', 'img97.jpeg', 'img100.jpeg', 'img103.jpeg'];
+    const currentId = Math.max(1, Math.min(8, Number(new URLSearchParams(location.search).get('oeuvre')) || 1));
+    carousel.innerHTML = works.map((image, index) => {
+      const id = index + 1;
+      return `<a class="artwork-page__thumbnail${id === currentId ? ' is-current' : ''}" href="oeuvre.html?oeuvre=${id}" aria-label="Voir l'œuvre n°${String(id).padStart(2, '0')}"><img src="../assets/images/${image}" alt="" loading="lazy"></a>`;
+    }).join('');
+    carousel.querySelector('.is-current')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+  })();
+  </script><script>
+  (() => {
+    const carousel = document.querySelector('.artwork-page__carousel');
+    if (!carousel) return;
+    document.querySelector('.site-nav__links')?.replaceChildren();
+    const originals = Array.from(carousel.children);
+    const selectedIndex = Math.max(0, originals.findIndex((item) => item.classList.contains('is-current')));
+    originals.forEach((item) => item.classList.remove('is-current'));
+    carousel.prepend(...originals.map((item) => item.cloneNode(true)));
+    carousel.append(...originals.map((item) => item.cloneNode(true)));
+    let items = Array.from(carousel.children);
+    let index = originals.length + selectedIndex;
+    let frame;
+    let motionFrame;
+    let dragging = false;
+    let didDrag = false;
+    let pointerStart = 0;
+    let scrollStart = 0;
+    const focusItem = () => {
+      const center = carousel.getBoundingClientRect().left + (carousel.clientWidth / 2);
+      let focused = items[0];
+      let distance = Infinity;
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const nextDistance = Math.abs((rect.left + (rect.width / 2)) - center);
+        if (nextDistance < distance) { distance = nextDistance; focused = item; }
+      });
+      items.forEach((item) => item.classList.toggle('is-focused', item === focused));
+      index = items.indexOf(focused);
+    };
+    const moveTo = (nextIndex, behavior = 'smooth') => {
+      const item = items[nextIndex];
+      if (!item) return;
+      const target = item.offsetLeft - ((carousel.clientWidth - item.clientWidth) / 2);
+      cancelAnimationFrame(motionFrame);
+      if (behavior === 'auto') { carousel.scrollLeft = target; return; }
+      const start = carousel.scrollLeft;
+      const distance = target - start;
+      const startedAt = performance.now();
+      const duration = 3600;
+      const animate = (now) => {
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const eased = progress < .5
+          ? 4 * progress * progress * progress
+          : 1 - (Math.pow(-2 * progress + 2, 3) / 2);
+        carousel.scrollLeft = start + (distance * eased);
+        if (progress < 1) motionFrame = requestAnimationFrame(animate);
+      };
+      motionFrame = requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(() => { moveTo(index, 'auto'); focusItem(); });
+    carousel.addEventListener('scroll', () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(focusItem);
+    }, { passive: true });
+    carousel.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      cancelAnimationFrame(motionFrame);
+      dragging = false;
+      didDrag = false;
+      pointerStart = event.clientX;
+      scrollStart = carousel.scrollLeft;
+    });
+    carousel.addEventListener('pointermove', (event) => {
+      if (Math.abs(event.clientX - pointerStart) <= 5) return;
+      dragging = true;
+      didDrag = true;
+      carousel.classList.add('is-dragging');
+      carousel.scrollLeft = scrollStart - (event.clientX - pointerStart);
+    });
+    const stopDragging = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      carousel.classList.remove('is-dragging');
+    };
+    carousel.addEventListener('pointerup', stopDragging);
+    carousel.addEventListener('pointercancel', stopDragging);
+    carousel.addEventListener('click', (event) => {
+      const thumbnail = event.target.closest('.artwork-page__thumbnail');
+      if (!thumbnail) return;
+      event.preventDefault();
+      if (didDrag) { didDrag = false; return; }
+      window.location.assign(thumbnail.href);
+    });
+    window.setInterval(() => {
+      if (dragging || document.hidden) return;
+      if (index >= items.length - 3) {
+        carousel.append(...originals.map((item) => item.cloneNode(true)));
+        items = Array.from(carousel.children);
+      }
+      index += 1;
+      moveTo(index);
+    }, 5000);
+  })();
+</script>
+</script><script>
+  (() => {
+    const artworkId = Math.max(1, Math.min(8, Number(new URLSearchParams(location.search).get('oeuvre')) || 1));
+    const copy = {
+      fr: { eyebrow: 'Édition photographique', title: `Œuvre n°${String(artworkId).padStart(2, '0')}`, intro: 'Un tirage d’art issu du regard porté sur les femmes et les marchés qui font vivre Les Patronnes.', choose: 'Choisir un format', edition: 'Édition', signed: 'Numérotée et signée', paper: 'Papier', framing: 'Encadrement', blackFrame: 'Cadre noir', delivery: 'Livraison', weeks: '3 à 4 semaines', reserve: 'Réserver cette œuvre', note: 'Chaque commande est préparée avec soin. Nous vous répondrons personnellement pour confirmer la disponibilité et les modalités de retrait ou livraison.', back: '← Retour à la boutique', browse: 'Explorer les autres œuvres', view: 'Voir l’œuvre' },
+      en: { eyebrow: 'Photographic edition', title: `Artwork no. ${String(artworkId).padStart(2, '0')}`, intro: 'An art print born from a gaze upon the women and markets that bring Les Patronnes to life.', choose: 'Choose a format', edition: 'Edition', signed: 'Numbered and signed', paper: 'Paper', framing: 'Framing', blackFrame: 'Black frame', delivery: 'Delivery', weeks: '3 to 4 weeks', reserve: 'Reserve this artwork', note: 'Each order is prepared with care. We will personally confirm availability and collection or delivery arrangements.', back: '← Return to the shop', browse: 'Browse the other artworks', view: 'View artwork' }
+    };
+    const applyArtworkCopy = (language = document.documentElement.lang) => {
+      const text = copy[language] || copy.fr;
+      document.querySelector('.artwork-page__back').textContent = text.back;
+      document.querySelector('.artwork-product__eyebrow').textContent = text.eyebrow;
+      document.querySelector('[data-artwork-title]').textContent = text.title;
+      document.querySelector('.artwork-product__intro').textContent = text.intro;
+      const choice = document.querySelector('.artwork-product__choice > p');
+      const size = choice.querySelector('[data-artwork-size]');
+      choice.replaceChildren(document.createTextNode(`${text.choose} `), size);
+      const rows = Array.from(document.querySelectorAll('.artwork-product__details div'));
+      [[text.edition, text.signed], [text.paper, 'William Turner 310 g'], [text.framing, text.blackFrame], [text.delivery, text.weeks]].forEach(([label, value], index) => {
+        rows[index].querySelector('dt').textContent = label;
+        rows[index].querySelector('dd').textContent = value;
+      });
+      document.querySelector('[data-artwork-contact]').textContent = text.reserve;
+      document.querySelector('.artwork-product__note').textContent = text.note;
+      const carousel = document.querySelector('.artwork-page__carousel');
+      if (carousel) {
+        carousel.setAttribute('aria-label', text.browse);
+        carousel.querySelectorAll('.artwork-page__thumbnail').forEach((thumbnail, index) => thumbnail.setAttribute('aria-label', `${text.view} ${String((index % 8) + 1).padStart(2, '0')}`));
+      }
+      document.title = `${text.title} | Les Patronnes`;
+    };
+    applyArtworkCopy();
+    window.addEventListener('site:languagechange', (event) => applyArtworkCopy(event.detail.language));
+  })();
+</script>
+</body></html>
