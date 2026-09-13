@@ -35,7 +35,7 @@
     </section>
 
     <div class="shop-tabs" role="tablist" aria-label="Catégories boutique">
-      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8.2 4.5 1.6 2h4.4l1.6-2 4.4 3.1-2.3 3.3v8.6H6.1v-8.6L3.8 7.6l4.4-3.1Z"></path><path d="M9.8 6.5 8.4 9.2m5.8-2.7 1.4 2.7"></path></svg></span><span class="shop-tab__label">Vêtement</span></button>
+      <button class="shop-tab is-active" type="button" role="tab" aria-selected="true" data-shop-tab="shirt"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8.2 4.5 1.6 2h4.4l1.6-2 4.4 3.1-2.3 3.3v8.6H6.1v-8.6L3.8 7.6l4.4-3.1Z"></path><path d="M9.8 6.5 8.4 9.2m5.8-2.7 1.4 2.7"></path></svg></span><span class="shop-tab__label">Vêtements</span></button>
       <button class="shop-tab" type="button" role="tab" aria-selected="false" data-shop-tab="photography"><span class="shop-tab__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7.5h4l1.2-2h5.6l1.2 2h4v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span><span class="shop-tab__label">Photographies</span></button>
     </div>
 
@@ -163,13 +163,10 @@
       </div>
     </article>
 
-    <section class="shop-panel-photography" data-shop-panel="photography" hidden>
+    <section id="photographies" class="shop-panel-photography" data-shop-panel="photography" hidden>
       <p class="shop-eyebrow">Édition photographique</p>
       <h2>Les photographies<br>de Maki Manoukian</h2>
       <p>Une sélection d'images signées Maki Manoukian, capturées au cœur du projet Les Patronnes.</p>
-      <div class="shop-photography__formats" role="group" aria-label="Choisir le format d'affichage des photographies">
-        <button class="shop-photography__format is-active" type="button" data-photography-format="standard" aria-pressed="true">Format galerie</button>
-      </div>
       <div class="shop-photography__gallery" data-photography-gallery>
         <figure class="shop-photography__item shop-photography__item--1"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=1"><img class="image-fade-in" src="../assets/images/img99.jpeg" alt="Œuvre n°01 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=1">Œuvre n°01</a></figcaption></figure>
         <figure class="shop-photography__item shop-photography__item--2"><a class="shop-photography__artwork" href="oeuvre.html?oeuvre=2"><img class="image-fade-in" src="../assets/images/img102.jpeg" alt="Œuvre n°02 Les Patronnes" loading="lazy" decoding="async"></a><figcaption><a href="oeuvre.html?oeuvre=2">Œuvre n°02</a></figcaption></figure>
@@ -206,6 +203,12 @@
           if (tab.dataset.shopTab === 'photography' && photographyGallery?.classList.contains('is-video-format')) updateFocusedPhotography();
         });
       }));
+      if (new URLSearchParams(window.location.search).get('tab') === 'photography') {
+        document.querySelector('[data-shop-tab="photography"]')?.click();
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+          document.querySelector('#photographies')?.scrollIntoView({ block: 'start', behavior: 'auto' });
+        }));
+      }
       const photographyGallery = document.querySelector('[data-photography-gallery]');
       const photographyFormats = document.querySelectorAll('[data-photography-format]');
       const photographyFormatKey = 'les-patronnes-photography-format';

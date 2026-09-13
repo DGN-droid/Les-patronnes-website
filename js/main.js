@@ -109,6 +109,8 @@ const translations = {
     ,"title.shop": "Boutique | Les Patronnes"
     ,"title.don": "Faire un don | Les Patronnes"
     ,"title.artwork": "Œuvre | Les Patronnes"
+    ,"press.proposeArticle": "Proposer un article"
+    ,"press.proposeInterview": "Proposer une interview"
   },
   en: {
     "nav.main": "Main navigation",
@@ -177,6 +179,8 @@ const translations = {
     ,"title.shop": "Shop | Les Patronnes"
     ,"title.don": "Make a donation | Les Patronnes"
     ,"title.artwork": "Artwork | Les Patronnes"
+    ,"press.proposeArticle": "Propose an article"
+    ,"press.proposeInterview": "Propose an interview"
   }
 };
 
@@ -508,7 +512,17 @@ const applyPageCopy = () => {
   eventEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
 
   if (["actualites", "press"].includes(document.body.dataset.page)) {
-    document.querySelectorAll(".actualites-feed__link").forEach((link) => setLocalizedCopy(link, "Read article <span class=\"actualites-feed__arrow\" aria-hidden=\"true\"></span>", "html"));
+    document.querySelectorAll(".actualites-feed__link").forEach((link) => {
+      const socialPlatform = link.href.includes("facebook.com")
+        ? "Facebook"
+        : link.href.includes("instagram.com")
+          ? "Instagram"
+          : link.href.includes("linkedin.com")
+            ? "LinkedIn"
+            : "";
+      const label = socialPlatform || "Article";
+      setLocalizedCopy(link, label, "html");
+    });
     document.querySelectorAll(".actualites-feed__date").forEach((date) => {
       if (!date.dataset.i18nOriginal) date.dataset.i18nOriginal = date.textContent;
       date.textContent = activeLanguage === "en" ? new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${date.dateTime}T12:00:00`)) : date.dataset.i18nOriginal;
