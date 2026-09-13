@@ -156,4 +156,22 @@
     window.addEventListener('site:languagechange', (event) => applyArtworkCopy(event.detail.language));
   })();
 </script>
+<script>
+  (() => {
+    const applyPhotoLabels = () => {
+      const photoId = Math.max(1, Math.min(8, Number(new URLSearchParams(location.search).get('oeuvre')) || 1));
+      const title = `Photo ${photoId}`;
+      const image = document.querySelector('[data-artwork-image]');
+      if (image) image.alt = title;
+      const heading = document.querySelector('[data-artwork-title]');
+      if (heading) heading.textContent = title;
+      document.title = `${title} | Les Patronnes`;
+      document.querySelectorAll('.artwork-page__thumbnail').forEach((thumbnail, index) => {
+        thumbnail.setAttribute('aria-label', `Voir la photo ${(index % 8) + 1}`);
+      });
+    };
+    applyPhotoLabels();
+    window.addEventListener('site:languagechange', applyPhotoLabels);
+  })();
+</script>
 </body></html>

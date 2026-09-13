@@ -111,6 +111,7 @@ const translations = {
     ,"title.artwork": "Œuvre | Les Patronnes"
     ,"press.proposeArticle": "Proposer un article"
     ,"press.proposeInterview": "Proposer une interview"
+    ,"partner.donate": "Faire un don"
   },
   en: {
     "nav.main": "Main navigation",
@@ -181,6 +182,7 @@ const translations = {
     ,"title.artwork": "Artwork | Les Patronnes"
     ,"press.proposeArticle": "Propose an article"
     ,"press.proposeInterview": "Propose an interview"
+    ,"partner.donate": "Make a donation"
   }
 };
 
