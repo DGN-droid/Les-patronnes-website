@@ -538,16 +538,26 @@ const syncPreferenceLinks = () => {
   document.querySelectorAll('a[href*=".html"]').forEach((link) => {
     if (!link.dataset.preferenceHref) {
       const href = link.getAttribute("href");
-      const [path, hash = ""] = href.split("#");
-      link.dataset.preferenceHref = path.split("?")[0];
-      link.dataset.preferenceHash = hash ? `#${hash}` : "";
+      const [pathWithParameters, hash = ""] = href.split("#");
+      const [path, query = ""] = pathWithParameters.split("?");
+      const extraParameters = new URLSearchParams(query);
+      extraParameters.delete("lang");
+      extraParameters.delete("theme");
+
+      link.dataset.preferenceHref = path;
+      link.dataset.preferenceExtraParams = extraParameters.toString();
+      link.dataset.preferenceHash = hash;
     }
 
     const parameters = new URLSearchParams({
       lang: activeLanguage,
       theme: activeTheme
     });
-    link.setAttribute("href", `${link.dataset.preferenceHref}?${parameters}${link.dataset.preferenceHash || ""}`);
+    const extraParameters = new URLSearchParams(link.dataset.preferenceExtraParams || "");
+    extraParameters.forEach((value, key) => parameters.append(key, value));
+
+    const hash = link.dataset.preferenceHash ? `#${link.dataset.preferenceHash}` : "";
+    link.setAttribute("href", `${link.dataset.preferenceHref}?${parameters}${hash}`);
   });
 };
 
@@ -1006,7 +1016,7 @@ if (heroCarousel) {
     const cover = card.closest(".shop-shirt-cover");
     const product = cover?.dataset.productCover;
     const image = card.querySelector("img")?.getAttribute("src") || index;
-    const href = cover?.querySelector(".shop-shirt-cover__name")?.getAttribute("href") || "boutique.html#photographies";
+    const href = cover?.querySelector(".shop-shirt-cover__name")?.getAttribute("href") || "boutique.html?tab=photography#photographies";
     const title = cover?.querySelector(".shop-shirt-cover__name")?.textContent.trim() || `Photographie Les Patronnes ${String(index + 1).padStart(2, "0")}`;
     return {
       id: cover ? `product-${product || href}` : `photography-${image}`,
@@ -1044,8 +1054,9 @@ if (heroCarousel) {
   shopCards.forEach((card, index) => {
     const favourite = getCardDetails(card, index);
     const { id } = favourite;
-    if (favourites.has(id) && !favourites.get(id).image) {
-      favourites.set(id, favourite);
+    const savedFavourite = favourites.get(id);
+    if (savedFavourite && (!savedFavourite.image || (id.startsWith("photography-") && savedFavourite.href !== favourite.href))) {
+      favourites.set(id, { ...savedFavourite, ...favourite });
       save();
     }
     const button = document.createElement("button");
@@ -1081,6 +1092,7 @@ if (heroCarousel) {
 // Page Mes favoris : lecture des choix conservés depuis la boutique.
 (() => {
   const list = document.querySelector("#favourites-list");
+  const backLink = document.querySelector(".favourites-back");
   if (!list) return;
 
   const storageKey = "les-patronnes-shop-favourites";
@@ -1098,6 +1110,13 @@ if (heroCarousel) {
   const escapeHTML = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const render = () => {
     const favourites = readFavourites();
+    const latestFavourite = favourites.at(-1);
+    backLink?.setAttribute(
+      "href",
+      latestFavourite?.id.startsWith("photography-")
+        ? "boutique.html?tab=photography#photographies"
+        : "boutique.html"
+    );
     if (!favourites.length) {
       list.innerHTML = '<p class="favourites-list__empty">Aucun favori pour le moment. <a href="boutique.html">Découvrir la boutique</a></p>';
       return;

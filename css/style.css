@@ -1313,7 +1313,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .actualites-feed__item > * { position: relative; z-index: 1; }
 .actualites-feed__media { display: block; min-width: 0; }
 .actualites-feed__media img { display: none; }
-.actualites-feed__item:hover::before { opacity: .18; transform: scale(1); }
+.actualites-feed__item:hover::before { opacity: .28; transform: scale(1); }
 .actualites-feed__item:nth-child(1) { --press-media-logo: url("../assets/images/logo26.jpeg"); }
 .actualites-feed__item:nth-child(2) { --press-media-logo: url("../assets/images/logo21.jpeg"); }
 .actualites-feed__item:nth-child(3) { --press-media-logo: url("../assets/images/logo20.jpeg"); }
