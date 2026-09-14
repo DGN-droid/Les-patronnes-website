@@ -1141,6 +1141,7 @@ body[data-page="event-detail"] .site-header { color: var(--color-text-light); ba
 .event-gallery__item { position: relative; min-height: 360px; margin: 0; overflow: hidden; background: var(--color-bg-dark); }
 .event-gallery__item--1 { grid-row: span 2; min-height: 740px; }
 .event-gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.22, 1, .36, 1); }
+.event-gallery__item--1 img[src$="img108.JPG"] { object-position: 72% center; }
 .event-gallery__item:hover img { transform: scale(1.045); }
 .event-gallery figcaption { position: absolute; right: var(--space-sm); bottom: var(--space-sm); left: var(--space-sm); font-size: .7rem; font-weight: 700; letter-spacing: .12em; color: var(--color-text-light); opacity: 0; text-transform: uppercase; transform: translateY(8px); transition: opacity var(--transition-default), transform var(--transition-default); }
 .event-gallery__item::after { position: absolute; inset: auto 0 0; height: 42%; background: linear-gradient(transparent, rgb(0 0 0 / 66%)); content: ""; opacity: 0; pointer-events: none; transition: opacity var(--transition-default); }
