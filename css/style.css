@@ -1316,15 +1316,15 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .actualites-feed__item:hover::before { opacity: .28; transform: scale(1); }
 .actualites-feed__item:nth-child(1) { --press-media-logo: url("../assets/images/logo26.jpeg"); }
 .actualites-feed__item:nth-child(2) { --press-media-logo: url("../assets/images/logo21.jpeg"); }
-.actualites-feed__item:nth-child(3) { --press-media-logo: url("../assets/images/logo20.jpeg"); }
-.actualites-feed__item:nth-child(4) { --press-media-logo: url("../assets/images/logo17.jpeg"); }
-.actualites-feed__item:nth-child(5) { --press-media-logo: url("../assets/images/logo27.png"); }
-.actualites-feed__item:nth-child(6) { --press-media-logo: url("../assets/images/logo18.jpg"); }
-.actualites-feed__item:nth-child(7) { --press-media-logo: url("../assets/images/logo19.jpeg"); }
-.actualites-feed__item:nth-child(8) { --press-media-logo: url("../assets/images/logo22.jpeg"); }
-.actualites-feed__item:nth-child(9) { --press-media-logo: url("../assets/images/logo23.jpeg"); }
-.actualites-feed__item:nth-child(10) { --press-media-logo: url("../assets/images/logo24.jpeg"); }
-.actualites-feed__item:nth-child(11) { --press-media-logo: url("../assets/images/logo25.jpeg"); }
+.actualites-feed__item:nth-child(3) { --press-media-logo: url("../assets/images/logo24.jpeg"); }
+.actualites-feed__item:nth-child(4) { --press-media-logo: url("../assets/images/logo18.jpg"); }
+.actualites-feed__item:nth-child(5) { --press-media-logo: url("../assets/images/logo19.jpeg"); }
+.actualites-feed__item:nth-child(6) { --press-media-logo: url("../assets/images/logo17.jpeg"); }
+.actualites-feed__item:nth-child(7) { --press-media-logo: url("../assets/images/logo25.jpeg"); }
+.actualites-feed__item:nth-child(8) { --press-media-logo: url("../assets/images/logo23.jpeg"); }
+.actualites-feed__item:nth-child(9) { --press-media-logo: url("../assets/images/logo20.jpeg"); }
+.actualites-feed__item:nth-child(10) { --press-media-logo: url("../assets/images/logo27.png"); }
+.actualites-feed__item:nth-child(11) { --press-media-logo: url("../assets/images/logo22.jpeg"); }
 @media (max-width: 800px) { .actualites-page { padding-top: calc(72px + var(--space-xl)); }.actualites-feed__item { grid-template-columns: 1fr auto; gap: var(--space-sm); }.actualites-feed__date { grid-column: 1 / -1; }.actualites-feed__link { grid-column: 2; grid-row: 2; } }
 @media (max-width: 600px) { .actualites-page { padding-inline: var(--space-sm); padding-bottom: var(--space-xl); }.press-hero__actions { align-items: stretch; flex-direction: column; }.press-hero__actions a { width: 100%; }.actualites-feed { margin-top: var(--space-xl); }.actualites-feed__item { display: flex; flex-direction: column; align-items: flex-start; }.actualites-feed__media { display: flex; }.actualites-feed__link { align-self: flex-start; } }
 
@@ -1691,7 +1691,7 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .partner-logo-marquee__group { flex: 0 0 auto; gap: clamp(var(--space-sm), 2vw, var(--space-md)); padding-right: clamp(var(--space-sm), 2vw, var(--space-md)); }
 .partner-trust .partner-logo { display: grid; width: auto; min-height: 0; height: auto; padding: 0; overflow: visible; color: inherit; background: transparent; border: 0; box-shadow: none; place-items: center; }
 .partner-logo img { display: block; width: auto; height: auto; max-width: clamp(9rem, 14vw, 12rem); max-height: 6rem; border: 0; background: transparent; box-shadow: none; object-fit: contain; transition: transform var(--transition-default); }
-.partner-logo:hover img { transform: scale(1.04); }
+.partner-logo--nere img { max-width: clamp(10rem, 15.5vw, 13rem); max-height: 6.75rem; }
 .partner-major { margin-top: var(--space-lg); text-align: center; }
 .partner-major__title { margin: 0; color: var(--color-text-primary); font-size: var(--font-size-small); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .partner-major__logos { display: flex; margin-top: var(--space-md); justify-content: center; align-items: center; gap: clamp(var(--space-lg), 6vw, var(--space-xxl)); }
