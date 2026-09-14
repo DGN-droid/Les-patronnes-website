@@ -1722,3 +1722,28 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .shop-card-favourite svg { stroke: var(--color-accent); }
 .shop-photography__item:hover img { transform: none; }
 .shop-photography__artwork:hover img, .shop-photography__artwork:focus-visible img { transform: scale(1.06); }
+
+/* Repères de lecture : une présence éditoriale légère, qui laisse le visiteur maître de son parcours. */
+.site-reading-progress { position: fixed; z-index: 1100; top: 0; left: 0; width: 100%; height: 2px; pointer-events: none; }
+.site-reading-progress span { display: block; width: calc(var(--reading-progress, 0) * 100%); height: 100%; background: var(--color-accent); transform-origin: left; transition: width .12s linear; }
+.site-scroll-cue, .site-end-link { position: fixed; z-index: 900; display: inline-flex; padding: .6rem .82rem; border: 1px solid color-mix(in srgb, var(--color-text-primary) 24%, transparent); align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; color: var(--color-text-primary); background: color-mix(in srgb, var(--color-bg-primary) 88%, transparent); box-shadow: 0 10px 30px rgb(0 0 0 / 10%); backdrop-filter: blur(10px); font-family: var(--font-body); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.site-scroll-cue { right: var(--space-lg); bottom: var(--space-lg); opacity: 0; pointer-events: none; transform: translateY(.7rem); transition: opacity var(--transition-default), transform var(--transition-default), color var(--transition-default), border-color var(--transition-default); }
+.site-scroll-cue.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); animation: site-scroll-cue-float 2.4s ease-in-out infinite; }
+.site-scroll-cue:hover, .site-scroll-cue:focus-visible, .site-end-link:hover, .site-end-link:focus-visible { border-color: var(--color-accent); color: var(--color-accent); }
+.site-scroll-cue i, .site-end-link i { width: .5rem; height: .5rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-.12rem); }
+.site-end-link { right: var(--space-lg); bottom: var(--space-lg); color: var(--color-text-light); background: var(--color-accent); border-color: var(--color-accent); }
+.site-end-link[hidden] { display: none; }
+@keyframes site-scroll-cue-float { 50% { transform: translateY(-.25rem); } }
+
+.site-section-reveal { opacity: 0; transform: translateY(1.5rem); transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1); }
+.site-section-reveal.site-section-revealed { opacity: 1; transform: translateY(0); }
+
+:is(.event-gallery__item, .shop-shirt-cover__card, .shop-photography__artwork, .favourites-card__image) { box-shadow: 0 0 0 rgb(0 0 0 / 0); transition: box-shadow var(--transition-default); }
+:is(.event-gallery__item, .shop-shirt-cover__card, .shop-photography__artwork, .favourites-card__image):hover { box-shadow: 0 16px 34px rgb(23 23 23 / 16%); }
+
+@media (max-width: 600px) { .site-scroll-cue, .site-end-link { right: var(--space-sm); bottom: var(--space-sm); } }
+@media (prefers-reduced-motion: reduce) {
+  .site-reading-progress span, .site-scroll-cue, .site-section-reveal { transition: none; }
+  .site-scroll-cue.is-visible { animation: none; }
+  .site-section-reveal { opacity: 1; transform: none; }
+}

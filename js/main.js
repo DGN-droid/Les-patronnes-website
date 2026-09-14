@@ -1264,3 +1264,101 @@ if (heroCarousel) {
   });
   if (!savedConsent()) open();
 })();
+
+// Lecture éditoriale : des repères discrets, sans jamais prendre le contrôle du défilement.
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const main = document.querySelector("main");
+  if (!main || document.body.classList.contains("story-open")) return;
+
+  const copy = {
+    fr: { continue: "Poursuivre", end: "Aller à la fin de page" },
+    en: { continue: "Continue", end: "Go to page end" }
+  };
+  const getCopy = () => copy[document.documentElement.lang === "en" ? "en" : "fr"];
+
+  const progress = document.createElement("div");
+  progress.className = "site-reading-progress";
+  progress.setAttribute("aria-hidden", "true");
+  progress.innerHTML = "<span></span>";
+
+  const cue = document.createElement("button");
+  cue.className = "site-scroll-cue";
+  cue.type = "button";
+  cue.innerHTML = '<span data-scroll-cue-label></span><i aria-hidden="true"></i>';
+
+  const endLink = document.createElement("button");
+  endLink.className = "site-end-link";
+  endLink.type = "button";
+  endLink.hidden = true;
+  endLink.innerHTML = '<span data-end-link-label></span><i aria-hidden="true"></i>';
+
+  document.body.append(progress, cue, endLink);
+
+  const updateCopy = () => {
+    cue.setAttribute("aria-label", getCopy().continue);
+    cue.querySelector("[data-scroll-cue-label]").textContent = getCopy().continue;
+    endLink.setAttribute("aria-label", getCopy().end);
+    endLink.querySelector("[data-end-link-label]").textContent = getCopy().end;
+  };
+
+  let hasReachedEnd = false;
+  let cueTimer = window.setTimeout(() => {
+    if (window.scrollY < 24) cue.classList.add("is-visible");
+  }, 2800);
+
+  const scrollToNextSection = () => {
+    const headerHeight = document.querySelector(".site-header")?.offsetHeight || 80;
+    const currentBottom = window.scrollY + headerHeight + 24;
+    const next = Array.from(main.querySelectorAll(":scope > section, :scope > article, :scope > nav"))
+      .find((section) => section.getBoundingClientRect().top + window.scrollY > currentBottom);
+    (next || main.lastElementChild)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  cue.addEventListener("click", scrollToNextSection);
+  endLink.addEventListener("click", () => {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  });
+
+  const updateReadingUI = () => {
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+    progress.style.setProperty("--reading-progress", String(ratio));
+
+    if (ratio > .985) hasReachedEnd = true;
+    cue.classList.toggle("is-visible", window.scrollY < 24 && !hasReachedEnd);
+    endLink.hidden = !(hasReachedEnd && window.scrollY < Math.max(220, window.innerHeight * .35));
+  };
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    window.clearTimeout(cueTimer);
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      updateReadingUI();
+      ticking = false;
+    });
+  }, { passive: true });
+
+  const revealTargets = Array.from(main.querySelectorAll(":scope > section, :scope > article"))
+    .filter((section) => !section.classList.contains("home-hero") && !section.matches(".event-detail__hero"));
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("site-section-revealed");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .08, rootMargin: "0px 0px -5% 0px" });
+    revealTargets.forEach((section) => {
+      section.classList.add("site-section-reveal");
+      revealObserver.observe(section);
+    });
+  }
+
+  updateCopy();
+  updateReadingUI();
+  window.addEventListener("site:languagechange", updateCopy);
+})();
