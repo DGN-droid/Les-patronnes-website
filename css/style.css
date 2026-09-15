@@ -1267,6 +1267,8 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .event-row--pk3 img { object-position: center 48%; }
 
 @media (max-width: 600px) { .home-hero__image--patronnes { object-position: center 84%; } }
+@media (max-width: 600px) { .home-hero h1 { transform: translateX(1rem); }.home-hero__title-word { transform: none; } }
+@media (max-width: 800px) { body[data-page="home"] .home-hero h1 { position: relative; left: 0; transform: none !important; }.home-hero__title-word { transform: none !important; } }
 
 /* Mobile : le menu garde un contraste sombre et les flèches sont dessinées en CSS, jamais en emoji. */
 @media (max-width: 800px) { .site-mobile-menu { color: var(--color-text-primary); } }
