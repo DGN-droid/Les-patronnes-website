@@ -1341,7 +1341,7 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 .actualites-feed__item:nth-child(10) { --press-media-logo: url("../assets/images/logo27.png"); }
 .actualites-feed__item:nth-child(11) { --press-media-logo: url("../assets/images/logo22.jpeg"); }
 @media (max-width: 800px) { .actualites-page { padding-top: calc(72px + var(--space-xl)); }.actualites-feed__item { grid-template-columns: 1fr auto; gap: var(--space-sm); }.actualites-feed__date { grid-column: 1 / -1; }.actualites-feed__link { grid-column: 2; grid-row: 2; } }
-@media (max-width: 600px) { .actualites-page { padding-inline: var(--space-sm); padding-bottom: var(--space-xl); }.press-hero__actions { align-items: stretch; flex-direction: column; }.press-hero__actions a { width: 100%; }.actualites-feed { margin-top: var(--space-xl); }.actualites-feed__item { display: flex; flex-direction: column; align-items: flex-start; }.actualites-feed__media { display: flex; }.actualites-feed__link { align-self: flex-start; } }
+@media (max-width: 600px) { .actualites-page { padding-inline: var(--space-sm); padding-bottom: var(--space-xl); }.press-hero__actions { align-items: stretch; flex-direction: column; }.press-hero__actions a { width: 100%; }.actualites-feed { margin-top: var(--space-xl); }.actualites-feed__item { display: flex; flex-direction: column; align-items: flex-start; }.actualites-feed__media { display: flex; width: 100%; }.actualites-feed__media h2 { width: calc(100% - clamp(6.5rem, 29vw, 8rem)); margin-right: auto; }.actualites-feed__link { align-self: flex-start; } }
 
 .shop-shirt {
   width: 100%;
