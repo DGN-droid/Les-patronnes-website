@@ -130,15 +130,11 @@ if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
   document.querySelectorAll("a.event-row[href]").forEach((row) => {
     let isNavigating = false;
 
-    row.addEventListener("pointerdown", () => {
-      row.querySelector("img")?.setAttribute("loading", "eager");
-      row.classList.add("is-mobile-preview");
-    }, { passive: true });
-
     row.addEventListener("click", (event) => {
       if (event.detail === 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || isNavigating) return;
       event.preventDefault();
       isNavigating = true;
+      row.querySelector("img")?.setAttribute("loading", "eager");
       row.classList.add("is-mobile-preview");
       window.setTimeout(() => { window.location.assign(row.href); }, 460);
     });
