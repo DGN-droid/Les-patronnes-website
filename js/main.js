@@ -46,6 +46,12 @@ document.querySelectorAll("body > footer").forEach((footer) => {
   footer.classList.add("site-footer");
   footer.innerHTML = '<p>© 2026 <strong>LES PATRONNES</strong> — Tous droits réservés.</p>';
 });
+window.updateSiteFooter = () => {
+  const rights = document.documentElement.lang === "en" ? "All rights reserved." : "Tous droits réservés.";
+  document.querySelectorAll(".site-footer").forEach((footer) => {
+    footer.innerHTML = '<p>© 2026 <strong>LES PATRONNES</strong> — ' + rights + '</p>';
+  });
+};
 
 const translations = {
   fr: {
@@ -115,6 +121,9 @@ const translations = {
     ,"title.shop": "Boutique | Les Patronnes"
     ,"title.don": "Faire un don | Les Patronnes"
     ,"title.artwork": "Œuvre | Les Patronnes"
+    ,"title.legal": "Mentions légales et confidentialité | Les Patronnes"
+    ,"legal.privacy": "Notre politique de confidentialité"
+    ,"legal.notices": "Nos mentions légales"
     ,"press.proposeArticle": "Proposer un article"
     ,"press.proposeInterview": "Proposer une interview"
     ,"partner.donate": "Faire un don"
@@ -186,6 +195,9 @@ const translations = {
     ,"title.shop": "Shop | Les Patronnes"
     ,"title.don": "Make a donation | Les Patronnes"
     ,"title.artwork": "Artwork | Les Patronnes"
+    ,"title.legal": "Legal notice and privacy | Les Patronnes"
+    ,"legal.privacy": "Our privacy policy"
+    ,"legal.notices": "Our legal notice"
     ,"press.proposeArticle": "Propose an article"
     ,"press.proposeInterview": "Propose an interview"
     ,"partner.donate": "Make a donation"
@@ -624,6 +636,7 @@ const applyLanguage = (language, persist = true) => {
   updateThemeControls();
   syncPreferenceLinks();
   applyPageCopy();
+  window.updateSiteFooter?.();
   window.dispatchEvent(new CustomEvent("site:languagechange", { detail: { language: activeLanguage } }));
 };
 

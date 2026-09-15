@@ -1315,8 +1315,9 @@ body[data-page="events"] .site-header.scrolled { color: var(--color-text-primary
 .actualites-feed__link { align-self: center; padding-bottom: 0; font-size: var(--font-size-small); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color var(--transition-default); }
 .actualites-feed__link:hover { color: var(--color-accent); }
 body[data-page="press"] .actualites-feed__link { display: inline-flex; align-items: center; gap: .55rem; line-height: 1; }
-body[data-page="press"] .actualites-feed__link::after { content: "↗"; display: block; font-family: Arial, sans-serif; font-size: 1.05rem; font-weight: 400; line-height: 1; transform: translateY(-.02em); transition: transform var(--transition-default); }
-body[data-page="press"] .actualites-feed__link:hover::after { transform: translate(.12rem, -.12rem); }
+body[data-page="press"] .actualites-feed__link::before { display: none; }
+body[data-page="press"] .actualites-feed__link::after { display: block; width: .9rem; height: .9rem; margin: 0; background: currentColor; content: ""; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 19 19 5M10 5h9v9' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 19 19 5M10 5h9v9' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E") center / contain no-repeat; transform: translateY(-.02rem); transition: transform var(--transition-default); }
+body[data-page="press"] .actualites-feed__link:hover::after { transform: translate(.12rem, -.14rem); }
 .actualites-feed__arrow { display: none; }
 .actualites-feed__arrow::before, .actualites-feed__arrow::after { position: absolute; display: block; content: ""; }
 .actualites-feed__arrow::before { top: .56rem; left: .08rem; width: .85rem; height: 1px; background: currentColor; transform: rotate(-45deg); transform-origin: center; }
