@@ -1418,6 +1418,10 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 .event-row:focus:not(:hover)::after { opacity: 0; }
 .event-row:focus:not(:hover) img { transform: scale(1.04); }
 .event-row:focus:not(:hover) .event-row__arrow { transform: none; }
+.event-row.is-mobile-preview { color: var(--color-text-light); }
+.event-row.is-mobile-preview img.image-fade-in,
+.event-row.is-mobile-preview::after { opacity: 1; }
+.event-row.is-mobile-preview img { transform: scale(1); }
 
 /* Stop 1 — une lecture plus douce et photographique au survol. */
 .event-row--ganhi { min-height: 300px; }
@@ -1668,7 +1672,8 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 /* À propos : témoignages des Patronnes, révélés au survol ou au toucher. */
 .about-portraits__flip { display: block; width: 100%; height: clamp(360px, 30vw, 420px); padding: 0; border: 0; cursor: pointer; perspective: 1100px; background: transparent; text-align: left; }
 .about-portraits__flip-inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2, .65, .2, 1); }
-.about-portraits__flip:hover .about-portraits__flip-inner, .about-portraits__flip:focus-visible .about-portraits__flip-inner, .about-portraits__flip.is-flipped .about-portraits__flip-inner { transform: rotateY(180deg); }
+.about-portraits__flip:focus-visible .about-portraits__flip-inner, .about-portraits__flip.is-flipped .about-portraits__flip-inner { transform: rotateY(180deg); }
+@media (hover: hover) and (pointer: fine) { .about-portraits__flip:hover .about-portraits__flip-inner { transform: rotateY(180deg); } }
 .about-portraits__flip-face { position: absolute; inset: 0; display: flex; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 .about-portraits__flip-face--front { background: var(--color-bg-dark); }
 .about-portraits__flip-face--front img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 44%; transform: none !important; }
@@ -1699,7 +1704,7 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 .recap-navigation a { display: inline-flex; align-items: center; gap: .55rem; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .recap-navigation a:hover { color: var(--color-accent); }
 @media (max-width: 800px) { .recap-hero, .recap-story { grid-template-columns: 1fr; }.recap-hero { min-height: auto; }.recap-story { gap: var(--space-xl); } }
-@media (max-width: 600px) { .recap-hero, .recap-story, .recap-navigation { padding-inline: var(--space-sm); }.recap-hero { padding-top: calc(72px + var(--space-lg)); padding-bottom: var(--space-xl); }.recap-hero__content h1 { font-size: clamp(4.5rem, 20vw, 6.5rem); }.recap-story { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }.recap-navigation { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 600px) { .recap-hero, .recap-story, .recap-navigation { padding-inline: var(--space-sm); }.recap-hero { padding-top: calc(72px + var(--space-lg)); padding-bottom: var(--space-xl); }.recap-hero__content h1 { font-size: clamp(4.5rem, 20vw, 6.5rem); }.recap-story { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }.recap-navigation { align-items: center; flex-direction: row; flex-wrap: nowrap; gap: .5rem; }.recap-navigation a { flex: 1 1 0; justify-content: center; font-size: .58rem; letter-spacing: .055em; white-space: nowrap; } }
 
 /* Partenaires : ruban de logos en mouvement continu. */
 .partner-trust { overflow: hidden; }
@@ -1727,7 +1732,7 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 .event-row--akassato { color: var(--color-text-primary); background: var(--color-bg-primary); }.event-row--akassato:hover { color: var(--color-text-primary); }.event-row--akassato .event-row__place { color: var(--color-text-primary); }.event-row--akassato .event-row__cta { display: inline-flex; min-height: 2.9rem; padding: .75rem 1rem; border: 1px solid var(--color-text-primary); border-radius: 999px; align-items: center; justify-content: center; gap: .55rem; color: var(--color-text-primary); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color var(--transition-default), border-color var(--transition-default), background-color var(--transition-default), transform var(--transition-default); }.event-row--akassato .event-row__cta:hover { border-color: var(--color-accent); color: var(--color-text-light); background: var(--color-accent); transform: scale(1.03); }
 @media (min-width: 801px) { .event-row--akassato .event-row__place { transform: translateX(clamp(5rem, 7vw, 7rem)); } }
 @media (max-width: 800px) { .event-row--akassato .event-row__cta { grid-column: 3; justify-self: end; } }
-@media (max-width: 600px) { .event-row--akassato { min-height: 185px; }.event-row--akassato .event-row__cta { grid-column: 3; min-height: 2.7rem; justify-self: end; } }
+@media (max-width: 600px) { .event-row--akassato { min-height: 185px; }.event-row--akassato .event-row__number { grid-column: 1; grid-row: 1 / span 2; }.event-row--akassato .event-row__name { grid-column: 2; grid-row: 1; line-height: .82; white-space: nowrap; transform: translateX(2.4rem); }.event-row--akassato .event-row__place { grid-column: 2; grid-row: 2; transform: translateX(2.4rem); }.event-row--akassato .event-row__cta { grid-column: 3; grid-row: 1 / span 2; min-height: 2.7rem; justify-self: end; align-self: center; transform: translate(-4.8rem, .45rem); } }
 
 /* Navigation discrète entre les œuvres depuis leur fiche. */
 
