@@ -13,115 +13,28 @@
   (() => { const works=['img99.jpeg','img102.jpeg','img98.jpeg','img101.jpeg','img96.jpeg','img97.jpeg','img100.jpeg','img103.jpeg']; const id=Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('oeuvre'))||1)); const title=`Œuvre n°${String(id).padStart(2,'0')}`; document.querySelector('[data-artwork-image]').src=`../assets/images/${works[id-1]}`; document.querySelector('[data-artwork-image]').alt=title; document.querySelector('[data-artwork-title]').textContent=title; document.title=`${title} | Les Patronnes`; const size=document.querySelector('[data-artwork-size]'); const contact=document.querySelector('[data-artwork-contact]'); const update=(value)=>{size.textContent=value; contact.href=`mailto:lespatronnes229@gmail.com?subject=${encodeURIComponent(`Réservation ${title}`)}&body=${encodeURIComponent(`Bonjour,%0A%0AJe souhaite réserver ${title} au format ${value}.%0A%0AMerci.`)}`;}; document.querySelectorAll('[data-size]').forEach((button)=>button.addEventListener('click',()=>{document.querySelectorAll('[data-size]').forEach((item)=>{item.classList.toggle('is-selected',item===button);item.setAttribute('aria-pressed',String(item===button));});update(button.dataset.size);})); update('40 × 60 cm'); })();
   </script><script>
   (() => {
-    const backLink = document.querySelector('.artwork-page__back');
-    if (!backLink) return;
-    const carousel = document.createElement('nav');
-    carousel.className = 'artwork-page__carousel';
-    carousel.setAttribute('aria-label', 'Explorer les autres œuvres');
-    backLink.insertAdjacentElement('afterend', carousel);
-    const works = ['img99.jpeg', 'img102.jpeg', 'img98.jpeg', 'img101.jpeg', 'img96.jpeg', 'img97.jpeg', 'img100.jpeg', 'img103.jpeg'];
-    const currentId = Math.max(1, Math.min(8, Number(new URLSearchParams(location.search).get('oeuvre')) || 1));
-    carousel.innerHTML = works.map((image, index) => {
-      const id = index + 1;
-      return `<a class="artwork-page__thumbnail${id === currentId ? ' is-current' : ''}" href="oeuvre.html?oeuvre=${id}" aria-label="Voir l'œuvre n°${String(id).padStart(2, '0')}"><img src="../assets/images/${image}" alt="" loading="lazy"></a>`;
-    }).join('');
-    carousel.querySelector('.is-current')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+    const contact = document.querySelector('[data-artwork-contact]');
+    if (!contact) return;
+    const artworkId = Math.max(1, Math.min(8, Number(new URLSearchParams(location.search).get('oeuvre')) || 1));
+    const title = `Œuvre n°${String(artworkId).padStart(2, '0')}`;
+    const setReservationLink = (format) => {
+      const message = [
+        'Bonjour,',
+        '',
+        `Je souhaiterais réserver l’${title} au format ${format}.`,
+        '',
+        'Pouvez-vous me confirmer sa disponibilité ainsi que les modalités de règlement, de retrait ou de livraison ?',
+        '',
+        'Je vous remercie par avance.',
+        '',
+        'Bien cordialement,'
+      ].join('\n');
+      contact.href = `mailto:lespatronnes229@gmail.com?subject=${encodeURIComponent(`Demande de réservation — ${title}`)}&body=${encodeURIComponent(message)}`;
+    };
+    document.querySelectorAll('[data-size]').forEach((button) => button.addEventListener('click', () => setReservationLink(button.dataset.size)));
+    setReservationLink(document.querySelector('[data-size].is-selected')?.dataset.size || '40 × 60 cm');
   })();
-  </script><script>
-  (() => {
-    const carousel = document.querySelector('.artwork-page__carousel');
-    if (!carousel) return;
-    document.querySelector('.site-nav__links')?.replaceChildren();
-    const originals = Array.from(carousel.children);
-    const selectedIndex = Math.max(0, originals.findIndex((item) => item.classList.contains('is-current')));
-    originals.forEach((item) => item.classList.remove('is-current'));
-    carousel.prepend(...originals.map((item) => item.cloneNode(true)));
-    carousel.append(...originals.map((item) => item.cloneNode(true)));
-    let items = Array.from(carousel.children);
-    let index = originals.length + selectedIndex;
-    let frame;
-    let motionFrame;
-    let dragging = false;
-    let didDrag = false;
-    let pointerStart = 0;
-    let scrollStart = 0;
-    const focusItem = () => {
-      const center = carousel.getBoundingClientRect().left + (carousel.clientWidth / 2);
-      let focused = items[0];
-      let distance = Infinity;
-      items.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        const nextDistance = Math.abs((rect.left + (rect.width / 2)) - center);
-        if (nextDistance < distance) { distance = nextDistance; focused = item; }
-      });
-      items.forEach((item) => item.classList.toggle('is-focused', item === focused));
-      index = items.indexOf(focused);
-    };
-    const moveTo = (nextIndex, behavior = 'smooth') => {
-      const item = items[nextIndex];
-      if (!item) return;
-      const target = item.offsetLeft - ((carousel.clientWidth - item.clientWidth) / 2);
-      cancelAnimationFrame(motionFrame);
-      if (behavior === 'auto') { carousel.scrollLeft = target; return; }
-      const start = carousel.scrollLeft;
-      const distance = target - start;
-      const startedAt = performance.now();
-      const duration = 3600;
-      const animate = (now) => {
-        const progress = Math.min(1, (now - startedAt) / duration);
-        const eased = progress < .5
-          ? 4 * progress * progress * progress
-          : 1 - (Math.pow(-2 * progress + 2, 3) / 2);
-        carousel.scrollLeft = start + (distance * eased);
-        if (progress < 1) motionFrame = requestAnimationFrame(animate);
-      };
-      motionFrame = requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(() => { moveTo(index, 'auto'); focusItem(); });
-    carousel.addEventListener('scroll', () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(focusItem);
-    }, { passive: true });
-    carousel.addEventListener('pointerdown', (event) => {
-      if (event.pointerType !== 'mouse') return;
-      cancelAnimationFrame(motionFrame);
-      dragging = false;
-      didDrag = false;
-      pointerStart = event.clientX;
-      scrollStart = carousel.scrollLeft;
-    });
-    carousel.addEventListener('pointermove', (event) => {
-      if (Math.abs(event.clientX - pointerStart) <= 5) return;
-      dragging = true;
-      didDrag = true;
-      carousel.classList.add('is-dragging');
-      carousel.scrollLeft = scrollStart - (event.clientX - pointerStart);
-    });
-    const stopDragging = (event) => {
-      if (!dragging) return;
-      dragging = false;
-      carousel.classList.remove('is-dragging');
-    };
-    carousel.addEventListener('pointerup', stopDragging);
-    carousel.addEventListener('pointercancel', stopDragging);
-    carousel.addEventListener('click', (event) => {
-      const thumbnail = event.target.closest('.artwork-page__thumbnail');
-      if (!thumbnail) return;
-      event.preventDefault();
-      if (didDrag) { didDrag = false; return; }
-      window.location.assign(thumbnail.href);
-    });
-    const advanceCarousel = () => {
-      if (dragging || document.hidden) return;
-      if (index >= items.length - 4) {
-        carousel.append(...originals.map((item) => item.cloneNode(true)));
-        items = Array.from(carousel.children);
-      }
-      moveTo(index + 1);
-    };
-    window.setInterval(advanceCarousel, 5000);
-  })();
-</script>
+  </script><script>document.querySelector('.site-nav__links')?.replaceChildren();</script>
 <script>
   (() => {
     const artworkId = Math.max(1, Math.min(8, Number(new URLSearchParams(location.search).get('oeuvre')) || 1));
@@ -145,11 +58,6 @@
       });
       document.querySelector('[data-artwork-contact]').textContent = text.reserve;
       document.querySelector('.artwork-product__note').textContent = text.note;
-      const carousel = document.querySelector('.artwork-page__carousel');
-      if (carousel) {
-        carousel.setAttribute('aria-label', text.browse);
-        carousel.querySelectorAll('.artwork-page__thumbnail').forEach((thumbnail, index) => thumbnail.setAttribute('aria-label', `${text.view} ${String((index % 8) + 1).padStart(2, '0')}`));
-      }
       document.title = `${text.title} | Les Patronnes`;
     };
     applyArtworkCopy();
@@ -166,9 +74,6 @@
       const heading = document.querySelector('[data-artwork-title]');
       if (heading) heading.textContent = title;
       document.title = `${title} | Les Patronnes`;
-      document.querySelectorAll('.artwork-page__thumbnail').forEach((thumbnail, index) => {
-        thumbnail.setAttribute('aria-label', `Voir la photo ${(index % 8) + 1}`);
-      });
     };
     applyPhotoLabels();
     window.addEventListener('site:languagechange', applyPhotoLabels);

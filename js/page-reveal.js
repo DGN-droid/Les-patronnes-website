@@ -72,7 +72,7 @@ const eventGalleries = {
 const eventVideos = {
   "event-stop-1.html": {
     eyebrow: "Le film du Stop 1",
-    title: "Ganhi, la mémoire en mouvement",
+    title: "Une première réussie",
     src: "../assets/images/Ganhi.mp4",
     poster: "../assets/images/optimized/img75.JPG"
   }

@@ -41,6 +41,12 @@ window.prepareImageFade = (image) => {
 
 document.querySelectorAll("img").forEach(window.prepareImageFade);
 
+// Signature commune, présente au bas de chaque page du site.
+document.querySelectorAll("body > footer").forEach((footer) => {
+  footer.classList.add("site-footer");
+  footer.innerHTML = '<p>© 2026 <strong>LES PATRONNES</strong> — Tous droits réservés.</p>';
+});
+
 const translations = {
   fr: {
     "nav.main": "Navigation principale",
@@ -1265,100 +1271,65 @@ if (heroCarousel) {
   if (!savedConsent()) open();
 })();
 
-// Lecture éditoriale : des repères discrets, sans jamais prendre le contrôle du défilement.
+// Les vêtements disposent d'une inscription simple à leur lancement.
 (() => {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const triggers = Array.from(document.querySelectorAll(".shop-product__cta"));
+  if (!triggers.length) return;
 
-  const main = document.querySelector("main");
-  if (!main || document.body.classList.contains("story-open")) return;
+  const dialog = document.createElement("section");
+  dialog.className = "shop-launch-dialog";
+  dialog.hidden = true;
+  dialog.setAttribute("role", "dialog");
+  dialog.setAttribute("aria-modal", "true");
+  dialog.innerHTML = '<div class="shop-launch-dialog__panel"><button class="shop-launch-dialog__close" type="button" aria-label="Fermer"></button><p class="shop-launch-dialog__eyebrow" data-launch-eyebrow></p><h2 data-launch-title></h2><p class="shop-launch-dialog__text" data-launch-text></p><form data-launch-form><label><span data-launch-name-label></span><input name="name" autocomplete="name" required></label><label><span data-launch-email-label></span><input name="email" type="email" autocomplete="email" required></label><label><span data-launch-phone-label></span><input name="phone" type="tel" autocomplete="tel"></label><button class="shop-launch-dialog__submit" type="submit" data-launch-submit></button></form></div>';
+  document.body.appendChild(dialog);
 
-  const copy = {
-    fr: { continue: "Poursuivre", end: "Aller à la fin de page" },
-    en: { continue: "Continue", end: "Go to page end" }
+  let productName = "";
+  const text = {
+    fr: { eyebrow: "Lancement", title: "Être informé·e", body: "Laissez-nous vos coordonnées : nous vous préviendrons dès l’ouverture des précommandes.", name: "Nom", email: "E-mail", phone: "Téléphone (facultatif)", submit: "M’avertir", close: "Fermer" },
+    en: { eyebrow: "Launch", title: "Stay informed", body: "Leave your details and we will let you know as soon as pre-orders open.", name: "Name", email: "Email", phone: "Phone (optional)", submit: "Notify me", close: "Close" }
   };
-  const getCopy = () => copy[document.documentElement.lang === "en" ? "en" : "fr"];
-
-  const progress = document.createElement("div");
-  progress.className = "site-reading-progress";
-  progress.setAttribute("aria-hidden", "true");
-  progress.innerHTML = "<span></span>";
-
-  const cue = document.createElement("button");
-  cue.className = "site-scroll-cue";
-  cue.type = "button";
-  cue.innerHTML = '<span data-scroll-cue-label></span><i aria-hidden="true"></i>';
-
-  const endLink = document.createElement("button");
-  endLink.className = "site-end-link";
-  endLink.type = "button";
-  endLink.hidden = true;
-  endLink.innerHTML = '<span data-end-link-label></span><i aria-hidden="true"></i>';
-
-  document.body.append(progress, cue, endLink);
-
-  const updateCopy = () => {
-    cue.setAttribute("aria-label", getCopy().continue);
-    cue.querySelector("[data-scroll-cue-label]").textContent = getCopy().continue;
-    endLink.setAttribute("aria-label", getCopy().end);
-    endLink.querySelector("[data-end-link-label]").textContent = getCopy().end;
+  const applyCopy = () => {
+    const copy = text[document.documentElement.lang === "en" ? "en" : "fr"];
+    dialog.querySelector("[data-launch-eyebrow]").textContent = copy.eyebrow;
+    dialog.querySelector("[data-launch-title]").textContent = copy.title;
+    dialog.querySelector("[data-launch-text]").textContent = copy.body;
+    dialog.querySelector("[data-launch-name-label]").textContent = copy.name;
+    dialog.querySelector("[data-launch-email-label]").textContent = copy.email;
+    dialog.querySelector("[data-launch-phone-label]").textContent = copy.phone;
+    dialog.querySelector("[data-launch-submit]").textContent = copy.submit;
+    dialog.querySelector(".shop-launch-dialog__close").setAttribute("aria-label", copy.close);
   };
-
-  let hasReachedEnd = false;
-  let cueTimer = window.setTimeout(() => {
-    if (window.scrollY < 24) cue.classList.add("is-visible");
-  }, 2800);
-
-  const scrollToNextSection = () => {
-    const headerHeight = document.querySelector(".site-header")?.offsetHeight || 80;
-    const currentBottom = window.scrollY + headerHeight + 24;
-    const next = Array.from(main.querySelectorAll(":scope > section, :scope > article, :scope > nav"))
-      .find((section) => section.getBoundingClientRect().top + window.scrollY > currentBottom);
-    (next || main.lastElementChild)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const close = () => { dialog.hidden = true; };
+  const open = (trigger) => {
+    productName = trigger.closest(".shop-product")?.querySelector("h1, h2")?.textContent.replace(/\s+/g, " ").trim() || "Les Patronnes";
+    applyCopy();
+    dialog.hidden = false;
+    dialog.querySelector('input[name="name"]')?.focus();
   };
 
-  cue.addEventListener("click", scrollToNextSection);
-  endLink.addEventListener("click", () => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  triggers.forEach((trigger) => trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    open(trigger);
+  }));
+  dialog.querySelector(".shop-launch-dialog__close").addEventListener("click", close);
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) close(); });
+  dialog.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
+  dialog.querySelector("[data-launch-form]").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = "Lancement — " + productName;
+    const body = [
+      "Bonjour,",
+      "",
+      "Je souhaite être informé·e du lancement de " + productName + ".",
+      "",
+      "Nom : " + data.get("name"),
+      "E-mail : " + data.get("email"),
+      "Téléphone : " + (data.get("phone") || "Non renseigné")
+    ].join("\n");
+    window.location.href = "mailto:lespatronnes229@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    close();
   });
-
-  const updateReadingUI = () => {
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
-    progress.style.setProperty("--reading-progress", String(ratio));
-
-    if (ratio > .985) hasReachedEnd = true;
-    cue.classList.toggle("is-visible", window.scrollY < 24 && !hasReachedEnd);
-    endLink.hidden = !(hasReachedEnd && window.scrollY < Math.max(220, window.innerHeight * .35));
-  };
-
-  let ticking = false;
-  window.addEventListener("scroll", () => {
-    window.clearTimeout(cueTimer);
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(() => {
-      updateReadingUI();
-      ticking = false;
-    });
-  }, { passive: true });
-
-  const revealTargets = Array.from(main.querySelectorAll(":scope > section, :scope > article"))
-    .filter((section) => !section.classList.contains("home-hero") && !section.matches(".event-detail__hero"));
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("site-section-revealed");
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: .08, rootMargin: "0px 0px -5% 0px" });
-    revealTargets.forEach((section) => {
-      section.classList.add("site-section-reveal");
-      revealObserver.observe(section);
-    });
-  }
-
-  updateCopy();
-  updateReadingUI();
-  window.addEventListener("site:languagechange", updateCopy);
+  window.addEventListener("site:languagechange", applyCopy);
 })();
