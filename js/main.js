@@ -245,6 +245,27 @@ document.querySelectorAll(".site-nav__right").forEach((rightSide) => {
   rightSide.appendChild(partnerLink);
 });
 
+// Le lien de la rubrique ouverte reste visible dans la navigation.
+const activeNavigationSection = {
+  about: "about",
+  events: "events",
+  "event-detail": "events",
+  actualites: "press",
+  press: "press",
+  shop: "shop",
+  artwork: "shop",
+  favourites: "shop",
+  partner: "partner",
+  don: "partner",
+  legal: "partner"
+}[document.body.dataset.page];
+
+if (activeNavigationSection) {
+  document.querySelectorAll(".site-nav a[data-i18n], .site-nav__partner").forEach((link) => {
+    link.classList.toggle("is-current", link.dataset.i18n === `nav.${activeNavigationSection}`);
+  });
+}
+
 document.querySelectorAll('a[href^="contact.html"]').forEach((link) => {
   link.href = "mailto:lespatronnes229@gmail.com";
 });
