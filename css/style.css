@@ -1534,6 +1534,9 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 .site-nav__partner:hover, .site-nav__partner:focus-visible, .site-nav__partner:active { color: var(--color-accent); opacity: 1; }
 @media (max-width: 1024px) { .site-nav__partner { display: none; }.site-mobile-menu__links { width: 100%; }.site-mobile-menu .site-nav__partner { display: inline; align-self: center; margin-top: var(--space-xs); font-family: inherit; font-size: clamp(2.9rem, 10.5vw, 3.15rem); font-weight: 400; letter-spacing: 0; line-height: inherit; white-space: nowrap; text-transform: uppercase; } }
 
+/* Tous les appels à l'action adoptent le même état orange, avec un contraste lisible. */
+:is(.hero-btn, .home-hero__cta-button, .about-cta__link, .about-replays a, .recap-navigation a, .event-detail__back a, .event-row__cta, .press-hero__actions a, .shop-product__cta, .artwork-product__cta, .shop-product-page__back, .artwork-page__back, .favourites-back, .founder-back-link, .founder-origin__link, .contact-details__cta, .partner-hero__donate, .partner-cta > a, .patronnes-cta a, .cta-dialog__dismiss, .shop-launch-dialog__submit):is(:hover, :focus, :focus-visible, :active) { border-color: var(--color-accent) !important; color: var(--color-text-light) !important; background-color: var(--color-accent) !important; opacity: 1; }
+
 /* Page partenariat */
 .partner-page { width: min(100%, 1440px); margin-inline: auto; padding: calc(80px + var(--space-xxl)) clamp(var(--space-lg), 7vw, var(--space-xxl)) var(--space-xxl); }
 .partner-page [id] { scroll-margin-top: 100px; }
@@ -1749,6 +1752,7 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 
 /* Événements : appel à bénévoles pour le Stop 3, en attente de sa date. */
 .event-row--akassato { color: var(--color-text-primary); background: var(--color-bg-primary); }.event-row--akassato:hover { color: var(--color-text-primary); }.event-row--akassato .event-row__place { color: var(--color-text-primary); }.event-row--akassato .event-row__cta { display: inline-flex; min-height: 2.9rem; padding: .75rem 1rem; border: 1px solid var(--color-text-primary); border-radius: 999px; align-items: center; justify-content: center; gap: .55rem; color: var(--color-text-primary); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color var(--transition-default), border-color var(--transition-default), background-color var(--transition-default), transform var(--transition-default); }.event-row--akassato .event-row__cta:hover { border-color: var(--color-accent); color: var(--color-text-light); background: var(--color-accent); transform: scale(1.03); }
+.event-row--akassato .event-row__cta:is(:hover, :focus, :focus-visible, :active) { border-color: var(--color-accent); color: var(--color-text-light) !important; background: var(--color-accent); }
 @media (min-width: 801px) { .event-row--akassato .event-row__place { transform: translateX(clamp(5rem, 7vw, 7rem)); } }
 @media (min-width: 801px) { .event-row--akassato .event-row__name { transform: translateX(1.5rem); } }
 @media (max-width: 800px) { .event-row--akassato .event-row__cta { grid-column: 3; justify-self: end; } }
