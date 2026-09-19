@@ -123,6 +123,26 @@ if (programme && detailNavigation) {
   detailNavigation.before(section);
 }
 
+// LÃ©gendes rÃ©servÃ©es Ã  la galerie du MarchÃ© Ganhi : elles reprennent
+// l'effet de survol dÃ©jÃ  prÃ©sent sur les autres galeries Ã©vÃ©nementielles.
+const ganhiGallery = document.querySelector("#ganhi-gallery-title")?.closest(".event-gallery");
+if (ganhiGallery) {
+  const ganhiCaptions = [
+    "Visages de Ganhi",
+    "Les gestes du march\u00e9",
+    "Une rencontre",
+    "Au c\u0153ur du Stop 1",
+    "La m\u00e9moire en mouvement"
+  ];
+
+  ganhiGallery.querySelectorAll(".event-gallery__item").forEach((item, index) => {
+    if (item.querySelector("figcaption")) return;
+    const caption = document.createElement("figcaption");
+    caption.textContent = ganhiCaptions[index] || "";
+    item.append(caption);
+  });
+}
+
 window.applyPageCopy?.();
 
 // Sur écran tactile, laisse le visuel du rendez-vous apparaître avant la navigation.
