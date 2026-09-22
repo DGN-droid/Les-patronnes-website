@@ -27,7 +27,7 @@
     <article class="shop-product" aria-labelledby="cap-title">
       <div class="shop-product__visual" aria-label="Collection de casquettes Les Patronnes">
         <p class="shop-product__edition">Édition 01<br>Les Patronnes</p>
-        <div class="shop-cap-preview"><img src="../assets/images/casquette-belge.png" alt="Casquette Les Patronnes, coloris beige"></div>
+        <div class="shop-cap-preview"><img src="../assets/images/casquette-belge.png" alt="Casquette Les Patronnes, coloris beige" data-cap-image></div>
         <p class="shop-product__caption">Quatre coloris</p>
       </div>
       <div class="shop-product__content">
@@ -50,6 +50,22 @@
     </article>
   </main>
   <footer></footer>
-  <script src="../js/main.js"></script><script src="../js/animations.js"></script>
+  <script src="../js/main.js"></script><script src="../js/animations.js"></script><script>
+    (() => {
+      const image = document.querySelector('[data-cap-image]');
+      const selectedColour = document.querySelector('[data-selected-cap-colour]');
+      if (!image || !selectedColour) return;
+      document.querySelectorAll('.shop-swatch').forEach((button) => button.addEventListener('click', () => {
+        document.querySelectorAll('.shop-swatch').forEach((item) => {
+          item.classList.toggle('is-selected', item === button);
+          item.setAttribute('aria-pressed', String(item === button));
+        });
+        const label = document.documentElement.lang === 'en' ? button.dataset.colourNameEn : button.dataset.colourName;
+        image.src = button.dataset.image;
+        image.alt = `Les Patronnes cap, ${label}`;
+        selectedColour.textContent = label;
+      }));
+    })();
+  </script>
 </body>
 </html>

@@ -757,6 +757,23 @@ themeButtons.forEach((button) => {
 applyTheme(activeTheme, false);
 applyLanguage(activeLanguage, false);
 
+// Sélection de taille commune à toutes les fiches vêtements.
+document.querySelectorAll(".shop-product__sizes").forEach((sizes) => {
+  sizes.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button || !sizes.contains(button)) return;
+
+    sizes.querySelectorAll("button").forEach((item) => {
+      const selected = item === button;
+      item.classList.toggle("is-selected", selected);
+      item.setAttribute("aria-pressed", String(selected));
+    });
+
+    const selectedSize = sizes.closest(".shop-product__option")?.querySelector('[data-selected-size], [data-selected-pull-size], [data-selected-skirt-size], [data-selected-jogging-size], [data-selected-chemise-size], [data-selected-polo-size]');
+    if (selectedSize) selectedSize.textContent = button.textContent.trim();
+  });
+});
+
 /* Les films de fond restent muets, intégrés et relancés après un retour sur mobile. */
 (() => {
   const backgroundVideos = document.querySelectorAll("[data-continuous-video]");

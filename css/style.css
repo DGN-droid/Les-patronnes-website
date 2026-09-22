@@ -1633,6 +1633,10 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 .shop-swatch[data-colour="brown"] span { background: #725345; }
 .shop-swatch[data-colour="orange"] span { background: #c85b2b; }
 .shop-swatch[data-colour="beige"] span { background: #d6be9b; }
+.shop-product:has(.shop-cap-preview) .shop-swatch[data-colour="red"] span { background: #171717; }
+html[data-theme="dark"] .shop-swatch[data-colour="black"] span,
+html[data-theme="dark"] .shop-product:has(.shop-cap-preview) .shop-swatch[data-colour="red"] span { box-shadow: 0 0 0 1px rgb(249 245 237 / 78%); }
+@media (prefers-color-scheme: dark) { html[data-theme="system"] .shop-swatch[data-colour="black"] span, html[data-theme="system"] .shop-product:has(.shop-cap-preview) .shop-swatch[data-colour="red"] span { box-shadow: 0 0 0 1px rgb(249 245 237 / 78%); } }
 
 /* Accueil : appels à l'action superposés au hero. */
 .home-hero__cta { display: flex; margin-top: var(--space-xl); justify-content: center; flex-wrap: wrap; gap: var(--space-sm); }
