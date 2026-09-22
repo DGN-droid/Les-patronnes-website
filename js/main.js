@@ -413,7 +413,7 @@ const englishCopy = {
   partner: [
     [".partner-hero .partner-eyebrow", "Partnerships & patronage"],
     ["#partner-title", "Growing<br>Les Patronnes", "html"],
-    [".partner-hero > p:last-child", "Becoming a partner means placing your commitment within a cultural, social and heritage project that makes visible the women who keep Beninese markets alive."],
+    [".partner-hero > p:not(.partner-eyebrow)", "Becoming a partner means placing your commitment within a cultural, social and heritage project that makes visible the women who keep Beninese markets alive."],
     [".partner-introduction .partner-eyebrow", "A living commitment"],
     [".partner-introduction h2", "Supporting<br>what matters", "html"],
     [".partner-introduction > div:last-child p:nth-child(1)", "Les Patronnes brings together market women, creators, cooks, artists and institutions around one shared gesture: recognising the know-how that shapes everyday life and giving it the space it deserves."],
