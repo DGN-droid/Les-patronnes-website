@@ -578,6 +578,13 @@ const englishPageCopy = {
   "don.html": [
     [".don-hero .don-eyebrow", "Support Les Patronnes"], ["#don-title", "Make a donation"], [".don-hero > p:last-child", "Your support helps sustain the images, encounters and knowledge-sharing carried by Les Patronnes."], [".don-content .don-eyebrow", "A living commitment"], ["#don-form-title", "Your support<br>matters", "html"], [".don-introduction > p:last-child", "Share your contact details, your chosen amount and your preferred payment method. We will reply directly on WhatsApp to guide you."], [".don-form label:nth-of-type(1)", "First name", "leading"], [".don-form label:nth-of-type(2)", "Last name", "leading"], [".don-form > label", "Organisation (optional)", "leading"], [".don-form__row label:nth-child(1)", "Amount", "leading"], [".don-form__row label:nth-child(2)", "Currency", "leading"], [".don-form > label:nth-of-type(2)", "Phone number", "leading"], [".don-form legend", "Payment method"], [".don-form button", "Continue the transaction <span aria-hidden=\"true\">→</span>", "html"], [".don-form__notice", "No payment is made on this page. Your chosen method will be confirmed with our team."]
   ],
+  "devenir-partenaire.html": [
+    [".partner-hero > p:not(.partner-eyebrow)", "Becoming a partner means placing your commitment within a cultural, social and heritage project that makes visible the women who keep Beninese markets alive."],
+    [".partner-trust__thanks", "Thank you to our partners"], [".partner-major__title", "Major partners"],
+    [".partner-form__row:nth-of-type(1) label:nth-child(1)", "First and last name", "leading"], [".partner-form__row:nth-of-type(1) label:nth-child(2)", "Email address", "leading"], [".partner-form__row:nth-of-type(2) label:nth-child(1)", "Organisation", "leading"], [".partner-form__row:nth-of-type(2) label:nth-child(2)", "Type of support", "leading"], [".partner-form > label", "Your message", "leading"],
+    [".partner-form option[value=\"\"]", "Choose an option"], [".partner-form option[value=\"mecenat\"]", "Patronage"], [".partner-form option[value=\"partenariat\"]", "Partnership"], [".partner-form option[value=\"atelier\"]", "Propose a workshop"], [".partner-form option[value=\"autre\"]", "Other"],
+    [".partner-form button", "Send my request <span class=\"contact-arrow contact-arrow--right\" aria-hidden=\"true\"></span>", "html"], [".partner-form__notice", "Your request will be handled by the partnerships team."], [".partner-general-contact > p", "For any other request or enquiry, write to us at <a href=\"mailto:lespatronnes229@gmail.com\">lespatronnes229@gmail.com</a>.", "html"], [".partner-legal > p", "Useful information"]
+  ],
   "film-stop-1.html": [
     [".recap-hero .about-eyebrow", "Les Patronnes · Stop 1"], ["#recap-title", "Ganhi<br>Market", "html"], [".recap-hero__date", "7 March 2026 · Cotonou"], [".recap-hero__lead", "The first chapter of a story that chooses the market as a place of memory, conversation and celebration."], [".recap-story .about-eyebrow", "The story"], ["#ganhi-story-title", "One day<br>to look differently", "html"], [".recap-story__copy p:nth-child(1)", "At Ganhi Market, Les Patronnes begins its cycle close to the women who animate Cotonou's daily life. Faces, gestures and voices are given time to appear, inseparable from their place."], [".recap-story__copy p:nth-child(2)", "Photography, conversation and gastronomy make up one movement: making the market a place of recognition, where the women who sustain it are finally seen in the fullness of their history."], [".recap-navigation a:first-child", "← Back to About"], [".recap-navigation a:last-child", "Relive Stop 2 →"]
   ],
@@ -630,6 +637,19 @@ const applyPageCopy = () => {
         activeLanguage === "en" ? `Choose ${swatch.dataset.colourNameEn || "colour"}` : swatch.dataset.i18nAriaOriginal
       );
     });
+  }
+
+  if (window.location.pathname.split("/").pop() === "don.html") {
+    [
+      [".don-form__row:nth-of-type(1) label:nth-child(1)", "First name"],
+      [".don-form__row:nth-of-type(1) label:nth-child(2)", "Last name"],
+      [".don-form > label:nth-of-type(1)", "Organisation (optional)"],
+      [".don-form__row:nth-of-type(2) label:nth-child(1)", "Amount"],
+      [".don-form__row:nth-of-type(2) label:nth-child(2)", "Currency"],
+      [".don-form > label:nth-of-type(2)", "Phone number"],
+      [".don-form legend", "Payment method"]
+    ].forEach(([selector, value]) => setLocalizedCopy(document.querySelector(selector), value, "leading"));
+    setLocalizedCopy(document.querySelector('.don-form__choice:nth-of-type(3) span'), "Bank card");
   }
 
   if (["actualites", "press"].includes(document.body.dataset.page)) {

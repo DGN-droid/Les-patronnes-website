@@ -1564,6 +1564,7 @@ body[data-page="press"] .actualites-feed__link:hover::after { transform: transla
 #photographies { scroll-margin-top: calc(80px + var(--space-md)); }
 @media (max-width: 768px) { #photographies { scroll-margin-top: calc(72px + var(--space-md)); } }
 .partner-general-contact { max-width: 1040px; margin: 0 auto; padding: var(--space-xl) var(--space-lg) 0; text-align: center; }.partner-general-contact p { margin: 0; font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.7; }.partner-general-contact a { color: var(--color-accent); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; }
+.partner-form select option, .don-form select option { color: #22201d; background: #f6f1e8; }
 @media (max-width: 600px) { .partner-form__row { grid-template-columns: 1fr; }.partner-form button { width: 100%; } }
 
 /* Consentement cookies */
