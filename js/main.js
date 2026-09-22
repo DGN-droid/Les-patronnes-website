@@ -482,7 +482,14 @@ const englishEventCopy = {
     [".event-narrative > div:last-child p:nth-child(2)", "Photography becomes a way of creating an archive. The portraits reveal faces, but also journeys, professions and a presence that must no longer remain out of frame. Fashion and gastronomy extend this gesture: they create a space for celebration without ever separating the celebration from those who make it possible."],
     [".event-narrative > div:last-child p:nth-child(3)", "This first gathering makes a promise: to move from market to market, collect stories and circulate a collective history that first belongs to the women who live it."],
     [".event-film .events-eyebrow", "The Stop 1 film"],
-    [".event-film h2", "Ganhi in motion"],
+    [".event-film h2", "A successful first edition"],
+    [".event-gallery__heading .events-eyebrow", "Images from Stop 1"],
+    ["#ganhi-gallery-title", "Ganhi in motion"],
+    [".event-gallery__grid .event-gallery__item:nth-child(1) figcaption", "Faces of Ganhi"],
+    [".event-gallery__grid .event-gallery__item:nth-child(2) figcaption", "Market gestures"],
+    [".event-gallery__grid .event-gallery__item:nth-child(3) figcaption", "An encounter"],
+    [".event-gallery__grid .event-gallery__item:nth-child(4) figcaption", "At the heart of Stop 1"],
+    [".event-gallery__grid .event-gallery__item:nth-child(5) figcaption", "Memory in motion"],
     [".event-detail__back a:first-child", "← All events"],
     [".event-detail__back a:last-child", "Next event →"]
   ],
@@ -525,9 +532,25 @@ const englishEventCopy = {
     [".event-programme li:nth-child(2) p", "Fashion and transmission come together to spotlight materials and know-how."],
     [".event-programme li:nth-child(3) h3", "Grand banquet"],
     [".event-programme li:nth-child(3) p", "A popular table imagined with the market's cooks, where gastronomy becomes a shared language."],
+    [".event-gallery__heading .events-eyebrow", "PK3 Market"],
+    [".event-gallery__heading h2", "The city in motion"],
+    [".event-gallery__item--1 figcaption", "Movement"],
+    [".event-gallery__item--2 figcaption", "Encounters"],
+    [".event-gallery__item--3 figcaption", "The collective"],
+    [".event-gallery__item--4 figcaption", "Faces"],
+    [".event-gallery__item--5 figcaption", "Community"],
+    [".event-gallery__item--6 figcaption", "Voices"],
+    [".event-gallery__item--7 figcaption", "Celebration"],
     [".event-detail__back a:first-child", "← All events"],
     [".event-detail__back a:last-child", "Back to Stop 1 →"]
   ]
+};
+
+const englishEventTitles = {
+  "events.html": "Events | Les Patronnes",
+  "event-stop-1.html": "Stop 1 — Ganhi Market | Les Patronnes",
+  "event-table-ronde.html": "Les Patronnes Round Table | Les Patronnes",
+  "event-stop-2.html": "Stop 2 — PK3 Market | Les Patronnes"
 };
 
 // Copy specific to the shop and product pages. Keeping it keyed by file means
@@ -620,6 +643,17 @@ const applyPageCopy = () => {
 
   const eventEntries = englishEventCopy[window.location.pathname.split("/").pop()] || [];
   eventEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
+
+  const pageName = window.location.pathname.split("/").pop();
+  const englishEventTitle = englishEventTitles[pageName];
+  if (englishEventTitle) {
+    if (!document.documentElement.dataset.i18nTitleOriginal) {
+      document.documentElement.dataset.i18nTitleOriginal = document.title;
+    }
+    document.title = activeLanguage === "en"
+      ? englishEventTitle
+      : document.documentElement.dataset.i18nTitleOriginal;
+  }
 
   const pageEntries = englishPageCopy[window.location.pathname.split("/").pop()] || [];
   pageEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
