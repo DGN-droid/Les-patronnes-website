@@ -530,6 +530,68 @@ const englishEventCopy = {
   ]
 };
 
+// Copy specific to the shop and product pages. Keeping it keyed by file means
+// each garment retains its own description while the language switch stays instant.
+const englishPageCopy = {
+  "boutique.html": [
+    [".shop-tab[data-shop-tab=\"shirt\"] .shop-tab__label", "Clothing"],
+    [".shop-tab[data-shop-tab=\"photography\"] .shop-tab__label", "Photography"],
+    ["#shirt-cover-title", "The Les Patronnes T-shirt"],
+    ["#pull-cover-title", "The Les Patronnes Sweatshirt"],
+    ["#cap-cover-title", "The Les Patronnes Cap"],
+    ["#band-cover-title", "The Les Patronnes Headband"],
+    [".shop-panel-photography .shop-eyebrow", "Photographic edition"],
+    [".shop-panel-photography h2", "Photographs<br>by Maki Manoukian", "html"],
+    [".shop-panel-photography > p:not(.shop-eyebrow):not(.shop-photography__edition-note)", "A selection of images by Maki Manoukian, captured at the heart of the Les Patronnes project."],
+    [".shop-photography__edition-note", "Each photograph is available in 40 × 60 cm or 60 × 90 cm. Numbered, signed and framed on William Turner 310 g paper, with a black frame."]
+  ],
+  "tee-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], [".shop-product__caption", "Cotton white"],
+    ["#shirt-title", "The Les Patronnes<br>T-shirt", "html"], ["#shirt-title + p", "A statement piece designed for market days and city life alike. A relaxed fit, a bold mark and four colours inspired by Cotonou's materials, spices and energy."],
+    ["#shirt-colour-label", "Choose a colour <span data-selected-colour>Cotton white</span>", "html"], ["#shirt-size-label", "Choose a size <span data-selected-size>XS</span>", "html"],
+    [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Unisex · relaxed oversized fit"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "240 g/m² cotton jersey"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Chest print and woven label"], [".shop-product__details div:nth-child(4) dt", "Sizes"], [".shop-product__details div:nth-child(4) dd", "XS to 3XL"]
+  ],
+  "pull-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], [".shop-product__caption", "Deep black"], ["#pull-title", "The Les Patronnes<br>Sweatshirt", "html"], ["#pull-title + p", "A piece designed for the city, the market and cooler days. A relaxed fit, comfortable drape and four colours to wear Les Patronnes every day."], ["#pull-colour-label", "Choose a colour <span data-selected-pull-colour>Deep black</span>", "html"], ["#pull-size-label", "Choose a size <span data-selected-pull-size>XS</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Unisex · relaxed oversized fit"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Cotton fleece, soft inside"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Woven Les Patronnes label"], [".shop-product__details div:nth-child(4) dt", "Sizes"], [".shop-product__details div:nth-child(4) dd", "XS to 3XL"]
+  ],
+  "casquette-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], [".shop-product__caption", "Four colours"], ["#cap-title", "The Les Patronnes<br>Cap", "html"], ["#cap-title + p", "A cap designed as a sign of belonging. A piece to wear at the market, in the city and wherever Les Patronnes continues to travel."], ["#cap-colour-label", "Choose a colour <span data-selected-cap-colour>Beige</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Six-panel cap"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Durable cotton"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Embroidery and front print"], [".shop-product__details div:nth-child(4) dt", "Size"], [".shop-product__details div:nth-child(4) dd", "One size, adjustable"]
+  ],
+  "bandeau-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], [".shop-product__caption", "Green"], ["#band-title", "The Les Patronnes<br>Headband", "html"], ["#band-title + p", "A soft accessory imagined to carry the collective's colours every day. Each headband brings together the faces and energy that bring Les Patronnes to life."], ["#band-colour-label", "Choose a colour <span data-selected-band-colour>Green</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Soft, comfortable headband"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Soft jersey"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Front print"], [".shop-product__details div:nth-child(4) dt", "Size"], [".shop-product__details div:nth-child(4) dd", "One size, stretchy"]
+  ],
+  "jogging-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], ["#jogging-title", "The Les Patronnes<br>Joggers", "html"], ["#jogging-title + p", "A comfortable piece made for days in motion. A soft fit and three colours to wear Les Patronnes from the market to the city."], ["#jogging-colour-label", "Choose a colour <span data-selected-jogging-colour>Mineral grey</span>", "html"], ["#jogging-size-label", "Choose a size <span data-selected-jogging-size>XS</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Unisex, straight fit"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Cotton fleece"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Elasticated waistband and drawstring"], [".shop-product__details div:nth-child(4) dt", "Sizes"], [".shop-product__details div:nth-child(4) dd", "XS to 3XL"]
+  ],
+  "jupe-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], [".shop-product__caption", "Cotton white"], ["#skirt-title", "The Les Patronnes<br>Skirt", "html"], ["#skirt-title + p", "A light, flowing skirt imagined to carry the colours and energy of Les Patronnes. A soft piece to wear freely at the market and in the city."], ["#skirt-colour-label", "Choose a colour <span data-selected-skirt-colour>Cotton white</span>", "html"], ["#skirt-size-label", "Choose a size <span data-selected-skirt-size>XS</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Smocked waist, flowing skirt"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Lightweight cotton"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Soft ruffles"], [".shop-product__details div:nth-child(4) dt", "Sizes"], [".shop-product__details div:nth-child(4) dd", "XS to 3XL"]
+  ],
+  "chemise-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], ["#chemise-title", "The Les Patronnes<br>Shirt", "html"], ["#chemise-title + p", "A light, confident shirt imagined for market days and city appointments alike. Four colours to carry Les Patronnes everywhere."], ["#chemise-colour-label", "Choose a colour <span data-selected-chemise-colour>Cotton white</span>", "html"], ["#chemise-size-label", "Choose a size <span data-selected-chemise-size>XS</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Unisex, relaxed fit"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Lightweight cotton"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Classic collar and tonal buttons"], [".shop-product__details div:nth-child(4) dt", "Sizes"], [".shop-product__details div:nth-child(4) dd", "XS to 3XL"]
+  ],
+  "polo-patronnes.html": [
+    [".shop-product-page__back", "← Back to the shop"], ["#polo-title", "The Les Patronnes<br>Polo", "html"], ["#polo-title + p", "A sharply cut polo designed to wear Les Patronnes with ease. Four colours to move from market to city without changing your look."], ["#polo-colour-label", "Choose a colour <span data-selected-polo-colour>Cotton white</span>", "html"], ["#polo-size-label", "Choose a size <span data-selected-polo-size>XS</span>", "html"], [".shop-product__details div:nth-child(1) dt", "Fit"], [".shop-product__details div:nth-child(1) dd", "Unisex, straight fit"], [".shop-product__details div:nth-child(2) dt", "Material"], [".shop-product__details div:nth-child(2) dd", "Cotton piqué"], [".shop-product__details div:nth-child(3) dt", "Finish"], [".shop-product__details div:nth-child(3) dd", "Polo collar and button placket"], [".shop-product__details div:nth-child(4) dt", "Sizes"], [".shop-product__details div:nth-child(4) dd", "XS to 3XL"]
+  ],
+  "favoris.html": [
+    [".favourites-eyebrow", "The Les Patronnes selection"], ["#favourites-title", "My favourites"], [".favourites-hero > p:last-of-type", "Find the items you have saved here, ready to revisit whenever you wish."], [".favourites-back", "← Back to the shop"]
+  ],
+  "don.html": [
+    [".don-hero .don-eyebrow", "Support Les Patronnes"], ["#don-title", "Make a donation"], [".don-hero > p:last-child", "Your support helps sustain the images, encounters and knowledge-sharing carried by Les Patronnes."], [".don-content .don-eyebrow", "A living commitment"], ["#don-form-title", "Your support<br>matters", "html"], [".don-introduction > p:last-child", "Share your contact details, your chosen amount and your preferred payment method. We will reply directly on WhatsApp to guide you."], [".don-form label:nth-of-type(1)", "First name", "leading"], [".don-form label:nth-of-type(2)", "Last name", "leading"], [".don-form > label", "Organisation (optional)", "leading"], [".don-form__row label:nth-child(1)", "Amount", "leading"], [".don-form__row label:nth-child(2)", "Currency", "leading"], [".don-form > label:nth-of-type(2)", "Phone number", "leading"], [".don-form legend", "Payment method"], [".don-form button", "Continue the transaction <span aria-hidden=\"true\">→</span>", "html"], [".don-form__notice", "No payment is made on this page. Your chosen method will be confirmed with our team."]
+  ],
+  "film-stop-1.html": [
+    [".recap-hero .about-eyebrow", "Les Patronnes · Stop 1"], ["#recap-title", "Ganhi<br>Market", "html"], [".recap-hero__date", "7 March 2026 · Cotonou"], [".recap-hero__lead", "The first chapter of a story that chooses the market as a place of memory, conversation and celebration."], [".recap-story .about-eyebrow", "The story"], ["#ganhi-story-title", "One day<br>to look differently", "html"], [".recap-story__copy p:nth-child(1)", "At Ganhi Market, Les Patronnes begins its cycle close to the women who animate Cotonou's daily life. Faces, gestures and voices are given time to appear, inseparable from their place."], [".recap-story__copy p:nth-child(2)", "Photography, conversation and gastronomy make up one movement: making the market a place of recognition, where the women who sustain it are finally seen in the fullness of their history."], [".recap-navigation a:first-child", "← Back to About"], [".recap-navigation a:last-child", "Relive Stop 2 →"]
+  ],
+  "film-stop-2.html": [
+    [".recap-hero .about-eyebrow", "Les Patronnes · Stop 2"], ["#recap-title", "PK3<br>Market", "html"], [".recap-hero__date", "11 July 2026 · Cotonou"], [".recap-hero__lead", "An open-air gallery, a runway and a table: PK3 becomes the stage for the women who keep materials and stories in circulation."], [".recap-story .about-eyebrow", "The story"], ["#pk3-story-title", "The market as a living stage"], [".recap-story__copy p:nth-child(1)", "At PK3, textile is an archive in motion. Fabrics, silhouettes and selling gestures tell the story of a city that invents, passes on and carries itself with pride."], [".recap-story__copy p:nth-child(2)", "The second Stop brings together an exhibition, fashion show, masterclass and popular banquet. The day turns the market into a wide conversation where creation, pleasure and recognition move forward together."], [".recap-navigation a:first-child", "← Relive Stop 1"], [".recap-navigation a:last-child", "Back to About →"]
+  ],
+  "fondatrice.html": [
+    [".founder-hero .about-eyebrow", "The founder"], [".founder-hero__lead", "From Cotonou to the world: a cuisine, a voice and a perspective that always return to the women who bring markets to life."], [".founder-story .about-eyebrow", "A journey, a source"], ["#founder-story-title", "Cotonou, always at the centre"], [".founder-story__copy p:nth-child(1)", "Born in Cotonou, Georgiana Viou grew up with the smells, voices and gestures of the market. Early on, cooking taught her that feeding people is a way of telling a story: of a place, a family, the seasons and the people who connect them."], [".founder-story__copy p:nth-child(2)", "Her journey led her to France, where she shaped a personal, free culinary voice deeply rooted in Benin. Chef, author and storyteller, she brings products, memories and know-how into dialogue, giving every table an emotional resonance."], [".founder-story__copy p:nth-child(3)", "In 2023, her restaurant Rouge in Nîmes was awarded a Michelin star. This recognition makes a vision of gastronomy rooted in hospitality, memory and transmission even more visible."], [".founder-milestones .about-eyebrow", "Guiding principles"], ["#milestones-title", "A cuisine that connects"], [".founder-milestones__list li:nth-child(1) h3", "Hospitality"], [".founder-milestones__list li:nth-child(1) p", "Making the table an open space, where stories circulate as freely as dishes."], [".founder-milestones__list li:nth-child(2) h3", "Transmission"], [".founder-milestones__list li:nth-child(2) p", "Writing, cooking, speaking: sharing the gestures and stories that build a common memory."], [".founder-milestones__list li:nth-child(3) h3", "Return"], [".founder-milestones__list li:nth-child(3) p", "Returning to Benin not as a detour, but as an anchor and a promise of collective action."], [".founder-origin .about-eyebrow", "The origin"], ["#origin-title", "Les Patronnes: making visible what already stands strong"], [".founder-origin__content > p:nth-of-type(1)", "Les Patronnes grows from this journey. In the women of Beninese markets, Georgiana Viou recognises knowledge, presences and an economic strength that shape the city every day. The project creates images, encounters and meals to give them the space they deserve."], [".founder-origin__content > p:nth-of-type(2)", "Photography, fashion and gastronomy become tools of recognition. Together, they tell a contemporary story of Benin: one carried by the women who work, pass on and invent every day."], [".founder-origin__link", "← Back to About"]
+  ],
+  "mentions-legales.html": [
+    [".legal-hero .partner-eyebrow", "Website information"], [".legal-hero h1", "Legal notice<br>& privacy", "html"], [".legal-hero > p:last-of-type", "This information may be updated as the website and its activities evolve."], ["#legal-notices-title", "Legal notice"], [".legal-section:nth-of-type(1) .partner-eyebrow", "01 — Publishing"], [".legal-details div:nth-child(1) dt", "Website publisher"], [".legal-details div:nth-child(2) dt", "Registered office"], [".legal-details div:nth-child(3) dt", "Publication director"], [".legal-details div:nth-child(5) dt", "Hosting"], [".legal-section:nth-of-type(1) h3:nth-of-type(1)", "Purpose of the website"], [".legal-section:nth-of-type(1) .legal-copy p:nth-of-type(1)", "The Les Patronnes website presents the project’s activities, events, editorial content, partnerships and shop. Information is provided for guidance and may change."], [".legal-section:nth-of-type(1) h3:nth-of-type(2)", "Intellectual property"], [".legal-section:nth-of-type(1) .legal-copy p:nth-of-type(2)", "Unless otherwise stated, the texts, photographs, videos, graphics, logos and all elements of this website are protected. Any reproduction, representation, adaptation or use, in whole or in part, without the publisher’s prior written permission is prohibited."], [".legal-section:nth-of-type(1) h3:nth-of-type(3)", "External links"], [".legal-section:nth-of-type(1) .legal-copy p:nth-of-type(3)", "The website may contain links to third-party websites. Les Patronnes does not control their content and cannot be held responsible for their practices or availability."], [".legal-section:nth-of-type(2) .partner-eyebrow", "02 — Personal data"], ["#privacy-title", "Privacy policy"], [".legal-section:nth-of-type(2) h3:nth-of-type(1)", "Data concerned"], [".legal-section:nth-of-type(2) .legal-copy p:nth-of-type(1)", "When you contact us or complete a form, you may provide your name, email address, telephone number, organisation name and the content of your message. This data is used solely to reply to your request or manage your registration."], [".legal-section:nth-of-type(2) h3:nth-of-type(2)", "Forms and reservations"], [".legal-section:nth-of-type(2) .legal-copy p:nth-of-type(2)", "The website forms prepare an email to lespatronnes229@gmail.com. Information is sent only when you choose to send that email from your own mailbox."], [".legal-section:nth-of-type(2) h3:nth-of-type(3)", "Cookies and local storage"], [".legal-section:nth-of-type(2) .legal-copy p:nth-of-type(3)", "The website uses local storage on your device to remember language, theme and consent preferences and, where applicable, shop favourites. You may delete this data at any time in your browser settings."], [".legal-section:nth-of-type(2) h3:nth-of-type(4)", "Retention and security"], [".legal-section:nth-of-type(2) .legal-copy p:nth-of-type(4)", "Contact data is retained for the time needed to process your request, then deleted or archived in accordance with applicable obligations. Reasonable measures are taken to protect communications and entrusted data."], [".legal-section:nth-of-type(2) h3:nth-of-type(5)", "Your rights"], [".legal-section:nth-of-type(2) .legal-copy p:nth-of-type(5)", "You may request access to, correction or deletion of your data, as well as information about its processing, by writing to lespatronnes229@gmail.com."], [".legal-section:nth-of-type(2) h3:nth-of-type(6)", "Updates"], [".legal-section:nth-of-type(2) .legal-copy p:nth-of-type(6)", "This page may change to reflect updates to the website or data-processing practices. Last updated: September 2026."]
+  ]
+};
+
 const setLocalizedCopy = (element, value, mode = "text") => {
   if (!element) return;
   if (!element.dataset.i18nOriginal) element.dataset.i18nOriginal = element.innerHTML;
@@ -551,6 +613,24 @@ const applyPageCopy = () => {
 
   const eventEntries = englishEventCopy[window.location.pathname.split("/").pop()] || [];
   eventEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
+
+  const pageEntries = englishPageCopy[window.location.pathname.split("/").pop()] || [];
+  pageEntries.forEach(([selector, value, mode]) => setLocalizedCopy(document.querySelector(selector), value, mode));
+
+  if (document.body.dataset.page === "shop" && window.location.pathname.split("/").pop() !== "boutique.html") {
+    setLocalizedCopy(document.querySelector(".shop-eyebrow"), "First drop");
+    setLocalizedCopy(document.querySelector(".shop-product__purchase span"), "Availability");
+    setLocalizedCopy(document.querySelector(".shop-product__purchase strong"), "Pre-order coming soon");
+    setLocalizedCopy(document.querySelector(".shop-product__cta"), "Be notified at launch <span aria-hidden=\"true\"></span>", "html");
+    setLocalizedCopy(document.querySelector(".shop-product__delivery"), "Collection in Cotonou and delivery coming soon. Proceeds support the reach of Les Patronnes.");
+    document.querySelectorAll(".shop-swatch").forEach((swatch) => {
+      if (!swatch.dataset.i18nAriaOriginal) swatch.dataset.i18nAriaOriginal = swatch.getAttribute("aria-label") || "";
+      swatch.setAttribute(
+        "aria-label",
+        activeLanguage === "en" ? `Choose ${swatch.dataset.colourNameEn || "colour"}` : swatch.dataset.i18nAriaOriginal
+      );
+    });
+  }
 
   if (["actualites", "press"].includes(document.body.dataset.page)) {
     document.querySelectorAll(".actualites-feed__link").forEach((link) => {
@@ -1150,6 +1230,9 @@ if (heroCarousel) {
   const escapeHTML = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character]);
   const render = () => {
     const favourites = readFavourites();
+    const copy = document.documentElement.lang === "en"
+      ? { empty: "No favourites yet.", discover: "Discover the shop", view: "View item", remove: "Remove", fallback: "Les Patronnes item" }
+      : { empty: "Aucun favori pour le moment.", discover: "Découvrir la boutique", view: "Voir l’article", remove: "Retirer", fallback: "Article Les Patronnes" };
     const latestFavourite = favourites.at(-1);
     backLink?.setAttribute(
       "href",
@@ -1158,10 +1241,10 @@ if (heroCarousel) {
         : "boutique.html"
     );
     if (!favourites.length) {
-      list.innerHTML = '<p class="favourites-list__empty">Aucun favori pour le moment. <a href="boutique.html">Découvrir la boutique</a></p>';
+      list.innerHTML = `<p class="favourites-list__empty">${copy.empty} <a href="boutique.html">${copy.discover}</a></p>`;
       return;
     }
-    list.innerHTML = `<div class="favourites-list__grid">${favourites.map((favourite) => `<article class="favourites-card"><a class="favourites-card__image" href="${escapeHTML(favourite.href || "boutique.html")}"><img src="${escapeHTML(favourite.image || "")}" alt="${escapeHTML(favourite.title || "Article Les Patronnes")}"></a><div class="favourites-card__content"><h2>${escapeHTML(favourite.title || "Article Les Patronnes")}</h2><div class="favourites-card__actions"><a href="${escapeHTML(favourite.href || "boutique.html")}">Voir l’article <span aria-hidden="true">→</span></a><button type="button" data-favourite-remove="${escapeHTML(favourite.id)}">Retirer</button></div></div></article>`).join("")}</div>`;
+    list.innerHTML = `<div class="favourites-list__grid">${favourites.map((favourite) => `<article class="favourites-card"><a class="favourites-card__image" href="${escapeHTML(favourite.href || "boutique.html")}"><img src="${escapeHTML(favourite.image || "")}" alt="${escapeHTML(favourite.title || copy.fallback)}"></a><div class="favourites-card__content"><h2>${escapeHTML(favourite.title || copy.fallback)}</h2><div class="favourites-card__actions"><a href="${escapeHTML(favourite.href || "boutique.html")}">${copy.view} <span aria-hidden="true">→</span></a><button type="button" data-favourite-remove="${escapeHTML(favourite.id)}">${copy.remove}</button></div></div></article>`).join("")}</div>`;
   };
   list.addEventListener("click", (event) => {
     const button = event.target.closest("[data-favourite-remove]");
@@ -1170,6 +1253,7 @@ if (heroCarousel) {
     render();
   });
   render();
+  window.addEventListener("site:languagechange", render);
 })();
 
 (() => {
