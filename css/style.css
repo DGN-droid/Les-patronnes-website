@@ -213,7 +213,8 @@ ol {
 }
 
 .site-nav__links a.is-current,
-.site-nav__partner.is-current {
+.site-nav__partner.is-current,
+.site-mobile-menu__links a.is-current {
   color: var(--color-accent);
   opacity: 1;
 }
