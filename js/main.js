@@ -332,6 +332,8 @@ const englishCopy = {
     [".home-manifesto > p:last-child", "A story of women, markets and transmission."]
   ],
   about: [
+    [".about-replays a:first-child", "Relive Les Patronnes Stop 1 <span aria-hidden=\"true\">→</span>", "html"],
+    [".about-replays a:last-child", "Relive Les Patronnes Stop 2 <span aria-hidden=\"true\">→</span>", "html"],
     [".about-hero__content .about-eyebrow", "The project"],
     [".about-hero__subtitle", "A living archive of Beninese markets"],
     [".about-hero__lead", "Les Patronnes celebrates the women who bring Cotonou's markets to life every day. Traders, cooks, keepers of know-how and neighbourhood figures: they feed a city, circulate materials and ideas, and sustain the ties that hold a community together."],
